@@ -1,0 +1,131 @@
+/* Estilo general */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #000; /* Fallback color */
+}
+
+/* Fondo con imagen */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://github.com/user-attachments/assets/40e425df-5c5f-44f5-ade9-d8fc8bb25e27') no-repeat center center;
+  background-size: cover;
+  z-index: -1;
+  filter: brightness(0.6); /* Oscurece ligeramente la imagen */
+}
+
+/* Contenedor principal */
+.container {
+  position: relative;
+  background: rgba(0, 0, 0, 0.85); /* Fondo más oscuro y elegante */
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  width: 450px;
+  max-width: 90%; /* Para pantallas pequeñas */
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #00c6ff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* Estilos del formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 15px;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #1a1a2e;
+  color: #ffffff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+input:focus {
+  outline: none;
+  background: #23233a;
+  border: 1px solid #00c6ff;
+  box-shadow: 0 0 10px #00c6ff;
+}
+
+/* Botones */
+button {
+  padding: 12px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #1a73e8, #00c6ff);
+  color: #ffffff;
+  font-size: 16px;
+  gap: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #00c6ff, #1a73e8);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Botones específicos */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+button#login {
+  background: linear-gradient(135deg, #00c853, #00e676);
+}
+
+button#login:hover {
+  background: linear-gradient(135deg, #00e676, #00c853);
+}
+
+/* Texto de pie de página */
+.footer-text {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #bbb;
+}
+
+.footer-text a {
+  color: #00c6ff;
+  text-decoration: none;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}
