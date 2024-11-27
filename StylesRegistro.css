@@ -86,6 +86,7 @@ button {
   background: linear-gradient(135deg, #1a73e8, #00c6ff);
   color: #ffffff;
   font-size: 16px;
+  gap: 4px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
