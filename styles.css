@@ -1,26 +1,20 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  overflow: hidden;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100vh;
-  background: #000;
-  color: #fff;
+  background: #000; /* Fallback color */
 }
 
-.container {
-  text-align: center;
-  width: 90%;
-  max-width: 400px;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-  padding: 20px;
-}
-
-.background {
-  position: fixed;
+/* Fondo con imagen */
+body::before {
+  content: '';
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -28,7 +22,19 @@ body {
   background: url('https://github.com/user-attachments/assets/40e425df-5c5f-44f5-ade9-d8fc8bb25e27') no-repeat center center;
   background-size: cover;
   z-index: -1;
-  filter: blur(5px);
+  filter: brightness(0.6); /* Oscurece ligeramente la imagen */
+}
+
+/* Contenedor principal */
+.container {
+  position: relative;
+  background: rgba(0, 0, 0, 0.85); /* Fondo más oscuro y elegante */
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  width: 450px;
+  max-width: 90%; /* Para pantallas pequeñas */
 }
 
 h1 {
