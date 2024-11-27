@@ -79,7 +79,7 @@ input:focus {
 
 /* Botones */
 button {
-  padding: 12px 20px;
+  padding: 12px 12px;
   border: none;
   border-radius: 25px;
   background: linear-gradient(135deg, #1a73e8, #00c6ff);
@@ -101,8 +101,8 @@ button:hover {
 .form-buttons {
   display: flex;
   justify-content: space-between;
-  gap: 8px; /* Menor espacio entre los botones */
-  margin-top: 40px; /* Mover los botones más abajo */
+  gap: 4px; /* Menor espacio entre los botones */
+  margin-top: 20px; /* Mover los botones más abajo */
 }
 
 button#login {
