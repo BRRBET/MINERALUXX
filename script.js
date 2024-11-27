@@ -16,6 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Evento para el botón de registro
   registerBtn.addEventListener('click', function(event) {
     event.preventDefault();
-    window.location.href = 'registro.html';  // Redirige a la página de registro
+    window.location.href = 'Registro.html';  // Redirige a la página de registro
   });
 });
