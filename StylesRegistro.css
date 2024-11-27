@@ -1,1 +1,126 @@
+/* Estilos Generales */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle, #000428, #004e92);
+  color: #ffffff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
 
+/* Fondo de estrellas */
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 0;
+  animation: moveStars 20s linear infinite;
+}
+
+@keyframes moveStars {
+  from {
+    background: transparent;
+  }
+  to {
+    transform: translateY(100px);
+  }
+}
+
+ *container styling:/* Contenedor principal */
+.container {
+  position: relative;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  z-index: 1;
+  text-align: center;
+  width: 350px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #ffffff;
+}
+
+/* Estilos del formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  width: 100%;
+  text-align: left;
+}
+
+label {
+  font-size: 14px;
+  color: #ddd;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input {
+  width: calc(100% - 10px);
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #1a1a2e;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #00aaff;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #1a73e8, #00c6ff);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #00c6ff, #1a73e8);
+}
+
+/* Botones específicos */
+#sendCode {
+  background: #ff9800;
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+#sendCode:hover {
+  background: #e68a00;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#login {
+  background: #00c853;
+}
+
+#login:hover {
+  background: #009624;
+}
