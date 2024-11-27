@@ -1,21 +1,26 @@
-/* Estilo general */
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-  color: #ffffff;
-  overflow: hidden;
+  font-family: Arial, sans-serif;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
-  background: #000; /* Fallback color */
+  background: #000;
+  color: #fff;
 }
 
-/* Fondo con imagen */
-body::before {
-  content: '';
-  position: absolute;
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+  padding: 20px;
+}
+
+.background {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -23,110 +28,70 @@ body::before {
   background: url('https://github.com/user-attachments/assets/40e425df-5c5f-44f5-ade9-d8fc8bb25e27') no-repeat center center;
   background-size: cover;
   z-index: -1;
-  filter: brightness(0.6); /* Oscurece ligeramente la imagen */
-}
-
-/* Contenedor principal */
-.container {
-  position: relative;
-  background: rgba(0, 0, 0, 0.85); /* Fondo más oscuro y elegante */
-  padding: 40px 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-  text-align: center;
-  width: 450px;
-  max-width: 90%; /* Para pantallas pequeñas */
+  filter: blur(5px);
 }
 
 h1 {
+  color: #00BFFF;
   margin-bottom: 20px;
-  font-size: 28px;
-  color: #00c6ff;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
 }
 
-/* Estilos del formulario */
 form {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   gap: 15px;
 }
 
-.form-group label {
-  font-size: 14px;
-  color: #ccc;
+label {
+  text-align: left;
+  font-size: 0.9em;
+  margin-left: 10px;
 }
 
-.form-group input {
-  width: 100%;
-  padding: 12px;
+input {
+  padding: 10px;
   border: none;
-  border-radius: 10px;
-  background: #1a1a2e;
-  color: #ffffff;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  background: #333;
+  color: #fff;
+  font-size: 1em;
 }
 
-input:focus {
-  outline: none;
-  background: #23233a;
-  border: 1px solid #00c6ff;
-  box-shadow: 0 0 10px #00c6ff;
+input::placeholder {
+  color: #aaa;
 }
 
-/* Botones */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 button {
-  padding: 12px 12px;  /* Ajustado el padding para mayor consistencia */
+  flex: 1;
+  margin: 0 5px;
+  padding: 10px;
   border: none;
-  gap:4px;
-  border-radius: 25px;
-  background: linear-gradient(135deg, #1a73e8, #00c6ff);
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: bold;
+  border-radius: 5px;
+  font-size: 1em;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#login-btn {
+  background-color: #32CD32;
+  color: #fff;
+}
+
+#register-btn {
+  background-color: #00BFFF;
+  color: #fff;
 }
 
 button:hover {
-  background: linear-gradient(135deg, #00c6ff, #1a73e8);
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  opacity: 0.9;
 }
 
-/* Botones específicos */
-.form-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;  /* Aumentado el espacio entre los botones */
-  margin-top: 40px;  /* Botones más abajo */
-}
-
-/* Estilo para el botón de login */
-button#login {
-  background: linear-gradient(135deg, #00c853, #00e676);
-}
-
-button#login:hover {
-  background: linear-gradient(135deg, #00e676, #00c853);
-}
-
-/* Texto de pie de página */
-.footer-text {
+.privacy-policy {
   margin-top: 20px;
-  font-size: 14px;
-  color: #bbb;
-}
-
-.footer-text a {
-  color: #00c6ff;
-  text-decoration: none;
-}
-
-.footer-text a:hover {
-  text-decoration: underline;
+  font-size: 0.8em;
+  color: #aaa;
 }
