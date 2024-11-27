@@ -1,7 +1,22 @@
-document.getElementById("login-btn").addEventListener("click", function () {
-  window.location.href = "dashboard.html"; // Cambia "dashboard.html" por la URL a donde se redirige después del inicio de sesión
+document.getElementById('registerForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const password1 = document.getElementById('password1').value;
+  const password2 = document.getElementById('password2').value;
+  const password3 = document.getElementById('password3').value;
+  const password4 = document.getElementById('password4').value;
+
+  if (!email || !password1 || !password2 || !password3 || !password4) {
+    alert('Por favor, completa todos los campos.');
+    return;
+  }
+
+  alert('Login exitoso. Redirigiendo...');
+  window.location.href = 'success.html'; // Cambia a la página de éxito
 });
 
-document.getElementById("register-btn").addEventListener("click", function () {
-  window.location.href = "register.html"; // Cambia "register.html" por la URL de la página de registro
+// Redirigir al iniciar sesión
+document.getElementById('login').addEventListener('click', function () {
+  window.location.href = 'Registro.html'; // Cambia a la página de inicio de sesión
 });
