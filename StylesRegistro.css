@@ -2,8 +2,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background: #000;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #000, #111);
   color: #ffffff;
   overflow: hidden;
   display: flex;
@@ -17,36 +17,38 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
-  animation: blink 2s infinite;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
+  animation: starsAnimation 5s infinite linear;
   z-index: 0;
 }
 
-@keyframes blink {
-  0%, 100% {
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+@keyframes starsAnimation {
+  from {
+    background-position: 0 0;
   }
-  50% {
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  to {
+    background-position: 100% 100%;
   }
 }
 
 /* Contenedor principal */
 .container {
   position: relative;
-  background: rgba(0, 0, 0, 0.85);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  background: rgba(30, 30, 30, 0.95);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
   z-index: 1;
   text-align: center;
-  width: 400px;
+  width: 450px;
 }
 
 h1 {
-  margin-bottom: 20px;
-  font-size: 28px;
-  color: #ffffff;
+  margin-bottom: 30px;
+  font-size: 32px;
+  color: #00c6ff;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 /* Estilos del formulario */
@@ -54,63 +56,71 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
 }
 
 .form-group {
-  margin-bottom: 15px;
   width: 100%;
-  text-align: left;
 }
 
 label {
-  font-size: 14px;
-  color: #ddd;
-  margin-bottom: 5px;
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 8px;
   display: block;
 }
 
 input {
-  width: calc(100% - 10px);
-  padding: 10px;
+  width: 100%;
+  padding: 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   background: #1a1a2e;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 16px;
+  transition: 0.3s;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 input:focus {
   outline: none;
-  border: 1px solid #00aaff;
+  background: #23233a;
+  border: 1px solid #00c6ff;
+  box-shadow: 0 0 10px #00c6ff;
 }
 
+/* Botones */
 button {
-  padding: 10px 20px;
+  padding: 12px 20px;
   border: none;
-  border-radius: 8px;
-  background: linear-gradient(45deg, #1a73e8, #00c6ff);
-  color: white;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #1a73e8, #00c6ff);
+  color: #ffffff;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
-  margin: 10px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
-  background: linear-gradient(45deg, #00c6ff, #1a73e8);
+  background: linear-gradient(135deg, #00c6ff, #1a73e8);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 /* Botones específicos */
 .form-buttons {
   display: flex;
   justify-content: space-between;
+  gap: 15px;
   width: 100%;
 }
 
-#login {
-  background: #00c853;
+button#login {
+  background: linear-gradient(135deg, #00c853, #00e676);
 }
 
-#login:hover {
-  background: #009624;
+button#login:hover {
+  background: linear-gradient(135deg, #00e676, #00c853);
 }
