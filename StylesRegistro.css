@@ -1,9 +1,9 @@
-/* Estilos Generales */
+/* Estilo general */
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background: #000000;
+  background: #000;
   color: #ffffff;
   overflow: hidden;
   display: flex;
@@ -12,23 +12,22 @@ body {
   height: 100vh;
 }
 
-/* Fondo de estrellas */
-.stars {
+/* Fondo animado */
+.background {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: transparent;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+  animation: blink 2s infinite;
   z-index: 0;
-  background: radial-gradient(ellipse at center, transparent, rgba(255, 255, 255, 0.1));
-  animation: animateStars 30s linear infinite;
 }
 
-@keyframes animateStars {
-  from {
-    background-position: 0 0;
+@keyframes blink {
+  0%, 100% {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
   }
-  to {
-    background-position: -1000px 1000px;
+  50% {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
   }
 }
 
@@ -41,7 +40,7 @@ body {
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   z-index: 1;
   text-align: center;
-  width: 350px;
+  width: 400px;
 }
 
 h1 {
@@ -58,23 +57,9 @@ form {
 }
 
 .form-group {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   width: 100%;
-  height:10px;
   text-align: left;
-}
-
-.form-group-inline {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 10px;
-  margin-bottom: 25px;
-}
-
-.inline-input {
-  width: 70%;
 }
 
 label {
@@ -108,6 +93,7 @@ button {
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
+  margin: 10px 0;
 }
 
 button:hover {
@@ -115,16 +101,6 @@ button:hover {
 }
 
 /* Botones específicos */
-#sendCode {
-  background: #ff9800;
-  margin-left: 10px;
-  padding: 10px 15px;
-}
-
-#sendCode:hover {
-  background: #e68a00;
-}
-
 .form-buttons {
   display: flex;
   justify-content: space-between;
