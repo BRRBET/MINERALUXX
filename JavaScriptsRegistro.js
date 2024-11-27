@@ -19,5 +19,5 @@ document.getElementById('registerForm').addEventListener('submit', function (e) 
 
 // Redirigir al iniciar sesión
 document.getElementById('login').addEventListener('click', function () {
-  window.location.href = 'login.html'; // Cambia a la página de inicio de sesión
+  window.location.href = 'Login.html'; // Cambia a la página de inicio de sesión
 });
