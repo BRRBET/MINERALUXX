@@ -111,7 +111,6 @@ button#login {
 
 button#login:hover {
   background: linear-gradient(135deg, #00e676, #00c853);
-  margin-top:10px;
 }
 
 /* Texto de pie de página */
