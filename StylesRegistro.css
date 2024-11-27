@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background: radial-gradient(circle, #000428, #004e92);
+  background: #000000;
   color: #ffffff;
   overflow: hidden;
   display: flex;
@@ -19,25 +19,26 @@ body {
   height: 100%;
   background: transparent;
   z-index: 0;
-  animation: moveStars 20s linear infinite;
+  background: radial-gradient(ellipse at center, transparent, rgba(255, 255, 255, 0.1));
+  animation: animateStars 30s linear infinite;
 }
 
-@keyframes moveStars {
+@keyframes animateStars {
   from {
-    background: transparent;
+    background-position: 0 0;
   }
   to {
-    transform: translateY(100px);
+    background-position: -1000px 1000px;
   }
 }
 
- *container styling:/* Contenedor principal */
+/* Contenedor principal */
 .container {
   position: relative;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   z-index: 1;
   text-align: center;
   width: 350px;
@@ -60,6 +61,18 @@ form {
   margin-bottom: 15px;
   width: 100%;
   text-align: left;
+}
+
+.form-group-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.inline-input {
+  width: 70%;
 }
 
 label {
@@ -86,7 +99,6 @@ input:focus {
 
 button {
   padding: 10px 20px;
-  margin-top: 10px;
   border: none;
   border-radius: 8px;
   background: linear-gradient(45deg, #1a73e8, #00c6ff);
@@ -103,8 +115,8 @@ button:hover {
 /* Botones específicos */
 #sendCode {
   background: #ff9800;
-  margin-top: 0;
   margin-left: 10px;
+  padding: 10px 15px;
 }
 
 #sendCode:hover {
