@@ -35,7 +35,6 @@ body::before {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
   text-align: center;
   width: 450px;
-  height:20px;
   max-width: 90%; /* Para pantallas pequeñas */
 }
 
@@ -81,13 +80,11 @@ input:focus {
 /* Botones */
 button {
   padding: 12px 20px;
-  margin-top:20px;
   border: none;
   border-radius: 25px;
   background: linear-gradient(135deg, #1a73e8, #00c6ff);
   color: #ffffff;
   font-size: 16px;
-  gap: 5px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -101,12 +98,6 @@ button:hover {
 }
 
 /* Botones específicos */
-.form-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 4px; /* Menor espacio entre los botones */
- /* Mover los botones más abajo */
-}
 button#login {
   background: linear-gradient(135deg, #00c853, #00e676);
 }
@@ -114,6 +105,7 @@ button#login {
 button#login:hover {
   background: linear-gradient(135deg, #00e676, #00c853);
 }
+
 /* Texto de pie de página */
 .footer-text {
   margin-top: 20px;
