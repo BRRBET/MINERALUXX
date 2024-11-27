@@ -17,6 +17,6 @@ document.getElementById('registerForm').addEventListener('submit', function (e) 
 });
 
 // Redirigir al iniciar sesión
-document.getElementById('login').addEventListener('click', function () {
+document.getElementById('register').addEventListener('click', function () {
   window.location.href = 'Registro.html'; // Cambia a la página de inicio de sesión
 });
