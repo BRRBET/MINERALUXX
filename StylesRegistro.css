@@ -58,7 +58,7 @@ form {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   width: 100%;
   text-align: left;
 }
@@ -68,7 +68,7 @@ form {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .inline-input {
