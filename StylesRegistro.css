@@ -101,8 +101,8 @@ button:hover {
 .form-buttons {
   display: flex;
   justify-content: space-between;
-  gap: 15px;
-  margin-top: 30px;
+  gap: 8px; /* Menor espacio entre los botones */
+  margin-top: 40px; /* Mover los botones más abajo */
 }
 
 button#login {
