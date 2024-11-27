@@ -102,6 +102,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   gap: 15px;
+  spacer: 10px;
 }
 
 button#login {
