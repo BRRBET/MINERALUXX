@@ -4,7 +4,7 @@ document.getElementById('sendCode').addEventListener('click', function () {
 
   if (email) {
     alert(`Código de verificación enviado a ${email}`);
-    // Simulación de generación de código (integrar backend para producción)
+    // Simulación de generación de código (para un backend real, usa un servicio de correos)
     const verificationCode = Math.floor(1000 + Math.random() * 9000);
     console.log(`Código generado: ${verificationCode}`);
   } else {
