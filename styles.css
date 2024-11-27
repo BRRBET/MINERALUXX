@@ -107,7 +107,6 @@ button:hover {
   gap: 4px; /* Menor espacio entre los botones */
  /* Mover los botones más abajo */
 }
-
 button#login {
   background: linear-gradient(135deg, #00c853, #00e676);
 }
@@ -115,7 +114,6 @@ button#login {
 button#login:hover {
   background: linear-gradient(135deg, #00e676, #00c853);
 }
-
 /* Texto de pie de página */
 .footer-text {
   margin-top: 20px;
