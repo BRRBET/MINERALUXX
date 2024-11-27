@@ -1,3 +1,4 @@
+/* Estilo general */
 body {
   margin: 0;
   padding: 0;
@@ -38,66 +39,94 @@ body::before {
 }
 
 h1 {
-  color: #00BFFF;
   margin-bottom: 20px;
+  font-size: 28px;
+  color: #00c6ff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
 }
 
+/* Estilos del formulario */
 form {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   gap: 15px;
 }
 
-label {
-  text-align: left;
-  font-size: 0.9em;
-  margin-left: 10px;
+.form-group label {
+  font-size: 14px;
+  color: #ccc;
 }
 
-input {
-  padding: 10px;
+.form-group input {
+  width: 100%;
+  padding: 12px;
   border: none;
-  border-radius: 5px;
-  background: #333;
-  color: #fff;
-  font-size: 1em;
+  border-radius: 10px;
+  background: #1a1a2e;
+  color: #ffffff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-input::placeholder {
-  color: #aaa;
+input:focus {
+  outline: none;
+  background: #23233a;
+  border: 1px solid #00c6ff;
+  box-shadow: 0 0 10px #00c6ff;
 }
 
-.button-container {
-  display: flex;
-  justify-content: space-between;
-}
-
+/* Botones */
 button {
-  flex: 1;
-  margin: 0 5px;
-  padding: 10px;
+  padding: 12px 20px;
+  margin-top:20px;
   border: none;
-  border-radius: 5px;
-  font-size: 1em;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #1a73e8, #00c6ff);
+  color: #ffffff;
+  font-size: 16px;
+  gap: 5px;
+  font-weight: bold;
   cursor: pointer;
-}
-
-#login-btn {
-  background-color: #32CD32;
-  color: #fff;
-}
-
-#register-btn {
-  background-color: #00BFFF;
-  color: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
-  opacity: 0.9;
+  background: linear-gradient(135deg, #00c6ff, #1a73e8);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
-.privacy-policy {
+/* Botones específicos */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px; /* Menor espacio entre los botones */
+ /* Mover los botones más abajo */
+}
+
+button#login {
+  background: linear-gradient(135deg, #00c853, #00e676);
+}
+
+button#login:hover {
+  background: linear-gradient(135deg, #00e676, #00c853);
+}
+
+/* Texto de pie de página */
+.footer-text {
   margin-top: 20px;
-  font-size: 0.8em;
-  color: #aaa;
+  font-size: 14px;
+  color: #bbb;
+}
+
+.footer-text a {
+  color: #00c6ff;
+  text-decoration: none;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
 }
