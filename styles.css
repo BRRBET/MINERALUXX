@@ -79,8 +79,9 @@ input:focus {
 
 /* Botones */
 button {
-  padding: 12px 20px;  /* Ajustado el padding para mayor consistencia */
+  padding: 12px 12px;  /* Ajustado el padding para mayor consistencia */
   border: none;
+  gap:4px;
   border-radius: 25px;
   background: linear-gradient(135deg, #1a73e8, #00c6ff);
   color: #ffffff;
