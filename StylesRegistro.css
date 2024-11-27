@@ -80,13 +80,13 @@ input:focus {
 /* Botones */
 button {
   padding: 12px 20px;
-  margin-top:40px;
+  margin-top:20px;
   border: none;
   border-radius: 25px;
   background: linear-gradient(135deg, #1a73e8, #00c6ff);
   color: #ffffff;
   font-size: 16px;
-  gap: 4px;
+  gap: 5px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
