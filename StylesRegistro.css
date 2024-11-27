@@ -80,6 +80,7 @@ input:focus {
 /* Botones */
 button {
   padding: 12px 20px;
+  margin-top:40px;
   border: none;
   border-radius: 25px;
   background: linear-gradient(135deg, #1a73e8, #00c6ff);
