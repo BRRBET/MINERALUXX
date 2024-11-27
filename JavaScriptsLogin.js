@@ -1,22 +1,20 @@
-document.getElementById('registerForm').addEventListener('submit', function (e) {
-  e.preventDefault();
+// Esperar a que el DOM esté completamente cargado
+document.addEventListener("DOMContentLoaded", () => {
+  // Botón de registro
+  const registerButton = document.getElementById("login");
 
-  const email = document.getElementById('email').value;
-  const password1 = document.getElementById('password1').value;
-  const password2 = document.getElementById('password2').value;
-  const password3 = document.getElementById('password3').value;
-  const password4 = document.getElementById('password4').value;
+  // Evento para redirigir a otra página
+  registerButton.addEventListener("click", () => {
+    // Cambia 'register.html' al archivo que deseas cargar
+    window.location.href = "register.html";
+  });
 
-  if (!email || !password1 || !password2 || !password3 || !password4) {
-    alert('Por favor, completa todos los campos.');
-    return;
-  }
+  // Botón de iniciar sesión
+  const loginButton = document.getElementById("register");
 
-  alert('Login exitoso. Redirigiendo...');
-  window.location.href = 'success.html'; // Cambia a la página de éxito
-});
-
-// Redirigir al iniciar sesión
-document.getElementById('register').addEventListener('click', function () {
-  window.location.href = 'Registro.html'; // Cambia a la página de inicio de sesión
+  // Evento para redirigir a la página de inicio de sesión
+  loginButton.addEventListener("click", () => {
+    // Cambia 'login.html' al archivo que deseas cargar
+    window.location.href = "login.html";
+  });
 });
