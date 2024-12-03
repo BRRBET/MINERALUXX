@@ -4,23 +4,31 @@ document.getElementById("withdrawBtn").addEventListener("click", function() {
   const password = document.getElementById("password").value;
   const balance = parseFloat(document.getElementById("withdrawalBalance").textContent);
 
-  // Validaciones
+  // Limpiar mensaje de error anterior
   const errorMessage = document.getElementById("errorMessage");
-  errorMessage.textContent = ''; // Limpiar mensaje de error
+  errorMessage.textContent = ''; 
 
-  // Verificar si el balance es suficiente
+  // Verificar si el monto de retiro es menor que el mínimo
   if (amount < 2) {
-    errorMessage.textContent = "El monto mínimo de retiro es 2 USDT.";
+    alert("Mejora tu VIP para poder retirar el balance que tengas.");
     return;
   }
+
+  // Verificar si el balance es insuficiente
+  if (balance <= 0) {
+    alert("No tienes balance suficiente para realizar el retiro.");
+    return;
+  }
+
+  // Verificar si el monto solicitado es mayor que el saldo disponible
   if (amount > balance) {
     errorMessage.textContent = "Saldo insuficiente para realizar el retiro.";
     return;
   }
 
-  // Realizar retiro (aquí agregarías el código para procesar el retiro)
+  // Si todo es correcto, realizar el retiro
   alert("Retiro realizado exitosamente.");
 
-  // Actualizar balance de retiro
+  // Actualizar el balance de retiro después de la transacción
   document.getElementById("withdrawalBalance").textContent = (balance - amount).toFixed(2) + " USDT";
 });
