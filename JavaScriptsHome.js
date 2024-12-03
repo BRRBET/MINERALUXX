@@ -34,8 +34,8 @@ buyButtons.forEach((button) => {
 document.querySelectorAll('.button-circle').forEach((button, index) => {
   button.addEventListener('click', () => {
     const pages = [
-      'Home.html',
-      'Retiros.html',
+      'pagina1.html',
+      'pagina2.html',
       'pagina3.html',
       'pagina4.html',
       'pagina5.html',
