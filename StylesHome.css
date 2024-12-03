@@ -53,6 +53,7 @@ body {
 }
 
 /* Carrusel de imágenes */
+/* Carrusel de imágenes */
 .image-carousel {
   display: flex;
   justify-content: center;
@@ -62,6 +63,7 @@ body {
   width: 100%;
   border-radius: 20px;
   position: relative;
+  margin-top: 20px; /* Añadir un margen superior si necesitas separar más los elementos */
 }
 
 .carousel-image {
@@ -93,7 +95,6 @@ body {
     opacity: 1;
   }
 }
-
 /* Botones superiores */
 .top-buttons {
   display: grid;
