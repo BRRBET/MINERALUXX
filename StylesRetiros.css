@@ -32,6 +32,10 @@ body {
   text-transform: uppercase;
   text-shadow: 0 0 15px rgba(0, 255, 204, 0.6);
 }
+.spacer {
+  height: 150px;
+}
+
 
 /* Apartados de Perfil y Balances */
 .perfil, .balances {
@@ -141,9 +145,4 @@ body {
 .bottom-bar .button-circle:hover {
   background: rgba(255, 255, 255, 0.7);
   transform: scale(1.1);
-}
-
-.spacer {
-  height: 150px;
-  width: 100%;
 }
