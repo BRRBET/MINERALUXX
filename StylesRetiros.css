@@ -13,14 +13,14 @@ body {
 
 /* Contenedor de Retiros */
 .retiros-container {
-  background: rgba(0, 0, 0, 0.7); /* Fondo oscuro con más opacidad */
-  border-radius: 15px;
+  background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+  border-radius: 25px;
   padding: 40px;
   width: 100%;
   max-width: 650px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
   text-align: center;
-  backdrop-filter: blur(10px); /* Añadir difuminado para un aspecto más profesional */
+  backdrop-filter: blur(10px);
 }
 
 /* Título de la Sección */
@@ -30,54 +30,32 @@ body {
   font-weight: bold;
   margin-bottom: 30px;
   text-transform: uppercase;
-  text-shadow: 0 0 10px rgba(0, 255, 204, 0.5); /* Efecto de sombra sutil */
+  text-shadow: 0 0 15px rgba(0, 255, 204, 0.6);
 }
 
-/* Perfil de Usuario */
-.perfil {
-  background: rgba(0, 0, 0, 0.8);
+/* Apartados de Perfil y Balances */
+.perfil, .balances {
+  background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(30, 30, 30, 0.9));
   padding: 20px;
   margin-bottom: 30px;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+  border-radius: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
   text-align: left;
-  width: 100%;
-  max-width: 600px;
 }
 
-.perfil p {
+.perfil p, .balances p {
   font-size: 1.3rem;
-  margin: 10px 0;
-  color: #ffffff;
-}
-
-/* Balances */
-.balances {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  margin-bottom: 30px;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
-  text-align: left;
-  width: 100%;
-  max-width: 600px;
-}
-
-.balances p {
-  font-size: 1.2rem;
   margin: 10px 0;
   color: #ffffff;
 }
 
 /* Formulario de Retiro */
 .retiro-form {
-  background: rgba(0, 0, 0, 0.8);
+  background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.9));
   padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
   text-align: left;
-  width: 100%;
-  max-width: 600px;
 }
 
 .retiro-form input {
@@ -93,23 +71,24 @@ body {
 }
 
 .retiro-form input:focus {
-  background: rgba(255, 255, 255, 0.3); /* Cambio de fondo al enfocar el campo */
+  background: rgba(255, 255, 255, 0.3);
   outline: none;
 }
 
 .retiro-form button {
   padding: 15px 35px;
-  background: #00ffcc;
+  background: linear-gradient(145deg, #00ffcc, #0077ff);
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 15px;
   cursor: pointer;
   font-size: 1.4rem;
   transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
 .retiro-form button:hover {
-  background: #0077ff;
+  background: linear-gradient(145deg, #0077ff, #00ffcc);
   transform: scale(1.05);
 }
 
@@ -139,7 +118,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   background: rgba(0, 0, 0, 0.85);
-  padding: 15px 0;
+  padding: 10px 0;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -147,22 +126,24 @@ body {
 }
 
 .bottom-bar .button-circle {
-  width: 70px;
-  height: 70px;
-  font-size: 1.8rem;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
   background: rgba(255, 255, 255, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .bottom-bar .button-circle:hover {
   background: rgba(255, 255, 255, 0.7);
   transform: scale(1.1);
 }
+
 .spacer {
   height: 150px;
-  width: 100%; /* Asegura que ocupe todo el ancho */
+  width: 100%;
 }
