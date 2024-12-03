@@ -5,14 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Retiros</title>
   <link rel="stylesheet" href="StylesRetiros.css">
+  <script src="JavaScriptsRetiros.js" defer></script>
 </head>
 <body>
 
   <!-- Apartado de Retiros -->
   <div class="retiros-container">
-    <h1 class="retiros-title">Apartado de Retiros</h1>
-    <p class="retiros-description">Realiza tus retiros de manera fácil y segura. Elige una opción a continuación:</p>
+    <h1 class="retiros-title">Retiros</h1>
+    
+    <!-- Perfil de Usuario -->
+    <div class="perfil">
+      <p><strong>Perfil de Usuario:</strong></p>
+      <p>Usuarios: <span id="userName">Usuario123</span></p>
+      <p>Código de Seguridad: <span id="userCode">123456</span></p>
+    </div>
+    
+    <!-- Balances -->
+    <div class="balances">
+      <p><strong>Balance de Recarga:</strong> <span id="reloadBalance">100 USDT</span></p>
+      <p><strong>Balance de Retiro:</strong> <span id="withdrawalBalance">50 USDT</span></p>
+    </div>
 
+    <!-- Formulario de Retiro -->
+    <div class="retiro-form">
+      <label for="amount">Cantidad de Retiro (mínimo 2 USDT):</label>
+      <input type="number" id="amount" placeholder="Ingrese cantidad de retiro" min="2" required>
+      
+      <label for="password">Contraseña de Retiro:</label>
+      <input type="password" id="password" placeholder="Ingrese su contraseña" required>
+      
+      <button id="withdrawBtn">Realizar Retiro</button>
+      
+      <p id="errorMessage" class="error-message"></p>
+      <p class="retiros-info">Los retiros están disponibles 24 horas al día, 7 días a la semana.</p>
+    </div>
+  </div>
 
   <!-- Barra inferior fija -->
   <div class="bottom-bar">
