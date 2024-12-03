@@ -1,1 +1,83 @@
+/* General */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: url('https://github.com/user-attachments/assets/40e425df-5c5f-44f5-ade9-d8fc8bb25e27') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+/* Apartado de Retiros */
+.retiros-container {
+  padding: 20px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+.retiros-title {
+  font-size: 2rem;
+  color: #00ffcc;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.retiros-description {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.retiros-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.button-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.button-circle:hover {
+  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Barra inferior fija */
+.bottom-bar {
+  display: flex;
+  justify-content: space-evenly;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.bottom-bar .button-circle {
+  width: 50px;
+  height: 50px;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.bottom-bar .button-circle:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
