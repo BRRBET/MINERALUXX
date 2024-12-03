@@ -10,8 +10,8 @@ body {
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-  overflow-x: hidden;
   box-sizing: border-box;
+  overflow-y: auto; /* Permite desplazar la página hacia abajo */
 }
 
 /* Encabezado */
@@ -88,7 +88,7 @@ body {
 /* Carrusel */
 .carousel {
   width: 100%;
-  height: 60px; /* Ajustamos la altura de las imágenes */
+  height: 60px;
   overflow: hidden;
   margin: 15px auto;
   border-radius: 8px;
@@ -96,8 +96,8 @@ body {
 }
 
 .carousel img {
-  width: 60px;  /* Ajustamos el ancho */
-  height: 30px; /* Ajustamos la altura */
+  width: 60px;
+  height: 30px;
   object-fit: cover;
   position: absolute;
   left: 100%;
@@ -149,7 +149,7 @@ body {
 }
 
 .button-circle {
-  width: 35px;  /* Botones más pequeños */
+  width: 35px;
   height: 35px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
@@ -166,6 +166,38 @@ body {
   transform: scale(1.1);
 }
 
+/* Estilo para la alerta */
+#alertBox {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  z-index: 9999;
+  display: none;
+}
+
+#alertBox button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: #FF5733;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#alertBox button:hover {
+  background: #FFBD33;
+}
+
 /* Diseño para dispositivos móviles */
 @media (max-width: 768px) {
   .robot-grid {
@@ -173,7 +205,7 @@ body {
   }
 
   .buttons {
-    grid-template-columns: 1fr 1fr 1fr; /* 3 columnas para móviles */
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .button {
@@ -182,7 +214,7 @@ body {
   }
 
   .bottom-bar {
-    flex-direction: row; /* Mantener los botones en una sola fila */
+    flex-direction: row;
   }
 
   .button-circle {
