@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background: url('https://github.com/user-attachments/assets/40e425df-5c5f-44f5-ade9-d8fc8bb25e27') no-repeat center center fixed;
+  background: url('https://github.com/user-attachments/assets/40e425df-5c5f-44f5-ade9-d8fc8bb25e27') no-repeat center center;
   background-size: cover;
   color: white;
   display: flex;
@@ -16,16 +16,16 @@ body {
 
 /* Contenedor de Retiros */
 .retiros-container {
-  background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9));
+  background: rgba(0, 0, 0, 0.7);
   border-radius: 30px;
   padding: 40px;
   width: 90%;
   max-width: 700px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   text-align: center;
-  backdrop-filter: blur(15px);
   margin-top: 20px;
   margin-bottom: 100px;
+  backdrop-filter: blur(10px);
 }
 
 /* Título de la Sección */
@@ -40,10 +40,10 @@ body {
 
 /* Apartados de Perfil y Balances */
 .perfil, .balances {
-  background: linear-gradient(145deg, rgba(0, 0, 0, 0.85), rgba(40, 40, 40, 0.9));
+  background: rgba(40, 40, 40, 0.8);
   padding: 25px;
   margin-bottom: 35px;
-  border-radius: 25px;
+  border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
   text-align: left;
 }
@@ -56,9 +56,9 @@ body {
 
 /* Formulario de Retiro */
 .retiro-form {
-  background: linear-gradient(145deg, rgba(0, 0, 0, 0.85), rgba(30, 30, 30, 0.9));
+  background: rgba(30, 30, 30, 0.8);
   padding: 35px;
-  border-radius: 25px;
+  border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
   text-align: left;
 }
