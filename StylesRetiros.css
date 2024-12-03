@@ -5,80 +5,87 @@ body {
   background: url('https://github.com/user-attachments/assets/40e425df-5c5f-44f5-ade9-d8fc8bb25e27') no-repeat center center fixed;
   background-size: cover;
   color: white;
-  height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 /* Contenedor de Retiros */
 .retiros-container {
-  padding: 20px;
+  background: rgba(0, 0, 0, 0.6); /* Fondo oscuro y translúcido */
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   text-align: center;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  margin: 20px auto;
-  max-width: 500px;
 }
 
+/* Título de la Sección */
 .retiros-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #00ffcc;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
 /* Perfil de Usuario */
 .perfil {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .perfil p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  margin: 10px 0;
 }
 
 /* Balances */
 .balances {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .balances p {
   font-size: 1.1rem;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 /* Formulario de Retiro */
 .retiro-form {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .retiro-form input {
-  padding: 10px;
+  padding: 12px;
   width: 80%;
-  margin: 10px 0;
+  margin: 15px 0;
   border: none;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
   color: white;
+  font-size: 1.1rem;
 }
 
 .retiro-form button {
-  padding: 10px 20px;
+  padding: 12px 30px;
   background: #00ffcc;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
   transition: background 0.3s ease;
 }
 
@@ -89,13 +96,14 @@ body {
 .error-message {
   color: red;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .retiros-info {
   font-size: 1rem;
   color: #ffffff;
-  margin-top: 15px;
+  margin-top: 25px;
+  text-align: center;
 }
 
 /* Barra inferior fija */
@@ -103,7 +111,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   background: rgba(0, 0, 0, 0.8);
-  padding: 10px 0;
+  padding: 15px 0;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -111,12 +119,18 @@ body {
 }
 
 .bottom-bar .button-circle {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   font-size: 1.5rem;
   background: rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .bottom-bar .button-circle:hover {
   background: rgba(255, 255, 255, 0.6);
+  transform: scale(1.1);
 }
