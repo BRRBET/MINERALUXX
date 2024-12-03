@@ -1,16 +1,16 @@
-// Mostrar alerta solo una vez
+// Mostrar alerta al entrar a la página
 window.onload = function() {
-  // Verificar si ya se mostró la alerta
   if (!localStorage.getItem('alertShown')) {
-    // Mostrar la alerta
-    const alertBox = document.getElementById('alertBox');
-    alertBox.style.display = 'block';
-    
-    // Cuando el usuario haga clic en el botón Aceptar
-    document.getElementById('acceptButton').addEventListener('click', function() {
-      alertBox.style.display = 'none';
-      // Marcar que ya se mostró la alerta
+    const alertMessage = `
+      Bienvenido a nuestra plataforma.
+      Aquí puedes adquirir robots desde 15 USDT.
+      Cada robot genera 3 USDT diarios.
+      Por cada referido activo ganas el 10% de sus ganancias.
+    `;
+
+    setTimeout(() => {
+      alert(alertMessage.trim());
       localStorage.setItem('alertShown', 'true');
-    });
+    }, 500); // Retraso de medio segundo para mostrar la alerta
   }
 };
