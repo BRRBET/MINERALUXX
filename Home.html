@@ -12,20 +12,43 @@
 
   <!-- Contenedor principal -->
   <main class="container">
-    <!-- Botones principales -->
-    <div class="buttons">
-      <button class="button" onclick="redirectTo('chat.html')">💬 Chat</button>
-      <button class="button" onclick="redirectTo('tienda.html')">🛒 Tienda</button>
-      <button class="button" onclick="redirectTo('dinero.html')">💲 Dinero</button>
-      <button class="button" onclick="redirectTo('estrella.html')">🌟 Estrella</button>
-      <button class="button" onclick="redirectTo('robot.html')">🤖 Robot</button>
-    </div>
+    <!-- Descripción de la página -->
+    <section class="info-section">
+      <h1>¿Cómo funciona?</h1>
+      <p>En nuestra página puedes invertir en robots para generar ingresos pasivos. Cada robot tiene un precio fijo de 15 USDT y genera una ganancia diaria de 3 USDT. También puedes referir amigos y ganar comisiones adicionales.</p>
+      <button class="info-button" onclick="showAlert()">Más Información</button>
+    </section>
+
+    <!-- Lista de robots -->
+    <section class="robot-list">
+      <h2>Robots Disponibles</h2>
+      <div class="robot-grid">
+        <!-- Repetimos para los 10 robots -->
+        <div class="robot-card">
+          <p><strong>Robot 1</strong></p>
+          <p>Precio: 15 USDT</p>
+          <p>Ganancia: 3 USDT</p>
+        </div>
+        <div class="robot-card">
+          <p><strong>Robot 2</strong></p>
+          <p>Precio: 15 USDT</p>
+          <p>Ganancia: 3 USDT</p>
+        </div>
+        <!-- Agrega más robots -->
+      </div>
+    </section>
 
     <!-- Carrusel de imágenes -->
     <div class="carousel" id="carousel">
-      <img src="https://via.placeholder.com/400x40/FF5733/FFFFFF?text=Image1" class="active">
-      <img src="https://via.placeholder.com/400x40/33FF57/FFFFFF?text=Image2">
-      <img src="https://via.placeholder.com/400x40/3357FF/FFFFFF?text=Image3">
+      <img src="https://via.placeholder.com/800x100/FF5733/FFFFFF?text=Image1" class="active">
+      <img src="https://via.placeholder.com/800x100/33FF57/FFFFFF?text=Image2">
+      <img src="https://via.placeholder.com/800x100/3357FF/FFFFFF?text=Image3">
+    </div>
+
+    <!-- Botones superiores -->
+    <div class="buttons">
+      <button class="button" onclick="redirectTo('chat.html')">💬 Chat</button>
+      <button class="button" onclick="redirectTo('tienda.html')">🛒 Tienda</button>
     </div>
   </main>
 
