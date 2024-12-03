@@ -1,145 +1,102 @@
-/* Estilo general */
+/* Aplicar el fondo */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    color: #ffffff;
-    text-align: center;
-    background: url('https://github.com/user-attachments/assets/40e425df-5c5f-44f5-ade9-d8fc8bb25e27') no-repeat center center fixed;
-    background-size: cover;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: url('https://github.com/user-attachments/assets/40e425df-5c5f-44f5-ade9-d8fc8bb25e27') no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
 }
 
 /* Encabezado */
-.header h1 {
-    font-size: 3rem;
-    text-transform: uppercase;
-    margin-top: 20px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-    animation: fadeIn 3s ease-in-out;
+.header {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
 }
 
-/* Animación de aparición */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+/* Contenedor de botones */
+.buttons {
+  display: flex;
+  gap: 20px;
 }
 
-/* Contenedor principal */
-.container {
-    padding: 50px 20px;
-}
-
-/* Botones principales */
 .button {
-    display: inline-block;
-    padding: 15px 30px;
-    margin: 10px;
-    font-size: 1.2rem;
-    color: #ffffff;
-    background: linear-gradient(45deg, #ff8c00, #ff4500);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    text-transform: uppercase;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+  padding: 15px 25px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #ff7eb3, #ff758c);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(255, 117, 140, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .button:hover {
-    background: linear-gradient(45deg, #ff4500, #ff8c00);
-    transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(45deg, #ff758c, #ff4b6b);
+  box-shadow: 0 6px 20px rgba(255, 75, 107, 0.7);
+  transform: scale(1.1);
 }
 
-.button::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.5s ease, height 0.5s ease;
-}
-
-.button:hover::after {
-    width: 300%;
-    height: 300%;
-}
-
-/* Botones de minería */
-.button.mining {
-    background: linear-gradient(90deg, #4caf50, #2196f3);
-    animation: miningEffect 2s infinite;
+/* Animación de minería */
+.mining {
+  animation: miningEffect 2s infinite;
 }
 
 @keyframes miningEffect {
-    0% {
-        box-shadow: 0 0 10px #4caf50, 0 0 20px #4caf50;
-    }
-    50% {
-        box-shadow: 0 0 20px #2196f3, 0 0 30px #2196f3;
-    }
-    100% {
-        box-shadow: 0 0 10px #4caf50, 0 0 20px #4caf50;
-    }
+  0% {
+    box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700;
+  }
+  50% {
+    box-shadow: 0 0 20px #ffa500, 0 0 30px #ffa500;
+  }
+  100% {
+    box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700;
+  }
 }
 
-/* Íconos sociales */
-.social-icon {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    margin: 5px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transition: transform 0.3s ease, background 0.3s ease;
-    cursor: pointer;
+/* Carrusel de imágenes */
+.carousel {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  margin: 20px auto;
 }
 
-.social-icon:hover {
-    transform: scale(1.2);
-    background: rgba(255, 255, 255, 0.5);
+.carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  transition: left 1s ease-in-out;
+}
+
+.carousel img.active {
+  left: 0;
+}
+
+.carousel img.prev {
+  left: -100%;
 }
 
 /* Pie de página */
 .footer {
-    margin-top: 50px;
-    padding: 20px;
-    font-size: 0.9rem;
-    background: rgba(0, 0, 0, 0.5);
-    color: #ffffff;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
-}
-
-/* Animaciones avanzadas */
-@keyframes cryptoMining {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-.mining-icon {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    margin: 0 auto;
-    background: url('https://via.placeholder.com/50') no-repeat center center;
-    background-size: cover;
-    animation: cryptoMining 1s infinite;
+  text-align: center;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  font-size: 0.9rem;
+  width: 100%;
 }
