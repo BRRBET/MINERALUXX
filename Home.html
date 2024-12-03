@@ -3,121 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mineralux Robots</title>
-  <link rel="stylesheet" href="StylesHome.css">
+  <title>Retiros</title>
+  <link rel="stylesheet" href="StylesRetiros.css">
+  <script src="JavaScriptsRetiros.js" defer></script>
 </head>
 <body>
-  <!-- Encabezado -->
-  <header class="header">
-    <div class="logo-section">
-      <img src="https://github.com/user-attachments/assets/8e1bd748-3525-4528-8093-3d3a28c82804" alt="Logo" class="logo">
-      <h1 class="site-name">MINERALUX</h1>
-    </div>
-    <div class="header-icons">
-      <div class="header-icon" onclick="window.location.href='chat.html'">💬</div>
-      <div class="header-icon" onclick="window.location.href='perfil.html'">🙍‍♂️</div>
-    </div>
-  </header>
 
-  <!-- Contenedor principal para alinear todo el contenido -->
-  <div class="main-content">
-    <!-- Botones superiores -->
-    <div class="top-buttons-container">
-      <div class="top-buttons">
-        <button class="top-button" onclick="window.location.href='https://t.me'">💬 Telegram</button>
-        <button class="top-button" onclick="window.location.href='Retiros.html'">💰 Retiros</button>
-        <button class="top-button" onclick="window.location.href='perfil.html'">🙍‍♂️ Perfil</button>
-        <button class="top-button" onclick="window.location.href='recargas.html'">🔋 Recargas</button>
-      </div>
+  <!-- Apartado de Retiros -->
+  <div class="retiros-container">
+    <h1 class="retiros-title">Realiza tu Retiro</h1>
+    
+    <!-- Perfil de Usuario -->
+    <div class="perfil">
+      <p><strong>Perfil de Usuario:</strong></p>
+      <p>Usuarios: <span id="userName">Usuario123</span></p>
+      <p>Código de Seguridad: <span id="userCode">123456</span></p>
+    </div>
+    
+    <!-- Balances -->
+    <div class="balances">
+      <p><strong>Balance de Recarga:</strong> <span id="reloadBalance">100 USDT</span></p>
+      <p><strong>Balance de Retiro:</strong> <span id="withdrawalBalance">50 USDT</span></p>
     </div>
 
-    <!-- Información financiera -->
-    <div class="financial-info">
-      <div class="financial-box">
-        <p>ACTIVOS TOTALES: <span>$0.00</span></p>
-        <p>Invertir en billetera: <span>$0.00</span></p>
-        <p>Cartera Corretaje: <span>$0.00</span></p>
-        <p>Monedero de retiro: <span>$0.00</span></p>
-      </div>
-    </div>
-
-    <!-- Apartados de usuarios y retiros -->
-    <div class="stats-container">
-      <div class="stat-box">
-        <div class="stat-icon">🥳</div>
-        <p class="stat-title">Cantidad de usuarios</p>
-        <p>450.780 Users</p>
-        <p class="stat-value">Usuarios acumulados</p>
-        <p>838.738 Users</p>
-      </div>
-      <div class="stat-box">
-        <div class="stat-icon">💷</div>
-        <p class="stat-title">Cantidad de retiros</p>
-        <p>530.480 USDT</p>
-        <p class="stat-value">Ingresos totales acumulados</p>
-        <p>645.402 USDT</p>
-      </div>
-    </div>
-
-    <!-- Carrusel de imágenes -->
-    <div class="image-carousel">
-      <img src="https://github.com/user-attachments/assets/8e1bd748-3525-4528-8093-3d3a28c82804" class="carousel-image" alt="Imagen 1">
-      <img src="https://github.com/user-attachments/assets/df3eb88f-0a0e-400c-881e-917177bcf5f9" class="carousel-image" alt="Imagen 2">
-      <img src="https://github.com/user-attachments/assets/abb3032a-3763-4036-ba8c-6cdd0470ec1a" class="carousel-image" alt="Imagen 3">
-      <img src="https://github.com/user-attachments/assets/43a0b872-6aef-457f-adb7-c75c88d887cc" class="carousel-image" alt="Imagen 4">
-    </div>
-
-    <!-- Tarjetas VIP -->
-    <div class="vip-grid">
-      <div class="vip-card">
-        <h2>Robot One</h2>
-        <p>Precio: <span class="highlight">15.00 USDT</span></p>
-        <p>Ganancia: <span class="highlight">3.00 USDT diario</span></p>
-        <button class="buy-button" onclick="window.location.href='comprar_robot1.html'">Comprar</button>
-      </div>
-      <div class="vip-card">
-        <h2>Robot Two</h2>
-        <p>Precio: <span class="highlight">30.00 USDT</span></p>
-        <p>Ganancia: <span class="highlight">6.00 USDT diario</span></p>
-        <button class="buy-button" onclick="window.location.href='comprar_robot2.html'">Comprar</button>
-      </div>
-      <div class="vip-card">
-        <h2>Robot Three</h2>
-        <p>Precio: <span class="highlight">45.00 USDT</span></p>
-        <p>Ganancia: <span class="highlight">9.00 USDT diario</span></p>
-        <button class="buy-button" onclick="window.location.href='comprar_robot3.html'">Comprar</button>
-      </div>
-      <div class="vip-card">
-        <h2>Robot Four</h2>
-        <p>Precio: <span class="highlight">60.00 USDT</span></p>
-        <p>Ganancia: <span class="highlight">12.00 USDT diario</span></p>
-        <button class="buy-button" onclick="window.location.href='comprar_robot4.html'">Comprar</button>
-      </div>
-      <div class="vip-card">
-        <h2>Robot Five</h2>
-        <p>Precio: <span class="highlight">75.00 USDT</span></p>
-        <p>Ganancia: <span class="highlight">15.00 USDT diario</span></p>
-        <button class="buy-button" onclick="window.location.href='comprar_robot5.html'">Comprar</button>
-      </div>
-      <div class="vip-card">
-        <h2>Robot Six</h2>
-        <p>Precio: <span class="highlight">90.00 USDT</span></p>
-        <p>Ganancia: <span class="highlight">18.00 USDT diario</span></p>
-        <button class="buy-button" onclick="window.location.href='comprar_robot6.html'">Comprar</button>
-      </div>
+    <!-- Formulario de Retiro -->
+    <div class="retiro-form">
+      <label for="amount">Cantidad de Retiro (mínimo 2 USDT):</label>
+      <input type="number" id="amount" placeholder="Ingrese cantidad de retiro" min="2" required>
+      
+      <label for="password">Contraseña de Retiro:</label>
+      <input type="password" id="password" placeholder="Ingrese su contraseña" required>
+      
+      <button id="withdrawBtn">Realizar Retiro</button>
+      
+      <p id="errorMessage" class="error-message"></p>
+      <p class="retiros-info">Los retiros están disponibles 24 horas al día, 7 días a la semana.</p>
     </div>
   </div>
 
   <!-- Barra inferior fija -->
   <div class="bottom-bar">
-    <div class="button-circle" onclick="window.location.href='Home.html'">🏠</div>
-    <div class="button-circle" onclick="window.location.href='Retiros.html'">💰</div>
+    <div class="button-circle" onclick="window.location.href='pagina1.html'">🏠</div>
+    <div class="button-circle" onclick="window.location.href='pagina2.html'">💰</div>
     <div class="button-circle" onclick="window.location.href='pagina3.html'">🤖</div>
     <div class="button-circle" onclick="window.location.href='pagina4.html'">🎁</div>
     <div class="button-circle" onclick="window.location.href='pagina5.html'">🙍‍♂️</div>
   </div>
 
-  <div class="spacer"></div>
-  <script src="JavaScriptsHome.js"></script>
 </body>
 </html>
