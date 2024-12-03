@@ -3,81 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Platform</title>
+  <title>Crypto App</title>
   <link rel="stylesheet" href="StylesHome.css">
 </head>
 <body>
   <!-- Encabezado -->
-  <header class="header">
-    <h1>Bienvenido a MINERALUX</h1>
-    <p>¡Descubre la experiencia del mundo de las criptomonedas!</p>
-  </header>
+  <header class="header">¡Bienvenido a Crypto World!</header>
 
-  <!-- Contenedor principal -->
-  <div class="container">
-    <!-- Botones principales -->
-    <div class="buttons">
-      <button class="button mining" onclick="redirectTo('recargar.html')">Recargar</button>
-      <button class="button" onclick="redirectTo('retirar.html')">Retirar</button>
-      <button class="button mining" onclick="redirectTo('personaje.html')">Personaje</button>
-      <button class="button" onclick="redirectTo('actividad.html')">Actividad</button>
+  <!-- Botones principales -->
+  <div class="buttons">
+    <button class="button" onclick="redirectTo('recargar.html')">Recargar</button>
+    <button class="button" onclick="redirectTo('retirar.html')">Retirar</button>
+    <button class="button" onclick="redirectTo('planes.html')">Planes</button>
+    <button class="button" onclick="redirectTo('actividades.html')">Actividades</button>
+  </div>
+
+  <!-- Spacer movible -->
+  <div class="spacer" id="spacer">Arrástrame</div>
+
+  <!-- Carrusel de imágenes -->
+  <div class="carousel" id="carousel">
+    <img src="https://via.placeholder.com/300x200/00c6ff/ffffff?text=Crypto1" class="active">
+    <img src="https://via.placeholder.com/300x200/0072ff/ffffff?text=Crypto2">
+    <img src="https://via.placeholder.com/300x200/002255/ffffff?text=Crypto3">
+  </div>
+
+  <!-- Botones inferiores -->
+  <div class="bottom-buttons">
+    <div class="button-circle" onclick="redirectTo('home.html')">
+      <img src="https://via.placeholder.com/50x50/00c6ff/ffffff?text=H">
     </div>
-
-    <!-- Estadísticas en vivo -->
-    <div class="stats">
-      <h2>Estadísticas en Vivo</h2>
-      <div class="stat">
-        <p>Usuarios acumulados:</p>
-        <h3>89,783</h3>
-      </div>
-      <div class="stat">
-        <p>Ingresos totales acumulados:</p>
-        <h3>$18,407,716</h3>
-      </div>
+    <div class="button-circle" onclick="redirectTo('perfil.html')">
+      <img src="https://via.placeholder.com/50x50/0072ff/ffffff?text=P">
     </div>
-
-    <!-- Íconos sociales -->
-    <div class="social-icons">
-      <h2>¡Síguenos en redes sociales!</h2>
-      <div>
-        <span class="social-icon" onclick="redirectTo('https://www.facebook.com')"></span>
-        <span class="social-icon" onclick="redirectTo('https://twitter.com')"></span>
-        <span class="social-icon" onclick="redirectTo('https://www.instagram.com')"></span>
-        <span class="social-icon" onclick="redirectTo('https://tiktok.com')"></span>
-        <span class="social-icon" onclick="redirectTo('https://www.linkedin.com')"></span>
-      </div>
+    <div class="button-circle" onclick="redirectTo('ajustes.html')">
+      <img src="https://via.placeholder.com/50x50/002255/ffffff?text=A">
     </div>
-
-    <!-- Tarjetas llamativas -->
-    <div class="cards">
-      <h2>Nuestras ofertas destacadas</h2>
-      <div class="card">
-        <h3>Plan Básico</h3>
-        <p>Invierte desde $15 y gana 3.00 USDT Diario.</p>
-        <button class="button" onclick="redirectTo('plan-basico.html')">Más Info</button>
-      </div>
-      <div class="card">
-        <h3>Plan Avanzado</h3>
-        <p>Invierte desde $30 y gana 6.00 USDT Diario.</p>
-        <button class="button" onclick="redirectTo('plan-avanzado.html')">Más Info</button>
-      </div>
+    <div class="button-circle" onclick="redirectTo('noticias.html')">
+      <img src="https://via.placeholder.com/50x50/001144/ffffff?text=N">
+    </div>
+    <div class="button-circle" onclick="redirectTo('contacto.html')">
+      <img src="https://via.placeholder.com/50x50/000022/ffffff?text=C">
     </div>
   </div>
 
-  <!-- Pie de página -->
-  <footer class="footer">
-    <p>© 2024 TRX.VC - Todos los derechos reservados</p>
-    <p>
-      <a href="terminos.html">Términos de servicio</a> | 
-      <a href="privacidad.html">Política de privacidad</a>
-    </p>
-  </footer>
-
   <!-- Scripts -->
   <script>
+    // Redirigir a otra página
     function redirectTo(url) {
       window.location.href = url;
     }
+
+    // Carrusel
+    const carousel = document.getElementById('carousel');
+    const images = carousel.querySelectorAll('img');
+    let currentIndex = 0;
+
+    setInterval(() => {
+      images[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].classList.add('active');
+    }, 5000);
+
+    // Funcionalidad de mover el spacer
+    const spacer = document.getElementById('spacer');
+    spacer.addEventListener('mousedown', () => (spacer.style.cursor = 'grabbing'));
+    spacer.addEventListener('mouseup', () => (spacer.style.cursor = 'grab'));
   </script>
 </body>
 </html>
