@@ -12,6 +12,9 @@ body {
   padding: 20px;
   box-sizing: border-box;
 }
+.spacer{
+  height:150px;
+}
 
 /* Contenedor de Retiros */
 .retiros-container {
