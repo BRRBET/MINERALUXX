@@ -1,4 +1,3 @@
-
 document.getElementById("withdrawBtn").addEventListener("click", function() {
   // Obtener los valores del formulario
   const amount = parseFloat(document.getElementById("amount").value);
