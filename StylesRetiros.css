@@ -6,29 +6,32 @@ body {
   background-size: cover;
   color: white;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 /* Contenedor de Retiros */
 .retiros-container {
   background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9));
-  border-radius: 30px; /* Más redondeado */
-  padding: 50px; /* Más espacio alrededor */
-  width: 100%;
-  max-width: 700px; /* Mayor tamaño */
+  border-radius: 30px;
+  padding: 40px;
+  width: 90%;
+  max-width: 700px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   text-align: center;
-  backdrop-filter: blur(15px); /* Mayor difuminado */
+  backdrop-filter: blur(15px);
+  margin-top: 20px;
 }
 
 /* Título de la Sección */
 .retiros-title {
-  font-size: 3rem; /* Más grande */
+  font-size: 2.5rem;
   color: #00ffcc;
   font-weight: bold;
-  margin-bottom: 40px; /* Más espacio */
+  margin-bottom: 30px;
   text-transform: uppercase;
   text-shadow: 0 0 20px rgba(0, 255, 204, 0.8);
 }
@@ -41,15 +44,15 @@ body {
 /* Apartados de Perfil y Balances */
 .perfil, .balances {
   background: linear-gradient(145deg, rgba(0, 0, 0, 0.85), rgba(40, 40, 40, 0.9));
-  padding: 25px; /* Más espacio */
-  margin-bottom: 35px; /* Más margen */
+  padding: 25px;
+  margin-bottom: 35px;
   border-radius: 25px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
   text-align: left;
 }
 
 .perfil p, .balances p {
-  font-size: 1.4rem; /* Tamaño de texto más grande */
+  font-size: 1.4rem;
   margin: 12px 0;
   color: #ffffff;
 }
@@ -57,21 +60,21 @@ body {
 /* Formulario de Retiro */
 .retiro-form {
   background: linear-gradient(145deg, rgba(0, 0, 0, 0.85), rgba(30, 30, 30, 0.9));
-  padding: 35px; /* Más espacio */
+  padding: 35px;
   border-radius: 25px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
   text-align: left;
 }
 
 .retiro-form input {
-  padding: 18px;
+  padding: 15px;
   width: 100%;
-  margin: 18px 0;
+  margin: 12px 0;
   border: none;
-  border-radius: 12px; /* Más redondeado */
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.2);
   color: white;
-  font-size: 1.3rem; /* Aumentado tamaño */
+  font-size: 1.3rem;
   transition: background 0.3s ease;
 }
 
@@ -81,13 +84,13 @@ body {
 }
 
 .retiro-form button {
-  padding: 18px 40px;
+  padding: 12px 25px;
   background: linear-gradient(145deg, #00ffcc, #0077ff);
   color: white;
   border: none;
-  border-radius: 18px; /* Más redondeado */
+  border-radius: 18px;
   cursor: pointer;
-  font-size: 1.5rem; /* Aumentado tamaño */
+  font-size: 1.4rem;
   transition: background 0.3s ease, transform 0.3s ease;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
@@ -101,12 +104,12 @@ body {
   color: red;
   font-weight: bold;
   margin-top: 20px;
-  font-size: 1.2rem; /* Aumentado tamaño */
+  font-size: 1.2rem;
 }
 
 /* Información adicional sobre los retiros */
 .retiros-info {
-  font-size: 1.2rem; /* Aumentado tamaño */
+  font-size: 1.2rem;
   color: #ffffff;
   margin-top: 30px;
   text-align: center;
@@ -123,7 +126,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   background: rgba(0, 0, 0, 0.85);
-  padding: 15px 0;
+  padding: 10px 0;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -131,9 +134,9 @@ body {
 }
 
 .bottom-bar .button-circle {
-  width: 70px; /* Tamaño aumentado */
-  height: 70px;
-  font-size: 1.8rem; /* Tamaño de fuente aumentado */
+  width: 50px; /* Botones más pequeños */
+  height: 50px;
+  font-size: 1.5rem;
   background: rgba(255, 255, 255, 0.4);
   display: flex;
   justify-content: center;
@@ -146,4 +149,31 @@ body {
 .bottom-bar .button-circle:hover {
   background: rgba(255, 255, 255, 0.7);
   transform: scale(1.1);
+}
+
+/* Medias Queries para dispositivos móviles */
+@media (max-width: 768px) {
+  body {
+    padding: 0 10px;
+    justify-content: flex-start;
+  }
+
+  .retiros-container, .perfil, .balances, .retiro-form {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .retiros-title {
+    font-size: 2rem;
+  }
+
+  .bottom-bar {
+    padding: 5px 0;
+  }
+
+  .bottom-bar .button-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
 }
