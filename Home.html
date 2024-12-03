@@ -8,67 +8,45 @@
 </head>
 <body>
   <!-- Encabezado -->
-  <header class="header">¡Bienvenido a Crypto World!</header>
+  <header class="header">Crypto World</header>
 
-  <!-- Botones principales -->
-  <div class="buttons">
-    <button class="button" onclick="redirectTo('recargar.html')">Recargar</button>
-    <button class="button" onclick="redirectTo('retirar.html')">Retirar</button>
-    <button class="button" onclick="redirectTo('planes.html')">Planes</button>
-    <button class="button" onclick="redirectTo('actividades.html')">Actividades</button>
-  </div>
+  <!-- Contenedor principal -->
+  <main class="container">
+    <!-- Botones principales -->
+    <div class="buttons">
+      <button class="button" onclick="redirectTo('recargar.html')">Recargar</button>
+      <button class="button" onclick="redirectTo('retirar.html')">Retirar</button>
+      <button class="button" onclick="redirectTo('planes.html')">Planes</button>
+      <button class="button" onclick="redirectTo('actividades.html')">Actividades</button>
+    </div>
 
-  <!-- Spacer movible -->
-  <div class="spacer" id="spacer">Arrástrame</div>
-
-  <!-- Carrusel de imágenes -->
-  <div class="carousel" id="carousel">
-    <img src="https://via.placeholder.com/300x200/00c6ff/ffffff?text=Crypto1" class="active">
-    <img src="https://via.placeholder.com/300x200/0072ff/ffffff?text=Crypto2">
-    <img src="https://via.placeholder.com/300x200/002255/ffffff?text=Crypto3">
-  </div>
+    <!-- Carrusel de imágenes -->
+    <div class="carousel" id="carousel">
+      <img src="https://via.placeholder.com/300x200/FF5733/FFFFFF?text=Crypto1" class="active">
+      <img src="https://via.placeholder.com/300x200/33FF57/FFFFFF?text=Crypto2">
+      <img src="https://via.placeholder.com/300x200/3357FF/FFFFFF?text=Crypto3">
+    </div>
+  </main>
 
   <!-- Botones inferiores -->
   <div class="bottom-buttons">
     <div class="button-circle" onclick="redirectTo('home.html')">
-      <img src="https://via.placeholder.com/50x50/00c6ff/ffffff?text=H">
+      <img src="https://via.placeholder.com/50x50/FF5733/FFFFFF?text=H">
     </div>
     <div class="button-circle" onclick="redirectTo('perfil.html')">
-      <img src="https://via.placeholder.com/50x50/0072ff/ffffff?text=P">
+      <img src="https://via.placeholder.com/50x50/33FF57/FFFFFF?text=P">
     </div>
     <div class="button-circle" onclick="redirectTo('ajustes.html')">
-      <img src="https://via.placeholder.com/50x50/002255/ffffff?text=A">
+      <img src="https://via.placeholder.com/50x50/3357FF/FFFFFF?text=A">
     </div>
     <div class="button-circle" onclick="redirectTo('noticias.html')">
-      <img src="https://via.placeholder.com/50x50/001144/ffffff?text=N">
+      <img src="https://via.placeholder.com/50x50/FF33A1/FFFFFF?text=N">
     </div>
     <div class="button-circle" onclick="redirectTo('contacto.html')">
-      <img src="https://via.placeholder.com/50x50/000022/ffffff?text=C">
+      <img src="https://via.placeholder.com/50x50/FFD133/FFFFFF?text=C">
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script>
-    // Redirigir a otra página
-    function redirectTo(url) {
-      window.location.href = url;
-    }
-
-    // Carrusel
-    const carousel = document.getElementById('carousel');
-    const images = carousel.querySelectorAll('img');
-    let currentIndex = 0;
-
-    setInterval(() => {
-      images[currentIndex].classList.remove('active');
-      currentIndex = (currentIndex + 1) % images.length;
-      images[currentIndex].classList.add('active');
-    }, 5000);
-
-    // Funcionalidad de mover el spacer
-    const spacer = document.getElementById('spacer');
-    spacer.addEventListener('mousedown', () => (spacer.style.cursor = 'grabbing'));
-    spacer.addEventListener('mouseup', () => (spacer.style.cursor = 'grab'));
-  </script>
+  <script src="JavaScriptsHome.js"></script>
 </body>
 </html>
