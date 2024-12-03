@@ -53,7 +53,6 @@ body {
 }
 
 /* Carrusel de imágenes */
-/* Carrusel de imágenes */
 .image-carousel {
   display: flex;
   justify-content: center;
@@ -95,6 +94,7 @@ body {
     opacity: 1;
   }
 }
+
 /* Botones superiores */
 .top-buttons {
   display: grid;
