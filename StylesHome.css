@@ -58,13 +58,14 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  height: 70px;
+  height: 100px;
   width: 100%;
+  position: relative;
 }
 
 .carousel-image {
-  height: 70px;
-  width: 80%;
+  height: 100px;
+  width: 90%;
   opacity: 0;
   position: absolute;
   animation: slide 20s infinite;
@@ -103,11 +104,11 @@ body {
 .top-button {
   background: linear-gradient(90deg, #00ffcc, #0077ff);
   color: white;
-  padding: 10px;
+  padding: 8px;
   border-radius: 8px;
   border: none;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: transform 0.3s ease, background 0.3s ease;
 }
@@ -121,7 +122,7 @@ body {
 .vip-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 15px;
   margin: 20px;
 }
 
@@ -159,10 +160,10 @@ body {
   background: #00ff00;
   color: black;
   border: none;
-  padding: 10px 15px;
+  padding: 8px 10px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-top: 10px;
 }
 
@@ -184,18 +185,24 @@ body {
 }
 
 .button-circle {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .button-circle:hover {
   transform: scale(1.2);
   background: rgba(255, 255, 255, 0.6);
+}
+
+/* Espaciador */
+.spacer {
+  height: 150px;
 }
