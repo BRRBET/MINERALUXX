@@ -1,66 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto App</title>
-  <link rel="stylesheet" href="StylesHome.css">
+  <title>Tu Página</title>
+  <link rel="stylesheet" href="">
 </head>
 <body>
-  <!-- Encabezado -->
-  <header class="header">Crypto World</header>
 
-  <!-- Contenedor principal -->
-  <main class="container">
-    <!-- Descripción de la página -->
-    <section class="info-section">
-      <h1>¿Cómo funciona?</h1>
-      <p>En nuestra página puedes invertir en robots para generar ingresos pasivos. Cada robot tiene un precio fijo de 15 USDT y genera una ganancia diaria de 3 USDT. También puedes referir amigos y ganar comisiones adicionales.</p>
-      <button class="info-button" onclick="showAlert()">Más Información</button>
-    </section>
-
-    <!-- Lista de robots -->
-    <section class="robot-list">
-      <h2>Robots Disponibles</h2>
-      <div class="robot-grid">
-        <!-- Repetimos para los 10 robots -->
-        <div class="robot-card">
-          <p><strong>Robot 1</strong></p>
-          <p>Precio: 15 USDT</p>
-          <p>Ganancia: 3 USDT</p>
-        </div>
-        <div class="robot-card">
-          <p><strong>Robot 2</strong></p>
-          <p>Precio: 15 USDT</p>
-          <p>Ganancia: 3 USDT</p>
-        </div>
-        <!-- Agrega más robots -->
-      </div>
-    </section>
-
-    <!-- Carrusel de imágenes -->
-    <div class="carousel" id="carousel">
-      <img src="https://via.placeholder.com/800x100/FF5733/FFFFFF?text=Image1" class="active">
-      <img src="https://via.placeholder.com/800x100/33FF57/FFFFFF?text=Image2">
-      <img src="https://via.placeholder.com/800x100/3357FF/FFFFFF?text=Image3">
-    </div>
-
-    <!-- Botones superiores -->
-    <div class="buttons">
-      <button class="button" onclick="redirectTo('chat.html')">💬 Chat</button>
-      <button class="button" onclick="redirectTo('tienda.html')">🛒 Tienda</button>
-    </div>
-  </main>
-
-  <!-- Barra inferior -->
-  <div class="bottom-bar">
-    <div class="button-circle" onclick="redirectTo('home.html')">🏠</div>
-    <div class="button-circle" onclick="redirectTo('dinero.html')">💰</div>
-    <div class="button-circle" onclick="redirectTo('robot.html')">🤖</div>
-    <div class="button-circle" onclick="redirectTo('regalo.html')">🎁</div>
-    <div class="button-circle" onclick="redirectTo('perfil.html')">🙍‍♂️</div>
+  <!-- Alerta de Bienvenida -->
+  <div id="alertBox">
+    <p>Bienvenido a nuestra página. Aquí te explicamos cómo funciona:</p>
+    <button id="acceptButton">Aceptar</button>
   </div>
 
-  <script src="JavaScriptsHome.js"></script>
+  <div class="header">
+    <h1>Bienvenidos</h1>
+  </div>
+
+  <div class="info-section">
+    <p>Más información sobre cómo funciona esta página y cómo ganar.</p>
+    <button class="info-button">Más Info</button>
+  </div>
+
+  <!-- Spacer de 150px -->
+  <div class="spacer"></div>
+
+  <!-- Robots -->
+  <div class="robot-list">
+    <div class="robot-grid">
+      <div class="robot-card">
+        <strong>Robot 1</strong>
+        <p>Precio: 15 USDT</p>
+        <p>Ganancias: 3 USDT</p>
+      </div>
+      <!-- Añadir más robots aquí -->
+    </div>
+  </div>
+
+  <!-- Carrusel -->
+  <div class="carousel">
+    <img src="https://via.placeholder.com/60x30" alt="Imagen 1">
+    <img src="https://via.placeholder.com/60x30" alt="Imagen 2" class="active">
+    <img src="https://via.placeholder.com/60x30" alt="Imagen 3">
+  </div>
+
+  <!-- Botones Superiores -->
+  <div class="buttons">
+    <button class="button">💬</button>
+    <button class="button">🛒</button>
+    <button class="button">💲</button>
+  </div>
+
+  <!-- Spacer de 150px -->
+  <div class="spacer"></div>
+
+  <!-- Barra Inferior Fija -->
+  <!-- Barra Inferior Fija -->
+  <div class="bottom-bar">
+    <div class="button-circle" onclick="window.location.href='pagina1.html'">🏠</div>
+    <div class="button-circle" onclick="window.location.href='pagina2.html'">💰</div>
+    <div class="button-circle" onclick="window.location.href='pagina3.html'">🤖</div>
+    <div class="button-circle" onclick="window.location.href='pagina4.html'">🎁</div>
+    <div class="button-circle" onclick="window.location.href='pagina5.html'">🙍‍♂️</div>
+  </div>
+
+  <!-- Scripts -->
+  <script src=""></script>
 </body>
 </html>
