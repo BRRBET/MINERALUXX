@@ -1,7 +1,7 @@
 /* General */
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif;
   background: url('https://github.com/user-attachments/assets/40e425df-5c5f-44f5-ade9-d8fc8bb25e27') no-repeat center center;
   background-size: cover;
   color: white;
@@ -26,6 +26,10 @@ body {
   margin-top: 20px;
   margin-bottom: 100px;
   backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Título de la Sección */
@@ -36,20 +40,22 @@ body {
   margin-bottom: 30px;
   text-transform: uppercase;
   text-shadow: 0 0 20px rgba(0, 255, 204, 0.8);
+  text-align: center;
 }
 
 /* Apartados de Perfil y Balances */
 .perfil, .balances {
   background: rgba(40, 40, 40, 0.8);
-  padding: 25px;
+  padding: 20px;
   margin-bottom: 35px;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
   text-align: left;
+  width: 100%;
 }
 
 .perfil p, .balances p {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin: 12px 0;
   color: #ffffff;
 }
@@ -57,14 +63,15 @@ body {
 /* Formulario de Retiro */
 .retiro-form {
   background: rgba(30, 30, 30, 0.8);
-  padding: 35px;
+  padding: 25px;
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
   text-align: left;
+  width: 100%;
 }
 
 .retiro-form label {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin-bottom: 10px;
   color: white;
   display: block;
@@ -106,6 +113,7 @@ body {
   transform: scale(1.05);
 }
 
+/* Error Message */
 .error-message {
   color: red;
   font-weight: bold;
@@ -137,6 +145,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
+  z-index: 100;
 }
 
 .bottom-bar .button-circle {
@@ -169,9 +178,8 @@ body {
     justify-content: flex-start;
   }
 
-  .retiros-container, .perfil, .balances, .retiro-form {
-    padding: 20px;
-    width: 100%;
+  .retiros-container {
+    padding: 25px;
   }
 
   .retiros-title {
@@ -196,4 +204,25 @@ body {
     height: 40px;
     font-size: 1.3rem;
   }
+}
+
+/* Ajustes adicionales para formularios y botones en dispositivos pequeños */
+.retiro-form {
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.retiro-form input {
+  font-size: 1.1rem;
+}
+
+.retiro-form button {
+  width: 100%;
+  font-size: 1.3rem;
+}
+
+.retiros-info {
+  font-size: 1rem;
+  padding: 10px 0;
 }
