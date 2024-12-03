@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loginButton.addEventListener("click", (event) => {
     event.preventDefault();
     alert("Inicio de sesión exitoso!");
-    window.location.href = "dashboard.html";
+    window.location.href = "Home.html";
   });
 
   // Redirigir a registro
