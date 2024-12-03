@@ -18,13 +18,13 @@ body {
 .retiros-container {
   background: rgba(0, 0, 0, 0.7);
   border-radius: 30px;
-  padding: 40px;
+  padding: 30px;
   width: 90%;
   max-width: 700px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   text-align: center;
   margin-top: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
@@ -34,10 +34,10 @@ body {
 
 /* Título de la Sección */
 .retiros-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #00ffcc;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-transform: uppercase;
   text-shadow: 0 0 20px rgba(0, 255, 204, 0.8);
   text-align: center;
@@ -47,7 +47,7 @@ body {
 .perfil, .balances {
   background: rgba(40, 40, 40, 0.8);
   padding: 20px;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
   text-align: left;
@@ -56,7 +56,7 @@ body {
 
 .perfil p, .balances p {
   font-size: 1.3rem;
-  margin: 12px 0;
+  margin: 10px 0;
   color: #ffffff;
 }
 
@@ -72,15 +72,15 @@ body {
 
 .retiro-form label {
   font-size: 1.2rem;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: white;
   display: block;
 }
 
 .retiro-form input {
-  padding: 15px;
+  padding: 12px;
   width: 100%;
-  margin: 12px 0;
+  margin: 10px 0;
   border: none;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.2);
@@ -125,7 +125,7 @@ body {
 .retiros-info {
   font-size: 1.2rem;
   color: #ffffff;
-  margin-top: 30px;
+  margin-top: 20px;
   text-align: center;
   font-weight: normal;
 }
@@ -179,7 +179,7 @@ body {
   }
 
   .retiros-container {
-    padding: 25px;
+    padding: 20px;
   }
 
   .retiros-title {
@@ -204,25 +204,13 @@ body {
     height: 40px;
     font-size: 1.3rem;
   }
-}
 
-/* Ajustes adicionales para formularios y botones en dispositivos pequeños */
-.retiro-form {
-  padding: 20px;
-  width: 100%;
-  box-sizing: border-box;
-}
+  .perfil, .balances, .retiro-form {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
 
-.retiro-form input {
-  font-size: 1.1rem;
-}
-
-.retiro-form button {
-  width: 100%;
-  font-size: 1.3rem;
-}
-
-.retiros-info {
-  font-size: 1rem;
-  padding: 10px 0;
+  .retiros-info {
+    font-size: 1rem;
+  }
 }
