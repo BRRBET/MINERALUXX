@@ -7,51 +7,6 @@ body {
   color: white;
 }
 
-/* Encabezado */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-.logo-section {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.site-name {
-  font-size: 1.5rem;
-  color: #00ffcc;
-  font-weight: bold;
-  margin: 0;
-}
-
-.header-icons {
-  display: flex;
-  gap: 15px;
-}
-
-.header-icon {
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #00ffcc;
-  transition: transform 0.3s ease;
-}
-
-.header-icon:hover {
-  transform: scale(1.2);
-}
-
 /* Carrusel de imágenes */
 .image-carousel {
   display: flex;
@@ -62,8 +17,8 @@ body {
   width: 100%;
   border-radius: 20px;
   position: relative;
-  margin-top: 20px; /* Añadir un margen superior si necesitas separar más los elementos */
-  z-index: 2; /* Asegura que el carrusel esté sobre los botones */
+  margin-top: 20px; /* Asegura que el carrusel esté en la parte superior */
+  z-index: 10; /* Asegura que el carrusel esté sobre los botones */
 }
 
 .carousel-image {
@@ -121,6 +76,8 @@ body {
   transform: scale(1.1);
   background: linear-gradient(90deg, #0077ff, #00ffcc);
 }
+
+/* Otros estilos continúan igual... */
 
 /* Tarjetas VIP */
 .vip-grid {
