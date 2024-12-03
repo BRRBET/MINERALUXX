@@ -3,45 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Retiros</title>
-  <link rel="stylesheet" href="StylesRetiro.css">
-  <script src="JavaScriptsRetiro.css" defer></script>
+  <title>Formulario de Retiros</title>
+  <link rel="stylesheet" href="">
 </head>
 <body>
   <div class="retiros-container">
-    <h1 class="retiros-title">Retiros</h1>
+    <h1 class="retiros-title">Formulario de Retiros</h1>
 
-    <!-- Información de Perfil y Balances -->
     <div class="perfil">
-      <h2>Perfil</h2>
-      <p>Nombre:Users8283</p>
-      <p>Email:*******************@gmail.com</p>
+      <p><strong>Balance disponible:</strong> 00.00 USDT</p>
+      <p><strong>Balance en retiro:</strong> 00.00 USDT</p>
     </div>
 
-    <div class="balances">
-      <h2>Balances</h2>
-      <p>Balance disponible: <span id="balanceDisponible">00.00 USDT</span></p>
-      <p>Balance en retiro: <span id="balanceRetiro">00.00 USDT</span></p>
-    </div>
+    <form class="retiro-form" id="retiroForm">
+      <label for="monto">Monto mínimo de retiro</label>
+      <input type="number" id="monto" name="monto" placeholder="2.00 USDT" min="2" required>
 
-    <!-- Formulario de Retiro -->
-    <div class="retiro-form">
-      <h2>Formulario de Retiro</h2>
-      <form id="retiroForm">
-        <label for="monto">Monto mínimo de retiro:</label>
-        <input type="number" id="monto" name="monto" placeholder="2 USDT" required min="2">
-        <label for="direccion">Dirección de Retiro:</label>
-        <input type="text" id="direccion" name="direccion" placeholder="Dirección USDT/TRC20" required>
-        <label for="contrasena">Contraseña de Retiro:</label>
-        <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña de Retiro"required>
-        <button type="submit">Retirar</button>
-      </form>
+      <label for="direccion">Dirección de retiro</label>
+      <input type="text" id="direccion" name="direccion" placeholder="Dirección USDT/TRC20" required>
 
-      <p class="retiros-info">Los retiros están disponibles las 24 horas del día, los 7 días de la semana a la dirección USDT/TRC20.</p>
-    </div>
+      <label for="contraseña">Contraseña</label>
+      <input type="password" id="contraseña" name="contraseña" placeholder="******" required>
+
+      <button type="submit">Retirar</button>
+    </form>
+
+    <p class="retiros-info">Los retiros están disponibles las 24 horas del día, los 7 días de la semana a la dirección USDT/TRC20.</p>
   </div>
 
-  <!-- Barra inferior con botones -->
   <div class="bottom-bar">
     <div class="button-circle" onclick="window.location.href='Home.html'">🏠</div>
     <div class="button-circle" onclick="window.location.href='Retiros.html'">💰</div>
@@ -49,5 +38,7 @@
     <div class="button-circle" onclick="window.location.href='Invitados.html'">🎁</div>
     <div class="button-circle" onclick="window.location.href='Perfil.html'">🙍‍♂️</div>
   </div>
+
+  <script src=""></script>
 </body>
 </html>
