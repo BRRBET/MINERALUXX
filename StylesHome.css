@@ -58,14 +58,14 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  height: 100px;
+  height: 120px;
   width: 100%;
   position: relative;
 }
 
 .carousel-image {
-  height: 100px;
-  width: 90%;
+  height: 120px;
+  width: 100%;
   opacity: 0;
   position: absolute;
   animation: slide 20s infinite;
