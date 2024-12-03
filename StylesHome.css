@@ -13,7 +13,6 @@ body {
   padding: 0;
   overflow: hidden;
 }
-
 /* Contenedor centralizado para la información */
 .main-content {
   display: flex;
@@ -25,6 +24,8 @@ body {
   margin-top: 100px; /* Deja espacio desde la parte superior */
 }
 
+
+/* Contenedor centralizado para la información */
 /* Botones superiores */
 .top-buttons-container {
   background: rgba(0, 0, 0, 0.8);
