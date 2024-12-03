@@ -63,6 +63,7 @@ body {
   border-radius: 20px;
   position: relative;
   margin-top: 20px; /* Añadir un margen superior si necesitas separar más los elementos */
+  z-index: 2; /* Asegura que el carrusel esté sobre los botones */
 }
 
 .carousel-image {
@@ -101,6 +102,7 @@ body {
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   margin: 20px 20px 0 20px;
+  z-index: 1; /* Los botones estarán por debajo del carrusel */
 }
 
 .top-button {
