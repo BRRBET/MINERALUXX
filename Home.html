@@ -1,63 +1,83 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRX.VC</title>
-    <link rel="stylesheet" href="StylesHome.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Platform</title>
+  <link rel="stylesheet" href="StylesHome.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <img src="https://github.com/user-attachments/assets/40e425df-5c5f-44f5-ade9-d8fc8bb25e27" alt="Logo">
-            <h1>TRX.VC</h1>
-        </header>
+  <!-- Encabezado -->
+  <header class="header">
+    <h1>Bienvenido a TRX.VC</h1>
+    <p>¡Descubre la experiencia del mundo de las criptomonedas!</p>
+  </header>
 
-        <!-- Sección de botones -->
-        <section class="actions">
-            <h2>Acciones</h2>
-            <div class="buttons">
-                <div class="button" onclick="navigate('recargar.html')">
-                    <i class="icon money"></i>
-                    <span>Recargar</span>
-                </div>
-                <div class="button" onclick="navigate('retirar.html')">
-                    <i class="icon withdraw"></i>
-                    <span>Retirar</span>
-                </div>
-                <div class="button" onclick="navigate('personaje.html')">
-                    <i class="icon character"></i>
-                    <span>Personaje</span>
-                </div>
-                <div class="button" onclick="navigate('actividad.html')">
-                    <i class="icon activity"></i>
-                    <span>Actividad</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Estadísticas -->
-        <section class="stats">
-            <h2>Estadísticas</h2>
-            <div class="stat-item">Usuarios acumulados: <strong>89,783</strong></div>
-            <div class="stat-item">Ingresos totales acumulados: <strong>18,407,716</strong></div>
-            <div class="stat-item">Activos totales: <strong>5.50 USDT</strong></div>
-        </section>
-
-        <!-- Redes sociales -->
-        <section class="social">
-            <h2>Comparte en</h2>
-            <div class="social-icons">
-                <a href="#" class="social-icon x">X</a>
-                <a href="#" class="social-icon facebook">F</a>
-                <a href="#" class="social-icon telegram">T</a>
-                <a href="#" class="social-icon linkedin">In</a>
-                <a href="#" class="social-icon whatsapp">W</a>
-            </div>
-        </section>
+  <!-- Contenedor principal -->
+  <div class="container">
+    <!-- Botones principales -->
+    <div class="buttons">
+      <button class="button mining" onclick="redirectTo('recargar.html')">Recargar</button>
+      <button class="button" onclick="redirectTo('retirar.html')">Retirar</button>
+      <button class="button mining" onclick="redirectTo('personaje.html')">Personaje</button>
+      <button class="button" onclick="redirectTo('actividad.html')">Actividad</button>
     </div>
 
-    <script src="JavaScriptsHome.js"></script>
+    <!-- Estadísticas en vivo -->
+    <div class="stats">
+      <h2>Estadísticas en Vivo</h2>
+      <div class="stat">
+        <p>Usuarios acumulados:</p>
+        <h3>89,783</h3>
+      </div>
+      <div class="stat">
+        <p>Ingresos totales acumulados:</p>
+        <h3>$18,407,716</h3>
+      </div>
+    </div>
+
+    <!-- Íconos sociales -->
+    <div class="social-icons">
+      <h2>¡Síguenos en redes sociales!</h2>
+      <div>
+        <span class="social-icon" onclick="redirectTo('https://www.facebook.com')"></span>
+        <span class="social-icon" onclick="redirectTo('https://twitter.com')"></span>
+        <span class="social-icon" onclick="redirectTo('https://www.instagram.com')"></span>
+        <span class="social-icon" onclick="redirectTo('https://tiktok.com')"></span>
+        <span class="social-icon" onclick="redirectTo('https://www.linkedin.com')"></span>
+      </div>
+    </div>
+
+    <!-- Tarjetas llamativas -->
+    <div class="cards">
+      <h2>Nuestras ofertas destacadas</h2>
+      <div class="card">
+        <h3>Plan Básico</h3>
+        <p>Invierte desde $10 y gana hasta un 5% semanal.</p>
+        <button class="button" onclick="redirectTo('plan-basico.html')">Más Info</button>
+      </div>
+      <div class="card">
+        <h3>Plan Avanzado</h3>
+        <p>Invierte desde $100 y disfruta hasta un 10% semanal.</p>
+        <button class="button" onclick="redirectTo('plan-avanzado.html')">Más Info</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    <p>© 2024 TRX.VC - Todos los derechos reservados</p>
+    <p>
+      <a href="terminos.html">Términos de servicio</a> | 
+      <a href="privacidad.html">Política de privacidad</a>
+    </p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function redirectTo(url) {
+      window.location.href = url;
+    }
+  </script>
 </body>
 </html>
