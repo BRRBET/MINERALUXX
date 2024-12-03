@@ -34,11 +34,11 @@ buyButtons.forEach((button) => {
 document.querySelectorAll('.button-circle').forEach((button, index) => {
   button.addEventListener('click', () => {
     const pages = [
-      'pagina1.html',
-      'pagina2.html',
-      'pagina3.html',
-      'pagina4.html',
-      'pagina5.html',
+      'Home.html',
+      'Retiros.html',
+      'CompraRobots.html',
+      'Invitados.html',
+      'Perfil.html',
     ];
     window.location.href = pages[index];
   });
