@@ -107,7 +107,7 @@
     </div>
 
     <!-- Botón para iniciar la minería -->
-    <button id="mineButton" onclick="startMining()" disabled>Iniciar Minería</button>
+    <button id="mineButton" onclick="startMining()">Iniciar Minería</button>
 
     <!-- Mensaje de inicio de minería -->
     <p id="miningMessage"></p>
@@ -122,7 +122,7 @@
       isMining = true;
 
       // Desactivar el botón para evitar clics múltiples
-      document.getElementById("mineButton").enable = true;
+      document.getElementById("mineButton").disabled = true;
 
       // Mostrar mensaje de inicio de minería
       document.getElementById("miningMessage").innerText = "Iniciando minería...";
