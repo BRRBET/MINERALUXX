@@ -7,10 +7,28 @@
   <link rel="stylesheet" href="stylesretiros.css">
 </head>
 <body>
-  <div class="retiros-container">
-  <div class="icono-superior-izquierdo">
-  📦
+  <!-- Ícono para abrir el modal -->
+<div class="icono-superior-izquierdo">📦</div>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h2 class="modal-title">Notificaciones del sistema</h2>
+    <div class="modal-options">
+      <!-- Apartado de Retiros -->
+      <div class="option">
+        <h3>Retiros</h3>
+      </div>
+      <!-- Apartado de Recargas -->
+      <div class="option">
+        <h3>Recargas</h3>
+      </div>
+    </div>
+    <!-- Botón Aceptar -->
+    <button id="modal-aceptar">Aceptar</button>
   </div>
+</div>
+  <div class="retiros-container"></div>
     <h1 class="retiros-title">Formulario de Retiro</h1>
 
     <div class="perfil">
