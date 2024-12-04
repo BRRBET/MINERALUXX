@@ -3,32 +3,156 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quantificación</title>
-  <link rel="stylesheet" href="stylesquantificacion.css">
+  <title>Muñeco Minero</title>
+  <style>
+    /* Contenedor principal */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #141414;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Estilo del muñeco */
+    .mining-character {
+      position: relative;
+      width: 100px;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      animation: idleAnimation 1s infinite alternate;
+      margin-bottom: 20px;
+    }
+
+    .head {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .body {
+      width: 60px;
+      height: 80px;
+      background-color: #4b4b4b;
+      border-radius: 10px;
+    }
+
+    .pickaxe {
+      width: 10px;
+      height: 50px;
+      background-color: #c0c0c0;
+      position: absolute;
+      top: -20px;
+      left: 60px;
+      transform-origin: top;
+      transition: transform 0.5s;
+    }
+
+    button:disabled {
+      background-color: #555;
+      cursor: not-allowed;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #00b3ff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover:not(:disabled) {
+      background-color: #0077ff;
+    }
+
+    /* Animación de la minería */
+    @keyframes miningAnimation {
+      0% {
+        transform: rotate(-30deg);
+      }
+      100% {
+        transform: rotate(30deg);
+      }
+    }
+
+    /* Animación de inactividad (cuando no está minando) */
+    @keyframes idleAnimation {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="quantification-container">
-    <h2>Iniciar Cuantificación</h2>
-    <button id="start-btn" onclick="startQuantification()">Iniciar Cuantificación</button>
-    
-    <!-- Círculo de minería animado -->
-    <div id="mining-circle" class="mining-circle"></div>
-    <div id="status"></div>
-    <div id="countdown" class="countdown"></div>
 
-    <div id="withdrawals-container" class="withdrawals-container"></div>
+  <div class="container">
+    <!-- Muñeco que hará la minería -->
+    <div class="mining-character" id="miningCharacter">
+      <div class="body"></div>
+      <div class="head"></div>
+      <div class="pickaxe"></div>
+    </div>
+
+    <!-- Botón para iniciar la minería -->
+    <button id="mineButton" onclick="startMining()" disabled>Iniciar Minería</button>
+
+    <!-- Mensaje de inicio de minería -->
+    <p id="miningMessage"></p>
   </div>
 
-  <div class="bottom-bar">
-    <div class="button-circle" onclick="window.location.href='Home.html'">🏠</div>
-    <div class="button-circle" onclick="window.location.href='Retiros.html'">💰</div>
-    <div class="button-circle" onclick="window.location.href='CompraRobots.html'">🤖</div>
-    <div class="button-circle" onclick="window.location.href='Invitados.html'">🎁</div>
-    <div class="button-circle" onclick="window.location.href='Perfil.html'">🙍‍♂️</div>
-  </div>
+  <script>
+    let isMining = false;
 
-  <div class="spacer"></div>
-  
-  <script src="quantification.js"></script>
+    // Función para activar la minería
+    function startMining() {
+      // Cambiar el estado de la minería
+      isMining = true;
+
+      // Desactivar el botón para evitar clics múltiples
+      document.getElementById("mineButton").disabled = true;
+
+      // Mostrar mensaje de inicio de minería
+      document.getElementById("miningMessage").innerText = "Iniciando minería...";
+
+      // Comenzar la animación de minería (hacer que el muñeco "minée")
+      const pickaxe = document.querySelector(".pickaxe");
+      pickaxe.style.animation = "miningAnimation 0.5s infinite alternate";
+
+      // Simular el proceso de minería durante 30 segundos
+      setTimeout(() => {
+        stopMining(); // Detener la minería después de 30 segundos
+      }, 30000); // 30 segundos
+    }
+
+    // Función para detener la minería
+    function stopMining() {
+      // Detener la animación
+      const pickaxe = document.querySelector(".pickaxe");
+      pickaxe.style.animation = "none";
+
+      // Actualizar mensaje de finalización
+      document.getElementById("miningMessage").innerText = "Minería exitosa!";
+
+      // Rehabilitar el botón de minería después de 24 horas
+      setTimeout(() => {
+        document.getElementById("mineButton").disabled = false;
+        document.getElementById("miningMessage").innerText = "Listo para cuantificar nuevamente!";
+      }, 86400000); // 24 horas (en milisegundos)
+    }
+  </script>
+
 </body>
 </html>
