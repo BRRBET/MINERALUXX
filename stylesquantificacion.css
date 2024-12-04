@@ -1,85 +1,90 @@
-/* Estilo General */
 body {
   margin: 0;
-  padding: 0;
-  background: #2c3e50; /* Fondo oscuro */
-  color: #ecf0f1;
   font-family: 'Arial', sans-serif;
-  text-align: center;
+  background: linear-gradient(45deg, #141e30, #243b55);
+  color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   overflow: hidden;
 }
 
-/* Contenedor del Minero */
 .miner-container {
-  position: relative;
-  width: 150px; /* Ajustado para móvil */
-  height: 150px;
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .miner {
-  width: 100%;
-  height: auto;
-  animation: none; /* Animación apagada inicialmente */
+  width: 200px;
+  height: 200px;
+  position: relative;
 }
 
-/* Botón */
-button {
+.miner img {
+  width: 100%;
+  height: auto;
+  animation: idle 1s infinite alternate;
+}
+
+@keyframes idle {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+@keyframes mining {
+  0%, 100% { transform: rotate(-15deg); }
+  50% { transform: rotate(15deg); }
+}
+
+.mine-button {
   padding: 10px 20px;
-  background-color: #e74c3c;
+  font-size: 1.2rem;
   color: #fff;
-  font-size: 16px;
+  background: #0077ff;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: 8px;
+  cursor: not-allowed;
   transition: background 0.3s ease;
 }
 
-button:hover {
-  background-color: #c0392b;
+.mine-button:enabled {
+  cursor: pointer;
+  background: #00cc66;
 }
 
-button:disabled {
-  background-color: #7f8c8d;
-  cursor: not-allowed;
+.mine-button:hover:enabled {
+  background: #00994d;
 }
 
-/* Animación del Minero */
-@keyframes mine {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(-10deg);
-  }
-  100% {
-    transform: rotate(10deg);
-  }
+.attention-message {
+  text-align: center;
+  color: #ffcc00;
+  font-size: 0.9rem;
 }
+
 .bottom-bar {
   display: flex;
   justify-content: space-evenly;
-  background: rgba(0, 0, 0, 0);  /* Fondo completamente transparente */
+  background: rgba(0, 0, 0, 0);
   padding: 10px 0;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  box-shadow: none;  /* Elimina cualquier sombra */
-  visibility: visible;  /* Asegura que los botones sean visibles */
+  box-shadow: none;
+  visibility: visible;
 }
 
-/* Botones circulares */
 .button-circle {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);  /* Fondo ligeramente transparente */
+  background: rgba(255, 255, 255, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,7 +95,7 @@ button:disabled {
 
 .button-circle:hover {
   transform: scale(1.2);
-  background: rgba(255, 255, 255, 0.6);  /* Cambio de opacidad al pasar el ratón */
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .spacer {
