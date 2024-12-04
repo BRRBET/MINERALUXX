@@ -11,7 +11,7 @@ body {
   padding: 20px;
 }
 
-/* Título de la sección de Recarga */
+/* Título de la página */
 .recarga-title {
   font-size: 2rem;
   color: #00ffcc;
@@ -19,43 +19,59 @@ body {
   margin-bottom: 30px;
 }
 
-/* Contenedor de las opciones de recarga */
+/* Contenedor principal de las opciones de recarga */
 .recarga-container {
-  background-color: #222222;
-  padding: 40px;
-  border-radius: 10px;
   width: 100%;
-  max-width: 600px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* Opciones de recarga */
+/* Contenedor de las opciones de recarga */
 .recarga-options {
-  display: flex;
-  flex-direction: column;  /* Cambiado para apilar las imágenes */
-  gap: 20px;  /* Espacio entre las opciones */
-  align-items: center;
-  margin-top: 20px;
-}
-
-/* Item de cada recarga (USDT / TRX) */
-.recarga-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
+}
+
+/* Estilo de cada tarjeta de recarga */
+.recarga-item {
+  width: 100%;
+  max-width: 350px;
   cursor: pointer;
-  text-align: center;
-  width: 80%;
+  transition: transform 0.3s ease;
 }
 
-.recarga-image {
-  width: 200px;  /* Ajusta el tamaño de la imagen */
-  height: auto;
+/* Estilo de la tarjeta */
+.recarga-card {
+  background-color: #222222;
+  padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.recarga-item p {
-  margin-top: 10px;
+/* Estilo del encabezado de la tarjeta */
+.recarga-card-header h3 {
+  font-size: 1.5rem;
+  color: #00b3ff;
+  margin-bottom: 10px;
+}
+
+/* Estilo para la imagen dentro de las tarjetas */
+.recarga-image {
+  max-width: 100%; /* Se ajusta al ancho del contenedor */
+  height: auto; /* Mantiene la relación de aspecto */
+  width: 100px; /* Tamaño máximo controlado para que no sea tan grande */
+  object-fit: contain; /* Asegura que la imagen no se distorsione */
+  margin-bottom: 10px;
+}
+
+/* Descripción debajo de la imagen */
+.recarga-card-body p {
   color: #ccc;
   font-size: 1.1rem;
 }
@@ -95,5 +111,5 @@ body {
 
 /* Espaciador */
 .spacer {
-  height: 50px;
+  height: 100px;
 }
