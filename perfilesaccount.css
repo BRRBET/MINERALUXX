@@ -8,10 +8,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  height: 100vh;
+  overflow: hidden; /* Elimina scroll innecesario */
   padding: 0;
-  overflow: hidden; /* Elimina desplazamiento */
-  height: 100vh; /* Fija la altura */
-  box-sizing: border-box; /* Para ajustar correctamente los elementos */
+  box-sizing: border-box;
 }
 
 /* Título del Perfil */
@@ -19,18 +19,34 @@ body {
   font-size: 1.8rem;
   color: #00ffcc;
   text-align: center;
-  margin: 20px 0;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 /* Contenedor del Perfil */
 .perfil-container {
-  background-color: #222222;
+  background: linear-gradient(145deg, #1c1c1c, #2a2a2a); /* Gradiente suave */
   padding: 20px;
-  border-radius: 10px;
-  width: 90%; /* Ajuste a pantalla */
+  border-radius: 15px;
+  width: 90%;
   max-width: 400px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+  text-align: center;
   margin-top: 10px; /* Perfil más arriba */
+}
+
+/* Borde elegante alrededor del perfil */
+.perfil-container::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 2px solid rgba(0, 255, 204, 0.5); /* Borde translúcido */
+  border-radius: 15px;
+  z-index: -1;
+  filter: blur(5px); /* Efecto de brillo */
 }
 
 /* ID del usuario */
@@ -38,28 +54,30 @@ body {
   font-size: 1rem;
   margin-bottom: 10px;
   color: #aaa;
-  text-align: center;
 }
 
-/* Foto del perfil */
+/* Foto del perfil con círculo */
 .perfil-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 15px;
+  position: relative;
 }
 
 .perfil-photo {
   font-size: 3.5rem;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background-color: #00b3ff;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   margin-bottom: 10px;
+  border: 4px solid rgba(255, 255, 255, 0.2); /* Círculo alrededor */
 }
 
 /* Correo */
@@ -85,30 +103,35 @@ body {
   border-radius: 8px;
   flex: 1;
   text-align: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* Botones */
+/* Botones en dos columnas centradas */
 .button-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Dos botones por fila */
-  gap: 10px;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+  gap: 15px;
+  justify-content: center;
   width: 100%;
+  margin-top: 10px;
 }
 
 .action-button {
-  background-color: transparent;
-  border: 2px solid #00b3ff;
+  background-color: #00b3ff;
+  border: none;
   color: white;
-  border-radius: 8px;
-  padding: 10px;
   font-size: 0.9rem;
-  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
   text-align: center;
-  transition: background 0.3s ease;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .action-button:hover {
   background-color: #0077ff;
+  transform: translateY(-2px); /* Efecto sutil de elevación */
 }
 
 /* Barra inferior */
@@ -127,14 +150,14 @@ body {
 }
 
 .button-circle {
-  width: 50px; /* Tamaño del botón */
+  width: 50px;
   height: 50px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.4rem; /* Tamaño del ícono */
+  font-size: 1.4rem;
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.3);
   transition: transform 0.3s ease, background 0.3s ease;
