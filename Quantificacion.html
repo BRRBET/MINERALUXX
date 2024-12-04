@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minería MINERALUX</title>
   <style>
-    /* General */
+    /* Estilo general */
     body {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Arial', sans-serif;
       background-color: #141414;
       color: #f5f5f5;
       display: flex;
@@ -21,6 +21,7 @@
       background-image: url('https://github.com/user-attachments/assets/dbc9c673-0ffa-4637-9d13-61f7972ecdc3'); /* Imagen de fondo */
       background-size: cover;
       background-position: center;
+      background-attachment: fixed; /* Asegura que la imagen de fondo no se mueva */
     }
 
     /* Contenedor principal */
@@ -28,7 +29,7 @@
       width: 90%;
       max-width: 800px;
       padding: 20px;
-      margin-top: 40px;
+      margin-top: 50px;
       text-align: center;
       animation: fadeIn 1s ease-in-out;
     }
@@ -39,31 +40,33 @@
       100% { opacity: 1; }
     }
 
-    /* Título */
+    /* Título principal */
     h1 {
       color: #00ffcc;
       font-size: 3rem;
       font-weight: bold;
-      text-shadow: 2px 2px 4px rgba(0, 255, 204, 0.5);
       margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0, 255, 204, 0.8); /* Sombra para dar un efecto llamativo */
     }
 
     /* Subtítulo */
     h2 {
-      font-size: 1.5rem;
       color: #ffcc00;
-      margin-top: -10px;
-      margin-bottom: 20px;
-      font-weight: lighter;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 8px rgba(255, 204, 0, 0.8); /* Sombra */
     }
 
+    /* Párrafos */
     p {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #ccc;
       margin-bottom: 10px;
+      line-height: 1.6;
     }
 
-    /* Círculo de minería */
+    /* Estilo del círculo de minería */
     .mining-circle {
       width: 200px;
       height: 200px;
@@ -81,6 +84,7 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
     }
 
+    /* Animación de minería */
     .mining-pick {
       font-size: 3rem;
       color: #00b3ff;
@@ -88,24 +92,9 @@
       animation: mining-pick-animation 0.5s infinite alternate;
     }
 
-    /* Animación de minería */
     @keyframes mining-pick-animation {
       0% { transform: translate(-10px, -10px) rotate(-30deg); }
       100% { transform: translate(10px, 10px) rotate(30deg); }
-    }
-
-    /* Mensaje de minería */
-    .mining-message {
-      font-size: 1.2rem;
-      color: #ffcc00;
-      margin-top: 20px;
-      animation: miningMessageAnimation 2s ease-out;
-      opacity: 0;
-    }
-
-    @keyframes miningMessageAnimation {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
     }
 
     /* Barra de progreso */
@@ -131,7 +120,7 @@
       background-color: #00b3ff;
       border: none;
       color: white;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       padding: 12px 25px;
       border-radius: 8px;
       cursor: pointer;
@@ -144,20 +133,26 @@
       background-color: #0077ff;
     }
 
-    /* Cuenta regresiva de 24 horas */
+    /* Mensajes de minería */
+    .mining-message {
+      font-size: 1.2rem;
+      color: #ffcc00;
+      margin-top: 20px;
+      animation: miningMessageAnimation 2s ease-out;
+      opacity: 0;
+    }
+
+    @keyframes miningMessageAnimation {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cuenta regresiva */
     .countdown {
       font-size: 1.2rem;
       color: #fff;
       margin-top: 20px;
       font-weight: bold;
-    }
-
-    /* Footer */
-    .footer {
-      color: #fff;
-      font-size: 1rem;
-      margin-top: 10px;
-      text-align: center;
     }
 
     /* Barra inferior de navegación */
@@ -197,12 +192,13 @@
 <body>
 
   <div class="container">
-    <h1>Minería MINERALUX</h1>
-    <h2>¡Comienza a minar y acumula ganancias ahora!</h2>
+    <h1>¡Bienvenido a la Minería MINERALUX!</h1>
+    <h2>¡Comienza a obtener recompensas por tu minería!</h2>
+    <p>Presiona "Iniciar Minería" para comenzar a minar y ganar USDT.</p>
 
     <!-- Información VIP -->
     <div class="vip-info">
-      <span>VIP: 0</span>
+      <p>VIP: <strong>0</strong></p>
     </div>
 
     <!-- Círculo de minería -->
@@ -221,18 +217,14 @@
     <!-- Botón de minería -->
     <button class="action-button" id="start-mining">Iniciar Minería</button>
 
-    <!-- Cuenta regresiva de 24 horas -->
+    <!-- Cuenta regresiva -->
     <div class="countdown" id="countdown-timer">24:00:00</div>
-
-    <!-- Spacer para contenido -->
-    <div class="spacer"></div>
 
     <!-- Explicación de la minería -->
     <p><strong>¿Cómo funciona?</strong></p>
     <p>1. Presiona "Iniciar Minería" para comenzar el proceso.</p>
     <p>2. El proceso de minería dura 30 segundos.</p>
     <p>3. Recibe tus ganancias directamente en tu balance.</p>
-    <p><strong>Beneficios de obtener VIP:</strong> Si eres VIP, tus ganancias se incrementan.</p>
 
     <div class="footer">
       <p>&copy; 2024 MINERALUX. Todos los derechos reservados.</p>
@@ -243,75 +235,73 @@
   <div class="bottom-bar">
     <div class="button-circle" onclick="window.location.href='Home.html'">🏠</div>
     <div class="button-circle" onclick="window.location.href='Retiros.html'">💰</div>
-    <div class="button-circle" onclick="window.location.href='CompraRobots.html'">🤖</div>
-    <div class="button-circle" onclick="window.location.href='Invitados.html'">🎁</div>
-    <div class="button-circle" onclick="window.location.href='Perfil.html'">🙍‍♂️</div>
-  </div><script>
-    // Obtener elementos del DOM
-    const startMiningButton = document.getElementById('start-mining');
-    const progressBar = document.querySelector('.progress-bar');
-    const countdownTimer = document.getElementById('countdown-timer');
-    const miningMessage = document.getElementById('mining-message');
+    <div class="button-circle" onclick="window.location.href='CompraRobots.html'"><div class="button-circle" onclick="window.location.href='CompraRobots.html'">🤖</div>
+    <div class="button-circle" onclick="window.location.href='Perfil.html'">👤</div>
+  </div>
+
+  <script>
+    // Función para iniciar la minería (30 segundos de duración)
+    const startMiningButton = document.getElementById("start-mining");
+    const progressBar = document.querySelector(".progress-bar");
+    const miningMessage = document.getElementById("mining-message");
+    const countdownTimer = document.getElementById("countdown-timer");
+    let miningInterval;
     let countdownInterval;
 
-    // Función para actualizar la cuenta regresiva de 24 horas
+    // Función de cuenta regresiva
     function startCountdown() {
-      let timeLeft = 24 * 60 * 60; // 24 horas en segundos
-
-      countdownInterval = setInterval(() => {
-        const hours = Math.floor(timeLeft / 3600);
-        const minutes = Math.floor((timeLeft % 3600) / 60);
-        const seconds = timeLeft % 60;
-
+      let totalSeconds = 24 * 60 * 60; // 24 horas en segundos
+      countdownInterval = setInterval(function () {
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
         countdownTimer.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-
-        if (timeLeft <= 0) {
-          clearInterval(countdownInterval);
-        } else {
-          timeLeft--;
-        }
-      }, 1000); // Actualiza cada segundo
+        totalSeconds--;
+      }, 1000);
     }
 
-    // Función para iniciar la minería (30 segundos de duración)
+    // Función para iniciar minería
     function startMining() {
-      // Iniciar animación de progreso
-      progressBar.style.width = "100%";
-
       // Cambiar el texto del botón y deshabilitarlo
       startMiningButton.textContent = "Minando...";
       startMiningButton.disabled = true;
 
-      // Mostrar mensaje de minería
+      // Iniciar la animación de progreso
+      progressBar.style.width = "100%";
       miningMessage.style.opacity = 1;
 
-      // Simulación de minería por 30 segundos
+      // Iniciar cuenta regresiva de minería (30 segundos)
       setTimeout(() => {
-        // Detener la animación de progreso
+        // Finalizar minería y restablecer la interfaz
         progressBar.style.width = "0%";
         startMiningButton.textContent = "Iniciar Minería";
         startMiningButton.disabled = false;
 
-        // Simulación de ganancia (No hay ganancia si no tienes VIP)
-        let balance = parseFloat(localStorage.getItem('balance') || '0');
-        let vipLevel = parseInt(localStorage.getItem('vipLevel') || '0');
-
+        // Actualizar el balance si el usuario tiene VIP
+        let vipLevel = parseInt(localStorage.getItem('vip') || '0');
         if (vipLevel > 0) {
+          let balance = parseFloat(localStorage.getItem('balance') || '0');
           balance += 0.10; // Ganancia de 0.10 USDT
           localStorage.setItem('balance', balance.toFixed(2)); // Guardar nuevo balance
-          miningMessage.textContent = "Minería completada! Ganaste 0.10 USDT.";
+          alert("Minería terminada. Has ganado 0.10 USDT!");
         } else {
-          miningMessage.textContent = "Minería completada! No has obtenido ganancias ya que no tienes un VIP.";
+          alert("Minería terminada. No has obtenido ganancias ya que no tienes un VIP.");
         }
 
-      }, 30000); // Duración de la minería (30 segundos)
+        // Mostrar mensaje de finalización de minería
+        miningMessage.textContent = "Minería completada. ¡Reinicia para más!";
+      }, 30000); // Duración de minería (30 segundos)
+
+      // Limpiar la cuenta regresiva cuando la minería termine
+      clearInterval(countdownInterval);
+      startCountdown(); // Reiniciar la cuenta regresiva para 24 horas
     }
 
-    // Llamada al evento para iniciar minería
-    startMiningButton.addEventListener("click", startMining);
+    // Iniciar la cuenta regresiva al cargar la página
+    window.onload = startCountdown;
 
-    // Iniciar cuenta regresiva al cargar la página
-    startCountdown();
+    // Agregar evento al botón de minería
+    startMiningButton.addEventListener("click", startMining);
   </script>
 
 </body>
