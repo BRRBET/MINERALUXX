@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recarga USDT</title>
+  <link rel="stylesheet" href="Recargar.css">
+</head>
+<body>
 
+  <div class="recarga-container">
+    <h2 class="recarga-title">Recarga USDT/TRC20</h2>
+    
+    <div class="qr-container">
+      <img src="https://github.com/user-attachments/assets/2797ff51-875e-4d72-9014-2e00aba844a4" alt="Código QR" class="qr-image">
+      <p class="recarga-description">Escanea el código QR para depositar USDT a nuestra dirección.</p>
+    </div>
+    
+    <div class="deposit-info">
+      <p><strong>Dirección de depósito:</strong></p>
+      <input type="text" value="TGoh1Q4i4PHX7X4EGFz2zUf6P8RtpUnVj2" id="deposit-address" readonly>
+      <button onclick="copyAddress()" class="copy-button">Copiar Dirección</button>
+    </div>
+    
+    <div class="recarga-warning">
+      <p><strong>Aviso:</strong> El mínimo de recarga es de 10 USDT. Cualquier depósito menor será tomado como obsequio y no será reembolsado.</p>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="button-circle" onclick="window.location.href='Home.html'">🏠</div>
+    <div class="button-circle" onclick="window.location.href='Retiros.html'">💰</div>
+    <div class="button-circle" onclick="window.location.href='CompraRobots.html'">🤖</div>
+    <div class="button-circle" onclick="window.location.href='Invitados.html'">🎁</div>
+    <div class="button-circle" onclick="window.location.href='Perfil.html'">🙍‍♂️</div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <script>
+    function copyAddress() {
+      var copyText = document.getElementById("deposit-address");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* Para dispositivos móviles */
+      document.execCommand("copy");
+      alert("Dirección copiada: " + copyText.value);
+    }
+  </script>
+
+</body>
+</html>
