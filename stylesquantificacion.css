@@ -3,7 +3,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #0b132b;
   overflow: hidden;
 }
 
@@ -12,63 +11,66 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url('https://github.com/user-attachments/assets/7d2b3922-792d-4cc0-a90f-cdfeeb6e0501') no-repeat center center; /* Nueva imagen de la mina de oro */
-  background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+  background: url('https://github.com/user-attachments/assets/7d2b3922-792d-4cc0-a90f-cdfeeb6e0501') no-repeat center center;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
+
 .miner-container {
-text-align: center;
+  text-align: center;
 }
 
-#minerImage {
-  width: 150px;
-  height: auto;
-  animation: none;
+.miner {
+  width: 200px;
+  animation: mineAnimation 2s infinite alternate;
 }
 
-button {
+#start-mining {
   padding: 10px 20px;
-  font-size: 16px;
-  color: white;
-  background-color: #007bff;
+  background-color: #1e90ff;
   border: none;
-  border-radius: 5px;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
   margin-top: 20px;
 }
 
-button:disabled {
-  background-color: gray;
-  cursor: not-allowed;
+#start-mining:disabled {
+  background-color: #ccc;
 }
 
-#statusMessage {
+.message {
+  font-size: 18px;
+  color: white;
   margin-top: 10px;
-  color: yellow;
-  font-size: 14px;
 }
 
-/* Animación del enano */
-@keyframes mining {
-  0% { transform: rotate(0); }
-  50% { transform: rotate(-10deg); }
-  100% { transform: rotate(0); }
+@keyframes mineAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
-/* Estilo para la barra inferior */
 .bottom-bar {
   display: flex;
   justify-content: space-evenly;
-  background: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0); 
   padding: 10px 0;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   box-shadow: none;
-  visibility: visible;
+  visibility: visible; 
 }
 
 .button-circle {
@@ -90,5 +92,5 @@ button:disabled {
 }
 
 .spacer {
-  height: 150px;
+  height: 100px;
 }
