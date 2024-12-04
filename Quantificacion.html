@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="stylesquantificacion.css">
-  <title>Minero</title>
+  <title>Minería</title>
+  <link rel="stylesheet" href="">
 </head>
 <body>
-  <div class="miner-container">
-    <img id="minerImage" src="https://github.com/user-attachments/assets/77044d3b-953d-491e-9005-8ecf1ba956f0" alt="Enano Minero">
-    <button id="mineButton" disabled>Iniciar Minería</button>
-    <p id="statusMessage">ATENCIÓN💬 Podrás minar gratis, pero no obtendrás ganancias. Para obtenerlas deberás activar VIP 💬</p>
+  <div class="mine-background">
+    <div class="miner-container">
+      <img id="miner" src="https://github.com/user-attachments/assets/77044d3b-953d-491e-9005-8ecf1ba956f0" alt="Miner" class="miner">
+      <button id="start-mining" onclick="startMining()">Iniciar Minería</button>
+      <p id="mining-message" class="message">ATENCIÓN💬 Podrás minar gratis, pero no obtendrás ganancias. Para obtenerlas, deberás activar VIP.💬</p>
+      <p id="mining-status" class="message"></p>
+      <p id="timer" class="message"></p>
+    </div>
   </div>
 
   <div class="bottom-bar">
@@ -20,8 +24,8 @@
     <div class="button-circle" onclick="window.location.href='Invitados.html'">🎁</div>
     <div class="button-circle" onclick="window.location.href='Perfil.html'">🙍‍♂️</div>
   </div>
-  <div class="spacer"></div>
 
-  <script src="quantification.js"></script>
+  <div class="spacer"></div>
+  <script src=""></script>
 </body>
 </html>
