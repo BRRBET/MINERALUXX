@@ -1,45 +1,77 @@
-let timer = 24 * 60 * 60; // 24 hours in seconds
-let miningTimeout; // Variable for the mining timeout
-let countdownInterval; // Variable for the countdown timer interval
+// Selección de elementos
+const startMiningButton = document.getElementById("start-mining");
+const messageContainer = document.createElement("div");
+messageContainer.className = "message";
+document.body.appendChild(messageContainer);
+
+let miningTimer;
+let cooldownTimer;
 
 // Función para iniciar la minería
 function startMining() {
-  // Deshabilitar el botón mientras se está minando
-  const miningButton = document.getElementById("start-mining");
-  miningButton.disabled = true;
+  // Desactivar el botón durante la minería
+  startMiningButton.disabled = true;
+  startMiningButton.innerText = "Minando...";
 
-  // Actualizar el estado y simular minería
-  document.getElementById("mining-status").textContent = "Jeje, estoy picando... ¡Espérame!";
+  // Mostrar mensaje inicial
+  showMessage("💬 Estoy minando por ti, espera 30 segundos mientras mino tus ganancias...");
 
-  // Simular minería por 30 segundos
-  miningTimeout = setTimeout(() => {
-    // Cambiar el mensaje una vez finalice la minería
-    document.getElementById("mining-status").textContent = "Minería completada. ¡Cargando cronómetro!";
+  // Iniciar animación del pico
+  const pickaxe = document.querySelector(".pickaxe");
+  pickaxe.style.animationPlayState = "running";
 
-    // Iniciar el cronómetro de 24 horas
-    startTimer();
-  }, 30000); // 30 segundos
+  // Simular el proceso de minería durante 30 segundos
+  miningTimer = setTimeout(() => {
+    // Detener animación del pico
+    pickaxe.style.animationPlayState = "paused";
+
+    // Mostrar mensaje de minería completada
+    showMessage("✅ He terminado la minería, puedes ver tu balance.");
+
+    // Iniciar el cooldown de 24 horas
+    startCooldown();
+  }, 30000);
 }
 
-// Función para iniciar el cronómetro de 24 horas
-function startTimer() {
-  countdownInterval = setInterval(() => {
-    // Calcular horas, minutos y segundos
-    const hours = Math.floor(timer / 3600);
-    const minutes = Math.floor((timer % 3600) / 60);
-    const seconds = timer % 60;
+// Función para iniciar el cooldown
+function startCooldown() {
+  const countdownTime = 86400; // 24 horas en segundos
+  let remainingTime = countdownTime;
 
-    // Actualizar el texto del cronómetro
-    document.getElementById("timer").textContent = `Siguiente minería en: ${hours}:${minutes}:${seconds}`;
+  // Actualizar el texto del botón
+  startMiningButton.innerText = "En espera...";
+  startMiningButton.disabled = true;
 
-    // Disminuir el tiempo en un segundo
-    if (timer > 0) {
-      timer--;
-    } else {
-      // Cuando el cronómetro llegue a cero, habilitar el botón de minería nuevamente
-      clearInterval(countdownInterval); // Detener el cronómetro
-      document.getElementById("start-mining").disabled = false;
-      document.getElementById("mining-status").textContent = "¡Listo para minar nuevamente!";
+  // Mostrar cronómetro de cuenta regresiva
+  showMessage(`⏳ Espera 24 horas para volver a minar.`);
+
+  cooldownTimer = setInterval(() => {
+    remainingTime -= 1;
+    const hours = Math.floor(remainingTime / 3600);
+    const minutes = Math.floor((remainingTime % 3600) / 60);
+    const seconds = remainingTime % 60;
+
+    // Actualizar mensaje con el cronómetro
+    showMessage(`⏳ Tiempo restante: ${hours}h ${minutes}m ${seconds}s`);
+
+    // Cuando el tiempo se agote, reactivar el botón
+    if (remainingTime <= 0) {
+      clearInterval(cooldownTimer);
+      startMiningButton.disabled = false;
+      startMiningButton.innerText = "Iniciar Minería";
+      showMessage("🚀 ¡Puedes volver a minar!");
     }
-  }, 1000); // Actualizar cada segundo
+  }, 1000);
 }
+
+// Función para mostrar mensajes
+function showMessage(text) {
+  messageContainer.innerText = text;
+}
+
+// Asignar el evento al botón
+startMiningButton.addEventListener("click", startMining);
+
+// Inicializar animación pausada del pico
+const pickaxe = document.querySelector(".pickaxe");
+pickaxe.style.animationPlayState = "paused";
