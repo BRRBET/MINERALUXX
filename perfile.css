@@ -145,7 +145,6 @@ body {
   transform: scale(1.2);
   background: rgba(255, 255, 255, 0.6);  /* Cambio de opacidad al pasar el ratón */
 }
-
 /* Política de privacidad */
 .privacy-policy {
   font-size: 1rem;
