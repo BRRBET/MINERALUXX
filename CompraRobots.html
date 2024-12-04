@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarjetas de Retiro VIP</title>
+  <link rel="stylesheet" href="comprasbots.css">
+</head>
+<body>
+  <header>
+    <h1 class="main-title">Planes VIP de Retiros</h1>
+  </header>
+  <section class="cards-container">
+    <!-- Generar dinámicamente las tarjetas de VIP-1 a VIP-10 -->
+    <div class="card" id="vip-1">
+      <div class="ribbon">VIP-1</div>
+      <div class="card-content">
+        <h2>Inversión: 15 USDT</h2>
+        <p>Ganancias: 3 USDT diarios</p>
+        <p>Duración: 365 días</p>
+        <button onclick="location.href='comprarVIP1.html'">Comprar</button>
+      </div>
+    </div>
 
+    <!-- Más tarjetas VIP -->
+    <div class="card" id="vip-2">
+      <div class="ribbon">VIP-2</div>
+      <div class="card-content">
+        <h2>Inversión: 30 USDT</h2>
+        <p>Ganancias: 6 USDT diarios</p>
+        <p>Duración: 365 días</p>
+        <button onclick="location.href='comprarVIP2.html'">Comprar</button>
+      </div>
+    </div>
+
+    <!-- Repite para VIP-3 hasta VIP-10 -->
+    <div class="card" id="vip-10">
+      <div class="ribbon">VIP-10</div>
+      <div class="card-content">
+        <h2>Inversión: 150 USDT</h2>
+        <p>Ganancias: 30 USDT diarios</p>
+        <p>Duración: 365 días</p>
+        <button onclick="location.href='comprarVIP10.html'">Comprar</button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
