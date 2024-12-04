@@ -12,16 +12,14 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url('https://github.com/user-attachments/assets/7d2b3922-792d-4cc0-a90f-cdfeeb6e0501') no-repeat center center;
-  background-size: cover;
+  background: url('https://github.com/user-attachments/assets/7d2b3922-792d-4cc0-a90f-cdfeeb6e0501') no-repeat center center; /* Nueva imagen de la mina de oro */
+  background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-/* Contenedor del minero */
 .miner-container {
-  text-align: center;
+text-align: center;
 }
 
 #minerImage {
