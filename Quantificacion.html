@@ -1,34 +1,44 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minería</title>
-  <link rel="stylesheet" href="stylesquantificacion.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="mine-background">
-  <!-- Pico -->
-  <img id="pickaxe" class="pickaxe" src="https://github.com/user-attachments/assets/ab475fcc-defd-4f0f-ba38-e91b90d89ab0" alt="Pickaxe">
+  <!-- Título -->
+  <div class="header">
+    <h1>Minería Fácil</h1>
+    <p>¡Empieza a minar y obtén recompensas directamente en tu balance!</p>
+  </div>
 
-  <!-- Botón de minería -->
-  <button id="start-mining" onclick="startMining()">Iniciar Minería</button>
+  <!-- Contenido principal -->
+  <div class="main-content">
+    <button id="start-mining" class="action-button">Iniciar Minería</button>
+    <p id="mining-status" class="mining-status">Presiona "Iniciar Minería" para comenzar.</p>
+  </div>
 
-  <!-- Mensajes -->
-  <p id="mining-status" class="message">ATENCIÓN💬 Podrás minar gratis, pero no obtendrás ganancias. Para obtenerlas, deberás activar VIP.💬</p>
-  <p id="timer" class="message"></p>
-</div>
+  <!-- Explicación -->
+  <div class="explanation">
+    <h2>¿Cómo funciona?</h2>
+    <p>1. Presiona el botón para iniciar la minería.</p>
+    <p>2. La minería dura 30 segundos, tiempo durante el cual tus ganancias serán calculadas.</p>
+    <p>3. Después de cada ciclo, espera 24 horas para poder volver a minar.</p>
+  </div>
 
-<!-- Barra inferior de íconos -->
-<div class="bottom-bar">
-  <div class="button-circle" onclick="window.location.href='Home.html'">🏠</div>
-  <div class="button-circle" onclick="window.location.href='Retiros.html'">💰</div>
-  <div class="button-circle" onclick="window.location.href='CompraRobots.html'">🤖</div>
-  <div class="button-circle" onclick="window.location.href='Invitados.html'">🎁</div>
-  <div class="button-circle" onclick="window.location.href='Perfil.html'">🙍‍♂️</div>
-</div>
+  <!-- Barra inferior -->
+  <div class="bottom-bar">
+    <div class="button-circle" onclick="window.location.href='Home.html'">🏠</div>
+    <div class="button-circle" onclick="window.location.href='Retiros.html'">💰</div>
+    <div class="button-circle" onclick="window.location.href='CompraRobots.html'">🤖</div>
+    <div class="button-circle" onclick="window.location.href='Invitados.html'">🎁</div>
+    <div class="button-circle" onclick="window.location.href='Perfil.html'">🙍‍♂️</div>
+  </div>
 
-<div class="spacer"></div>
-  <script src="quantification.js"></script>
+  <div class="spacer"></div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
