@@ -3,50 +3,53 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url('https://github.com/user-attachments/assets/7d2b3922-792d-4cc0-a90f-cdfeeb6e0501') no-repeat center center;
+  background: url('https://github.com/user-attachments/assets/7d2b3922-792d-4cc0-a90f-cdfeeb6e0501') no-repeat center center fixed;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow: hidden;
 }
 
 /* Botón de Minería */
 #start-mining {
   position: relative;
   padding: 15px 40px;
-  background-color: #ffc107;
-  color: #000;
+  background-color: #f39c12; /* Color dorado */
+  color: #fff;
   font-size: 18px;
   font-weight: bold;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 #start-mining:hover {
   transform: scale(1.1);
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.5);
+  background-color: #e67e22;
 }
 
 #start-mining:disabled {
-  background-color: #ccc;
+  background-color: #bdc3c7;
   cursor: not-allowed;
 }
 
 /* Pico encima del botón */
 .pickaxe {
   position: absolute;
-  top: -50px; /* Encima del botón */
+  top: -70px; /* Encima del botón */
   left: 50%;
   transform: translateX(-50%);
-  width: 50px;
+  width: 70px;
   animation: pickaxeSwing 2s infinite;
 }
 
-/* Animación del pico (swing al picar) */
+/* Animación del pico (movimiento realista al picar) */
 @keyframes pickaxeSwing {
   0% {
     transform: translateX(-50%) rotate(0deg);
@@ -61,43 +64,50 @@
 
 /* Mensajes */
 .message {
-  font-size: 18px;
-  color: white;
-  margin-top: 10px;
+  font-size: 20px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 10px;
   text-align: center;
+  margin-top: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 /* Barra inferior */
 .bottom-bar {
   display: flex;
   justify-content: space-evenly;
-  background: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Fondo ligeramente oscuro */
   padding: 10px 0;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.5);
   visibility: visible;
 }
 
+/* Botones circulares de la barra */
 .button-circle {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  color: #fff;
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .button-circle:hover {
   transform: scale(1.2);
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .spacer {
   height: 150px;
-}
+  }
