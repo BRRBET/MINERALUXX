@@ -8,9 +8,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 10px;
-  overflow: hidden; /* Elimina el scroll */
-  height: 100vh; /* Asegura que ocupe toda la pantalla */
+  padding: 0;
+  overflow: hidden; /* Elimina desplazamiento */
+  height: 100vh; /* Fija la altura */
+  box-sizing: border-box; /* Para ajustar correctamente los elementos */
 }
 
 /* Título del Perfil */
@@ -18,7 +19,7 @@ body {
   font-size: 1.8rem;
   color: #00ffcc;
   text-align: center;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 /* Contenedor del Perfil */
@@ -26,32 +27,32 @@ body {
   background-color: #222222;
   padding: 20px;
   border-radius: 10px;
-  width: 100%;
+  width: 90%; /* Ajuste a pantalla */
   max-width: 400px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  margin-top: 5vh; /* Posiciona el perfil más arriba */
+  margin-top: 10px; /* Perfil más arriba */
 }
 
-/* Apartado del ID */
+/* ID del usuario */
 .perfil-id {
   font-size: 1rem;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   color: #aaa;
   text-align: center;
 }
 
-/* Información del perfil */
+/* Foto del perfil */
 .perfil-info {
   display: flex;
-  flex-direction: column; /* Columna para centrado */
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .perfil-photo {
-  font-size: 4rem; 
-  width: 100px;
-  height: 100px;
+  font-size: 3.5rem;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background-color: #00b3ff;
   display: flex;
@@ -68,7 +69,7 @@ body {
   text-align: center;
 }
 
-/* Balance y Recargas */
+/* Balance y recargas */
 .perfil-balance {
   display: flex;
   justify-content: space-between;
@@ -89,7 +90,7 @@ body {
 /* Botones */
 .button-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* Dos botones por fila */
   gap: 10px;
   width: 100%;
 }
@@ -110,30 +111,30 @@ body {
   background-color: #0077ff;
 }
 
-/* Barra inferior de botones */
+/* Barra inferior */
 .bottom-bar {
   display: flex;
-  justify-content: space-around; /* Ajusta los botones */
+  justify-content: space-around;
   align-items: center;
-  background: rgba(0, 0, 0, 0); /* Fondo transparente */
+  background: transparent;
   padding: 10px 0;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 60px; /* Altura fija */
+  height: 60px;
   z-index: 999;
 }
 
 .button-circle {
-  width: 50px; /* Tamaño ajustado */
+  width: 50px; /* Tamaño del botón */
   height: 50px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1rem; /* Tamaño del ícono */
+  font-size: 1.4rem; /* Tamaño del ícono */
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.3);
   transition: transform 0.3s ease, background 0.3s ease;
@@ -150,9 +151,4 @@ body {
   color: #aaa;
   text-align: center;
   margin-top: 10px;
-}
-
-/* Espaciador */
-.spacer {
-  height: 10px;
 }
