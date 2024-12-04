@@ -1,67 +1,43 @@
-/* General */
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #141414;
-  color: #f5f5f5;
+  color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding: 20px;
-  height: 100vh;
-  overflow: hidden;
 }
 
-/* Contenedor de Cuantificación */
 .quantification-container {
   text-align: center;
-  max-width: 600px;
-  margin: 20px;
-  padding: 20px;
-  background-color: #222;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Título de Cuantificación */
-.quantification-title {
-  font-size: 2rem;
-  color: #00ffcc;
-  margin-bottom: 20px;
-}
-
-/* Botón de Cuantificación */
-.start-button {
-  padding: 12px 25px;
-  font-size: 1.2rem;
+#start-btn {
   background-color: #00b3ff;
   color: white;
-  border: none;
-  border-radius: 8px;
+  padding: 12px 25px;
+  font-size: 1.2rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+  transition: background 0.3s;
 }
 
-.start-button:hover {
+#start-btn:hover {
   background-color: #0077ff;
 }
 
-/* Mensajes de Estado */
-.status-message {
-  font-size: 1.2rem;
-  margin-top: 20px;
-  color: #f5f5f5;
-}
-
-/* Animación de Cuantificación */
-.animation {
-  width: 50px;
-  height: 50px;
-  margin: 20px auto;
-  border: 5px solid transparent;
-  border-top: 5px solid #00b3ff;
+.mining-circle {
+  display: none;
+  width: 80px;
+  height: 80px;
+  border: 8px solid #00b3ff;
+  border-top: 8px solid transparent;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 2s linear infinite;
+  margin: 20px auto;
 }
 
 @keyframes spin {
@@ -69,49 +45,15 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* Cronómetro */
-.timer {
-  font-size: 1.5rem;
+#status {
   margin-top: 20px;
-  color: #ff9900;
-}
-
-/* Historial de Retiros */
-.withdrawals-container {
-  margin-top: 40px;
-  max-width: 600px;
-  width: 100%;
-  background-color: #222;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.withdrawals h3 {
-  font-size: 1.5rem;
-  color: #00ffcc;
-  margin-bottom: 15px;
-}
-
-.withdrawals {
-  font-size: 1rem;
-  color: #f5f5f5;
-  line-height: 1.5;
-  max-height: 300px;
-  overflow: hidden;
-}
-
-.withdrawal-item {
   font-size: 1.2rem;
-  color: #f5f5f5;
-  margin-bottom: 10px;
-  animation: fadeIn 2s ease-in-out infinite;
 }
 
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
+.countdown {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #ff0000;
 }
 .bottom-bar {
   display: flex;
@@ -145,7 +87,6 @@ body {
   background: rgba(255, 255, 255, 0.6);  /* Cambio de opacidad al pasar el ratón */
 }
 
-/* Espaciador */
 .spacer {
-  height: 100px;
+  height: 150px;
 }
