@@ -102,10 +102,10 @@
       100% { transform: translate(10px, 10px) rotate(30deg); }
     }
 
-    /* Barra de progreso */
+    /* Barra de progreso (Invisible) */
     .progress-container {
       width: 80%;
-      background-color: #333;
+      background-color: transparent;
       border-radius: 20px;
       overflow: hidden;
       margin: 15px auto;
@@ -178,7 +178,7 @@
 
     /* Spacer para contenido */
     .spacer {
-      height: 100px;
+      height: 150px;
     }
 
     /* Scoreboard */
@@ -260,8 +260,7 @@
 
     let remainingTime = 24 * 60 * 60; // 24 horas en segundos
     let cooldownTime = 24 * 60 * 60; // 24 horas en segundos
-
-    // Función// Función para actualizar el temporizador
+// Función para actualizar el temporizador
     function updateCountdown() {
       let hours = Math.floor(remainingTime / 3600);
       let minutes = Math.floor((remainingTime % 3600) / 60);
