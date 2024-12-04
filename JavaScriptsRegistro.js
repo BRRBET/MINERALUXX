@@ -5,17 +5,16 @@ document.getElementById('registerForm').addEventListener('submit', function (e) 
   const email = document.getElementById('email').value;
   const password1 = document.getElementById('password1').value;
   const password2 = document.getElementById('password2').value;
-  const password3 = document.getElementById('password3').value;
-  const password4 = document.getElementById('password4').value;
+  const invitationCode = document.getElementById('invitationCode').value;
 
   // Validar si algún campo está vacío
-  if (!email || !password1 || !password2 || !password3 || !password4) {
+  if (!email || !password1 || !password2 || !invitationCode) {
     alert('Por favor, completa todos los campos.');
     return;  // Detener la ejecución si falta algún campo
   }
 
   // Validar si las contraseñas coinciden
-  if (password1 !== password2 || password3 !== password4) {
+  if (password1 !== password2) {
     alert('Las contraseñas no coinciden.');
     return;  // Detener si las contraseñas no coinciden
   }
