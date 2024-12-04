@@ -3,22 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cuantificación</title>
-  <link rel="stylesheet" href="stylesquantificacion.css">
+  <title>Cuantificación Real</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <div class="quantification-container">
-    <h2 class="quantification-title">Dinámica de Cuantificación</h2>
+    <h2 class="quantification-title">Dinámica de Cuantificación Real</h2>
 
-    <!-- Botón bloqueado -->
-    <button id="startButton" class="start-button" disabled>Iniciar Cuantificación</button>
+    <!-- Botón de Cuantificación -->
+    <button id="startButton" class="start-button" onclick="startQuantification()">Iniciar Cuantificación</button>
 
-    <!-- Mensajes de inicio y finalización -->
+    <!-- Mensajes de Estado -->
     <div id="statusMessage" class="status-message"></div>
+
+    <!-- Animación de Cuantificación -->
+    <div id="animation" class="animation"></div>
 
     <!-- Cronómetro de 24 horas -->
     <div id="timer" class="timer"></div>
+  </div>
+
+  <div class="withdrawals-container">
+    <h3>Historial de Retiros</h3>
+    <div id="withdrawals" class="withdrawals"></div>
   </div>
 
   <div class="bottom-bar">
