@@ -1,12 +1,5 @@
-function validarRetiro() {
-  // Obtener los valores de los campos
-  const saldoDisponible = parseFloat(document.getElementById('balanceDisponible').innerText);
-  const montoRetiro = parseFloat(document.getElementById('montoRetiro').value);
-
-  // Validar si el monto de retiro es menor que el saldo disponible
-  if (isNaN(montoRetiro) || montoRetiro < 2 || montoRetiro > saldoDisponible) {
-    alert('Saldo insuficiente. Actualice su VIP para poder retirar.');
-  } else {
-    alert('Retiro realizado exitosamente.');
-  }
-}
+// Script para manejar el botón "Retirar"
+document.getElementById("retirar-btn").addEventListener("click", function () {
+  // Lógica para mostrar la alerta
+  alert("No se puede retirar por balance insuficiente. Actualice su VIP para retirar.");
+});
