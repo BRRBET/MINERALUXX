@@ -31,28 +31,25 @@ body {
   background: #1a1a1a; /* Fondo oscuro */
   padding: 20px;
   border-radius: 10px;
-  text-align: center;
   color: #ffffff;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   width: 90%;
-  max-width: 400px;
+  max-width: 600px; /* Aumentar ancho para mostrar opciones en línea */
+  display: flex; /* Mostrar los elementos en línea */
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
 }
 
-.modal-content h2 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
+.modal-content .option {
+  flex: 1; /* Ajustar ancho de cada opción */
+  text-align: center;
+}
+
+.modal-content .option h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
   color: #00ffcc; /* Verde neón */
-}
-
-.modal-content ul {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-.modal-content ul li {
-  font-size: 1.2rem;
-  margin: 10px 0;
 }
 
 .modal-content button {
