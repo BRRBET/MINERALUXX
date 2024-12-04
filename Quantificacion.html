@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,12 +15,14 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding: 20px;
+      padding: 0;
+      min-height: 100vh; /* Para que el contenido se extienda completamente */
       overflow: hidden; /* Evita el desplazamiento */
     }
 
     h1, p {
       text-align: center;
+      margin: 0 0 20px 0;
     }
 
     /* Círculo de minería */
@@ -35,18 +37,17 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      background-image: url('https://example.com/gold-mining.jpg'); /* Cambia a una URL válida */
+      background-image: url('https://www.example.com/gold-mining-background.jpg'); /* Cambia esta URL por la de tu fondo de minería */
       background-size: cover;
       background-position: center;
-      animation: none;
     }
 
     /* Pico animado */
     .mining-pick {
-      font-size: 2.5rem;
+      font-size: 3rem;
       color: #ffcc00;
       position: absolute;
-      top: 10%;
+      top: 20%;
       animation: mining-pick-animation 0.2s infinite alternate;
     }
 
@@ -112,14 +113,15 @@
       border: none;
       color: white;
       font-size: 0.9rem;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border-radius: 8px;
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
       transition: background-color 0.3s ease;
-      margin: 20px 0;
+      margin: 20px auto;
       width: 200px;
       text-align: center;
+      display: block;
     }
 
     .action-button:hover {
@@ -131,7 +133,8 @@
       font-size: 1rem;
       color: #ccc;
       text-align: center;
-      margin-top: 20px;
+      margin-top: 30px;
+      padding: 0 15px;
     }
 
     /* Barra inferior de navegación */
@@ -162,6 +165,11 @@
     .button-circle:hover {
       transform: scale(1.2);
       background: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Spacer entre elementos */
+    .spacer {
+      flex-grow: 1;
     }
   </style>
 </head>
@@ -203,6 +211,9 @@
     </div>
   </div>
 
+  <!-- Spacer -->
+  <div class="spacer"></div>
+
   <!-- Barra inferior de navegación -->
   <div class="bottom-bar">
     <div class="button-circle" onclick="alert('Home')">🏠</div>
@@ -231,23 +242,19 @@
       miningStatus.textContent = "¡Estoy minando por ti, ujuuu!";
       progressBar.style.width = "100%";
 
+      // Animar las partículas de oro
       goldParticles.forEach((particle) => {
         particle.style.animation = "gold-sparkle 1s infinite";
       });
 
       setTimeout(() => {
-        miningStatus.textContent = "¡Has minado con éxito! Beneficios añadidos a tu balance.";
+        miningStatus.textContent = "¡Has minado con éxito! Beneficios añadidos.";
+        miningButton.disabled = false;
         progressBar.style.width = "0%";
-        goldParticles.forEach((particle) => {
-          particle.style.animation = "none";
-        });
-
         miningCooldown = true;
         setTimeout(() => {
           miningCooldown = false;
-          miningButton.disabled = false;
-          miningStatus.textContent = "¡Puedes volver a minar!";
-        }, 86400000); // 24 horas en ms
+        }, 86400000); // 24 horas en milisegundos
       }, 30000); // Minería dura 30 segundos
     });
   </script>
