@@ -14,7 +14,7 @@ document.getElementById('registerForm').addEventListener('submit', function (e) 
   }
 
   alert('Registro exitoso. Redirigiendo...');
-  window.location.href = 'Home.html'; // Cambia a la página de éxito
+  window.location.href = "Home.html"; // Cambia a la página de éxito
 });
 
 // Redirigir al iniciar sesión
