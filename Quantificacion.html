@@ -31,6 +31,7 @@
       margin-top: 40px;
       text-align: center;
       animation: fadeIn 1s ease-in-out;
+      margin-bottom: 100px; /* Ajuste para que no se tapen los iconos */
     }
 
     /* Animación de entrada */
@@ -50,6 +51,14 @@
       font-size: 1rem;
       color: #ccc;
       margin-bottom: 10px;
+    }
+
+    /* Estilo de VIP */
+    .vip-info {
+      font-size: 1.2rem;
+      color: #ffcc00;
+      font-weight: bold;
+      margin-bottom: 20px;
     }
 
     /* Círculo de minería */
@@ -81,20 +90,6 @@
     @keyframes mining-pick-animation {
       0% { transform: translate(-10px, -10px) rotate(-30deg); }
       100% { transform: translate(10px, 10px) rotate(30deg); }
-    }
-
-    /* Mensaje de minería */
-    .mining-message {
-      font-size: 1.2rem;
-      color: #ffcc00;
-      margin-top: 20px;
-      animation: miningMessageAnimation 2s ease-out;
-      opacity: 0;
-    }
-
-    @keyframes miningMessageAnimation {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
     }
 
     /* Barra de progreso */
@@ -141,11 +136,6 @@
       font-weight: bold;
     }
 
-    /* Spacer para contenido */
-    .spacer {
-      height: 150px;
-    }
-
     /* Footer */
     .footer {
       color: #fff;
@@ -185,7 +175,6 @@
       transform: scale(1.2);
       background: rgba(255, 255, 255, 0.2);
     }
-
   </style>
 </head>
 <body>
@@ -204,9 +193,6 @@
       <div class="mining-pick">⛏️</div>
     </div>
 
-    <!-- Mensaje de minería -->
-    <div class="mining-message" id="mining-message">¡Estoy minando por ti, Ujuu!</div>
-
     <!-- Barra de progreso -->
     <div class="progress-container">
       <div class="progress-bar"></div>
@@ -217,16 +203,6 @@
 
     <!-- Cuenta regresiva de 24 horas -->
     <div class="countdown" id="countdown-timer">24:00:00</div>
-
-    <!-- Spacer para contenido -->
-    <div class="spacer"></div>
-
-    <!-- Explicación de la minería -->
-    <p><strong>¿Cómo funciona?</strong></p>
-    <p>1. Presiona "Iniciar Minería" para comenzar el proceso.</p>
-    <p>2. El proceso de minería dura 30 segundos.</p>
-    <p>3. Recibe tus ganancias directamente en tu balance.</p>
-    <p><strong>Beneficios de obtener VIP:</strong> Si eres VIP, tus ganancias se incrementan.</p>
 
     <div class="footer">
       <p>&copy; 2024 MINERALUX. Todos los derechos reservados.</p>
@@ -252,75 +228,61 @@
     // Leer el cronómetro de 24 horas desde localStorage
     let remainingTime = localStorage.getItem('remainingTime');
     if (!remainingTime) {
-      remainingTime = 24 * 60 * 60 * 1000; // 24 horas en miliseg<script>
-      // Variables
-      let miningStatus = document.getElementById("countdown-timer");
-      let progressBar = document.querySelector(".progress-bar");
-      let startMiningButton = document.getElementById("start-mining");
-      let miningMessage = document.getElementById("mining-message");
+      remainingTime = 24 * 60 * 60 * 1000; // 24 horas en milisegundos si no existe
+    }
 
-      // Leer el cronómetro de 24 horas desde localStorage
-      let remainingTime = localStorage.getItem('remainingTime');
-      if (!remainingTime) {
-        remainingTime = 24 * 60 * 60 * 1000; // 24 horas en milisegundos si no existe
+    // Función para actualizar el temporizador de 24 horas
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const endTime = now + remainingTime;
+
+      const distance = endTime - now;
+
+       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Actualizar el texto del temporizador
+      miningStatus.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+      // Si el tiempo se ha agotado, reiniciar
+      if (distance <= 0) {
+        clearInterval(countdownInterval);
+        miningStatus.textContent = "¡Tiempo de minería disponible!";
       }
+    }
 
-      // Función para actualizar el temporizador de 24 horas
-      function updateCountdown() {
-        const now = new Date().getTime();
-        const endTime = now + remainingTime;
+    // Actualizar el temporizador cada segundo
+    const countdownInterval = setInterval(updateCountdown, 1000);
 
-        const distance = endTime - now;
+    // Función para iniciar la minería
+    function startMining() {
+      // Iniciar animación de progreso
+      progressBar.style.width = "100%";
 
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      // Cambiar el texto del botón y deshabilitarlo
+      startMiningButton.textContent = "Minando...";
+      startMiningButton.disabled = true;
 
-        miningStatus.textContent = `${hours}:${minutes}:${seconds}`;
+      // Simulación de minería por 30 segundos
+      setTimeout(() => {
+        // Actualizar la interfaz después de la minería
+        progressBar.style.width = "0%";
+        startMiningButton.textContent = "Iniciar Minería";
+        startMiningButton.disabled = false;
 
-        if (distance <= 0) {
-          clearInterval(countdownInterval);
-          miningStatus.textContent = "¡Listo para minar nuevamente!";
-          remainingTime = 24 * 60 * 60 * 1000; // Resetear el tiempo después de 24 horas
-          localStorage.setItem('remainingTime', remainingTime);
-        }
-      }
+        // Simulación de ganancia y actualización del balance
+        let balance = parseFloat(localStorage.getItem('balance') || '0');
+        balance += 0.10; // Ganancia de 0.10 USDT
+        localStorage.setItem('balance', balance.toFixed(2)); // Guardar nuevo balance
 
-      // Llamar a la función para actualizar el tiempo al cargar la página
-      updateCountdown();
-      const countdownInterval = setInterval(updateCountdown, 1000);
+        // Redirigir a la página de perfil para mostrar el balance actualizado
+        window.location.href = 'https://brrbet.github.io/MINERALUX/Perfil.html';
+      }, 30000); // Duración de la minería (30 segundos)
+    }
 
-      // Función para iniciar la minería (30 segundos de duración)
-      function startMining() {
-        // Iniciar animación de progreso
-        progressBar.style.width = "100%";
-
-        // Cambiar el texto del botón y deshabilitarlo
-        startMiningButton.textContent = "Minando...";
-        startMiningButton.disabled = true;
-
-        // Mostrar mensaje de minería
-        miningMessage.style.opacity = 1;
-
-        // Simulación de minería por 30 segundos
-        setTimeout(() => {
-          // Actualizar la interfaz después de la minería
-          progressBar.style.width = "0%";
-          startMiningButton.textContent = "Iniciar Minería";
-          startMiningButton.disabled = false;
-
-          // Simulación de ganancia y actualización del balance
-          let balance = parseFloat(localStorage.getItem('balance') || '0');
-          balance += 0.10; // Ganancia de 0.10 USDT
-          localStorage.setItem('balance', balance.toFixed(2)); // Guardar nuevo balance
-
-          // Redirigir a la página de perfil para mostrar el balance actualizado
-          window.location.href = 'https://brrbet.github.io/MINERALUX/Perfil.html';
-        }, 30000); // Duración de la minería (30 segundos)
-      }
-
-      // Agregar evento al botón de minería
-      startMiningButton.addEventListener("click", startMining);
-    </script>
+    // Agregar evento al botón de minería
+    startMiningButton.addEventListener("click", startMining);
+  </script>
 </body>
 </html>
