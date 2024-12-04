@@ -16,8 +16,8 @@
       align-items: center;
       justify-content: flex-start;
       padding: 0;
-      min-height: 100vh;
-      overflow-y: scroll; /* Agregar barra de desplazamiento */
+      height: 100vh;
+      overflow-y: auto;
       background-image: url('https://github.com/user-attachments/assets/dbc9c673-0ffa-4637-9d13-61f7972ecdc3'); /* Imagen de fondo */
       background-size: cover;
       background-position: center;
@@ -44,14 +44,12 @@
       color: #00ffcc;
       font-size: 2.5rem;
       margin-bottom: 20px;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     }
 
     p {
-      font-size: 1.1rem;
-      color: #e0e0e0; /* Color más claro para mejor contraste */
+      font-size: 1rem;
+      color: #ccc;
       margin-bottom: 10px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     }
 
     /* Círculo de minería */
@@ -173,19 +171,21 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
+      background: transparent; /* Fondo transparente */
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
       font-size: 1.2rem;
       transition: transform 0.3s ease, background 0.3s ease;
+      border: 2px solid #fff; /* Borde blanco */
     }
 
     .button-circle:hover {
       transform: scale(1.2);
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.2);
     }
+
   </style>
 </head>
 <body>
@@ -252,8 +252,7 @@
     // Leer el cronómetro de 24 horas desde localStorage
     let remainingTime = localStorage.getItem('remainingTime');
     if (!remainingTime) {
-      // Si no existe en localStorage, lo inicializamos a 24 horas
-      remainingTime = 24 * 60 * 60 * 1000;
+      remainingTime = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
       localStorage.setItem('remainingTime', remainingTime);
     }
 
@@ -299,8 +298,13 @@
         startMiningButton.disabled = false;
         miningMessage.style.opacity = 0; // Ocultar el mensaje
 
+        // Simulación de ganancia y actualización del balance
+        let balance = parseFloat(localStorage.getItem('balance') || '0');
+        balance += 0.10; // Ganancia de 0.10 USDT
+        localStorage.setItem('balance', balance.toFixed(2)); // Guardar nuevo balance
+
         // Mensaje de confirmación
-        alert("Minería completada. ¡Has ganado!"); 
+        alert(`Minería completada. ¡Has ganado 0.10 USDT! Tu balance es ahora: ${balance.toFixed(2)} USDT`);
       }, 30000); // Duración de la minería (30 segundos)
     }
 
