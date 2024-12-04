@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: #141414;
+      background: linear-gradient(to bottom, #2e2e2e, #0f0f0f); /* Fondo degradado */
       color: #f5f5f5;
       display: flex;
       flex-direction: column;
@@ -22,6 +22,8 @@
     h1, p {
       text-align: center;
       margin: 0 0 20px 0;
+      font-size: 1.8rem;
+      color: #ffd700; /* Color dorado para títulos */
     }
 
     /* Círculo de minería */
@@ -136,6 +138,27 @@
       padding: 0 15px;
     }
 
+    /* Scoreboard */
+    .scoreboard {
+      background-color: #333;
+      border-radius: 10px;
+      width: 80%;
+      padding: 20px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .scoreboard h3 {
+      font-size: 1.5rem;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .scoreboard p {
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
     /* Barra inferior de navegación */
     .bottom-bar {
       display: flex;
@@ -168,7 +191,7 @@
 
     /* Spacer entre elementos */
     .spacer {
-      flex-grow: 3;
+      flex-grow: 1;
     }
   </style>
 </head>
@@ -208,6 +231,14 @@
       <p>Si eres miembro VIP, recibirás una bonificación adicional por cada ciclo de minería completado.</p>
       <p>¡Conviértete en VIP y maximiza tus beneficios!</p>
     </div>
+
+    <!-- Scoreboard -->
+    <div class="scoreboard">
+      <h3>Puntaje Actual</h3>
+      <p>Minería Realizada: 0</p>
+      <p>Beneficios VIP: 0</p>
+      <p>Tiempo Restante: 24 horas</p>
+    </div>
   </div>
 
   <!-- Spacer para desplazamiento -->
@@ -232,29 +263,35 @@
 
     miningButton.addEventListener("click", () => {
       if (miningCooldown) {
-        alert("Debes esperar 24 horas para minar de nuevo.");
+        alert("Debes esperar 24 horas para minar nuevamente.");
         return;
-      }
+      }// Iniciar el proceso de minería
+      miningCooldown = true;
+      miningStatus.textContent = "Minando... espera 30 segundos.";
 
-      // Inicia la minería
-      miningButton.disabled = true;
-      miningStatus.textContent = "¡Estoy minando por ti, ujuuu!";
-      progressBar.style.width = "100%";
-
-      // Animar las partículas de oro
-      goldParticles.forEach((particle) => {
+      // Partículas de oro animadas
+      goldParticles.forEach(particle => {
         particle.style.animation = "gold-sparkle 1s infinite";
       });
 
+      // Barra de progreso (simulación de minería durante 30 segundos)
+      progressBar.style.width = "100%";
+
+      // Esperar 30 segundos para simular la minería
       setTimeout(() => {
-        miningStatus.textContent = "¡Has minado con éxito! Beneficios añadidos.";
-        miningButton.disabled = false;
         progressBar.style.width = "0%";
-        miningCooldown = true;
+        miningStatus.textContent = "Minería completada. ¡Reclama tus recompensas!";
+        
+        // Restablecer partículas
+        goldParticles.forEach(particle => {
+          particle.style.animation = "none";
+        });
+
+        // Reiniciar el cooldown
         setTimeout(() => {
           miningCooldown = false;
-        }, 86400000); // 24 horas en milisegundos
-      }, 30000); // Minería dura 30 segundos
+        }, 86400000); // Esperar 24 horas (86400000 milisegundos)
+      }, 30000); // 30 segundos de minería
     });
   </script>
 </body>
