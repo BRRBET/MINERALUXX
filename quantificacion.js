@@ -1,40 +1,44 @@
-const mineButton = document.getElementById('mineButton');
-const minerImage = document.getElementById('minerImage');
-const statusMessage = document.getElementById('statusMessage');
+let miningActive = false;
+let timer = 24 * 60 * 60; // 24 hours in seconds
 
-// Configura el botón como activado desde el inicio
-mineButton.disabled = false;
+function startMining() {
+  // Desactivar el botón de minería mientras está en proceso
+  document.getElementById("start-mining").disabled = true;
 
-mineButton.addEventListener('click', () => {
-  // Cambiar mensaje y animar al enano
-  statusMessage.textContent = "Jeje estoy minando, ¡espera!";
-  minerImage.style.animation = "mining 0.5s infinite";
+  // Mostrar mensaje de inicio de minería
+  document.getElementById("mining-status").textContent = "Jeje, estoy picando... ¡Espérame!";
+  
+  // Iniciar la animación del enano picando
+  document.getElementById("miner").style.animationPlayState = "running";
 
-  // Inicia la minería por 30 segundos
+  // Esperar 30 segundos simulando minería
   setTimeout(() => {
-    minerImage.style.animation = "none";
-    alert("Minería completada exitosamente.");
-    
-    // Inicia un cronómetro de 24 horas
-    startCooldown();
-  }, 30000);
-});
+    // Detener la animación y cambiar el mensaje
+    document.getElementById("miner").style.animationPlayState = "paused";
+    document.getElementById("mining-status").textContent = "Minería completada. ¡Cargando cronómetro!";
 
-function startCooldown() {
-  mineButton.disabled = true;
-  let countdown = 24 * 60 * 60; // 24 horas en segundos
+    // Empezar el cronómetro de 24 horas
+    startTimer();
+  }, 30000); // 30 segundos de minería
+}
 
-  const interval = setInterval(() => {
-    countdown--;
-    const hours = Math.floor(countdown / 3600);
-    const minutes = Math.floor((countdown % 3600) / 60);
-    const seconds = countdown % 60;
-    mineButton.textContent = `Esperando ${hours}h ${minutes}m ${seconds}s`;
+function startTimer() {
+  // Iniciar el cronómetro de 24 horas
+  const countdownInterval = setInterval(() => {
+    const hours = Math.floor(timer / 3600);
+    const minutes = Math.floor((timer % 3600) / 60);
+    const seconds = timer % 60;
 
-    if (countdown <= 0) {
-      clearInterval(interval);
-      mineButton.disabled = false;
-      mineButton.textContent = "Iniciar Minería";
+    // Mostrar el tiempo restante
+    document.getElementById("timer").textContent = `Siguiente minería en: ${hours}:${minutes}:${seconds}`;
+
+    // Reducir el contador en un segundo
+    if (timer > 0) {
+      timer--;
+    } else {
+      clearInterval(countdownInterval);
+      document.getElementById("start-mining").disabled = false;
+      document.getElementById("mining-status").textContent = "¡Listo para minar nuevamente!";
     }
   }, 1000);
 }
