@@ -16,8 +16,8 @@
       align-items: center;
       justify-content: flex-start;
       padding: 0;
-      height: 100vh;
-      overflow-y: auto;
+      min-height: 100vh;
+      overflow-y: scroll; /* Agregar barra de desplazamiento */
       background-image: url('https://github.com/user-attachments/assets/dbc9c673-0ffa-4637-9d13-61f7972ecdc3'); /* Imagen de fondo */
       background-size: cover;
       background-position: center;
@@ -44,12 +44,14 @@
       color: #00ffcc;
       font-size: 2.5rem;
       margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     }
 
     p {
-      font-size: 1rem;
-      color: #ccc;
+      font-size: 1.1rem;
+      color: #e0e0e0; /* Color más claro para mejor contraste */
       margin-bottom: 10px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     }
 
     /* Círculo de minería */
