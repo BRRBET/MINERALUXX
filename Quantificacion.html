@@ -28,7 +28,7 @@
       width: 90%;
       max-width: 800px;
       padding: 20px;
-      margin-top: 40px;
+      margin-top: 30px; /* Ajustar para que no quede tapado por los iconos */
       text-align: center;
       animation: fadeIn 1s ease-in-out;
     }
@@ -81,20 +81,6 @@
     @keyframes mining-pick-animation {
       0% { transform: translate(-10px, -10px) rotate(-30deg); }
       100% { transform: translate(10px, 10px) rotate(30deg); }
-    }
-
-    /* Mensaje de minería */
-    .mining-message {
-      font-size: 1.2rem;
-      color: #ffcc00;
-      margin-top: 20px;
-      animation: miningMessageAnimation 2s ease-out;
-      opacity: 0;
-    }
-
-    @keyframes miningMessageAnimation {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
     }
 
     /* Barra de progreso */
@@ -171,7 +157,7 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: transparent; /* Fondo transparente */
+      background: transparent;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -186,14 +172,6 @@
       background: rgba(255, 255, 255, 0.2);
     }
 
-    /* Mensaje VIP */
-    .vip-message {
-      font-size: 1rem;
-      color: #ffcc00;
-      margin-top: 20px;
-      animation: fadeIn 1s ease-in-out;
-      opacity: 0;
-    }
   </style>
 </head>
 <body>
@@ -211,9 +189,6 @@
     <div class="mining-circle">
       <div class="mining-pick">⛏️</div>
     </div>
-
-    <!-- Mensaje de minería -->
-    <div class="mining-message" id="mining-message">¡Estoy minando por ti, Ujuu!</div>
 
     <!-- Barra de progreso -->
     <div class="progress-container">
@@ -236,8 +211,6 @@
     <p>3. Recibe tus ganancias directamente en tu balance.</p>
     <p><strong>Beneficios de obtener VIP:</strong> Si eres VIP, tus ganancias se incrementan.</p>
 
-    <div class="vip-message" id="vip-message">Para ver ganancias, ¡Mejora a VIP 1!</div>
-
     <div class="footer">
       <p>&copy; 2024 MINERALUX. Todos los derechos reservados.</p>
     </div>
@@ -257,8 +230,6 @@
     let miningStatus = document.getElementById("countdown-timer");
     let progressBar = document.querySelector(".progress-bar");
     let startMiningButton = document.getElementById("start-mining");
-    let miningMessage = document.getElementById("mining-message");
-    let vipMessage = document.getElementById("vip-message");
 
     // Leer el cronómetro de 24 horas desde localStorage
     let remainingTime = localStorage.getItem('remainingTime');
@@ -267,7 +238,7 @@
       localStorage.setItem('remainingTime', remainingTime);
     }
 
-    // Función para formatear el tiempo en formato HH:MM:SS
+  // Función para formatear el tiempo en formato HH:MM:SS
     function formatTime(ms) {
       let hours = Math.floor(ms / 1000 / 60 / 60);
       let minutes = Math.floor((ms / 1000 / 60) % 60);
@@ -294,9 +265,6 @@
       // Iniciar animación de progreso
       progressBar.style.width = "100%";
 
-      // Mostrar el mensaje de minería
-      miningMessage.style.opacity = 1;
-
       // Cambiar el texto del botón y deshabilitarlo
       startMiningButton.textContent = "Minando...";
       startMiningButton.disabled = true;
@@ -307,29 +275,19 @@
         progressBar.style.width = "0%";
         startMiningButton.textContent = "Iniciar Minería";
         startMiningButton.disabled = false;
-        miningMessage.style.opacity = 0; // Ocultar el mensaje
 
         // Simulación de ganancia y actualización del balance
         let balance = parseFloat(localStorage.getItem('balance') || '0');
         balance += 0.10; // Ganancia de 0.10 USDT
         localStorage.setItem('balance', balance.toFixed(2)); // Guardar nuevo balance
 
-        // Mensaje de confirmación
-        alert(`Minería completada. ¡Has ganado 0.10 USDT! Tu balance es ahora: ${balance.toFixed(2)} USDT`);
+        // Redirigir a la página de perfil para mostrar el balance actualizado
+        window.location.href = 'https://brrbet.github.io/MINERALUX/Perfil.html';
       }, 30000); // Duración de la minería (30 segundos)
     }
 
     // Agregar evento al botón de minería
     startMiningButton.addEventListener("click", startMining);
-
-    // Mostrar el mensaje VIP si el usuario tiene VIP 1
-    let vipLevel = localStorage.getItem('vipLevel') || '0';
-    if (vipLevel == '0') {
-      vipMessage.style.display = 'block'; // Mostrar mensaje si no es VIP
-    } else {
-      vipMessage.style.display = 'none'; // Ocultar mensaje si es VIP
-    }
-
   </script>
 
 </body>
