@@ -151,6 +151,13 @@
       width: 100%;
     }
 
+    .countdown {
+      font-size: 1.2rem;
+      color: #f5f5f5;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -163,6 +170,9 @@
   <div class="content">
     <!-- Círculo de minería -->
     <div class="mining-circle">
+      <a href="https://www.example.com/oro" target="_blank">
+        <img src="https://example.com/oro.jpg" alt="Imagen de oro" style="width: 100%; border-radius: 50%;">
+      </a>
       <div class="mining-pick">⛏️</div>
     </div>
 
@@ -193,6 +203,9 @@
 
     <!-- Spacer para que el contenido sea visible -->
     <div class="spacer"></div>
+
+    <!-- Cuenta regresiva de 24 horas -->
+    <div id="countdown" class="countdown"></div>
   </div>
 
   <!-- Barra inferior -->
@@ -204,12 +217,35 @@
     <div class="button-circle" onclick="window.location.href='Perfil.html'">🙍‍♂️</div>
   </div>
 
-  <!-- JavaScript para minería -->
+  <!-- JavaScript para minería y cuenta regresiva -->
   <script>
     let miningCooldown = false;
     const startMiningButton = document.getElementById('start-mining');
     const progressBar = document.getElementById('progress-bar');
     const miningStatus = document.getElementById('mining-status');
+    const countdownDisplay = document.getElementById('countdown');
+    let cooldownTime = 86400000; // 24 horas en milisegundos
+    let remainingTime = cooldownTime;
+
+    function updateCountdown() {
+      let hours = Math.floor(remainingTime / 3600000);
+      let minutes = Math.floor((remainingTime % 3600000) / 60000);
+      let seconds = Math.floor((remainingTime % 60000) / 1000);
+
+      hours = hours < 10 ? '0' + hours : hours;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+
+      countdownDisplay.textContent = `Tiempo restante para la próxima minería: ${hours}:${minutes}:${seconds}`;
+      remainingTime -= 1000;
+
+      if (remainingTime <= 0) {
+        miningCooldown = false;
+        remainingTime = cooldownTime;
+        countdownDisplay.textContent = "¡Puedes minar nuevamente!";
+        startMiningButton.disabled = false;
+      }
+    }
 
     startMiningButton.addEventListener('click', function() {
       if (miningCooldown) return;
@@ -225,17 +261,22 @@
       startMiningButton.disabled = true;
 
       setTimeout(() => {
-        progressBar.style.width = "0%";
-        miningStatus.textContent = "Minería completada. ¡Reclama tus recompensas!";
-        startMiningButton.disabled = false;
+          progressBar.style.width = "0%";
+          miningStatus.textContent = "Minería completada. ¡Reclama tus recompensas!";
+          
+          // Aquí, podrías actualizar los valores de minería, como la cantidad minada, etc.
 
-        // Resetear cooldown para que se pueda minar nuevamente después de 24 horas
-        setTimeout(() => {
-          miningCooldown = false;
-        }, 86400000); // 24 horas
-      }, 30000); // 30 segundos
+          // Habilitar el botón de inicio de minería
+          startMiningButton.disabled = false;
+
+          // Iniciar la cuenta regresiva después de terminar la minería
+          remainingTime = cooldownTime; // Resetear el tiempo
+          setInterval(updateCountdown, 1000); // Actualizar cada segundo
+        }, 30000); // 30 segundos para completar la minería
     });
-  </script>
 
+    // Actualizar la cuenta regresiva desde el inicio
+    setInterval(updateCountdown, 1000); // Actualizar cada segundo al inicio
+  </script>
 </body>
 </html>
