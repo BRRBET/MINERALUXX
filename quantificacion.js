@@ -1,23 +1,30 @@
-// Variables
 let startButton = document.getElementById("startButton");
 let statusMessage = document.getElementById("statusMessage");
 let timerElement = document.getElementById("timer");
+let animation = document.getElementById("animation");
+let withdrawalsContainer = document.getElementById("withdrawals");
 
-// Función de activación de VIP
-function unlockButton() {
-  startButton.disabled = false; // Desbloquear el botón
-  startButton.textContent = "Iniciar Cuantificación";
-}
+let withdrawalData = [
+  "⭐️Tjds********Nu. Retiro de 19 USDT",
+  "⭐️TBFH********Uv. Retiro de 10 USDT",
+  "⭐️TLHG********UC. Retiro de 25 USDT",
+  "⭐️TNBJ********UT. Retiro de 50 USDT",
+  "⭐️Tdsg********UH Retiro de 75 USDT"
+];
 
 // Función de Cuantificación
 function startQuantification() {
+  // Deshabilitar el botón
   startButton.disabled = true;
   startButton.textContent = "Cuantificación en proceso...";
 
   // Mostrar mensaje de inicio
   statusMessage.textContent = "Iniciando cuantificación... Espere la terminación de su cuantificación...";
 
-  // Animación de cuantificación (30 segundos)
+  // Activar la animación de carga
+  animation.style.display = "block";
+
+  // Simular proceso de cuantificación (30 segundos)
   setTimeout(() => {
     statusMessage.textContent = "Cuantificación completada.";
 
@@ -44,12 +51,22 @@ function startQuantification() {
     // Actualizar el cronómetro cada segundo
     let timerInterval = setInterval(updateTimer, 1000);
     updateTimer(); // Inicializar el cronómetro inmediatamente
-  }, 30000); // 30 segundos para completar la cuantificación
+
+    // Detener la animación de// Detener la animación de cuantificación una vez completada
+    animation.style.display = "none";
+
+    // Mostrar historial de retiros
+    let i = 0;
+    setInterval(() => {
+      if (i < withdrawalData.length) {
+        let withdrawalItem = document.createElement("div");
+        withdrawalItem.classList.add("withdrawal-item");
+        withdrawalItem.textContent = withdrawalData[i];
+        withdrawalsContainer.appendChild(withdrawalItem);
+        i++;
+      }
+    }, 2000); // Se añade un nuevo retiro cada 2 segundos
+
+  }, 30000); // La cuantificación dura 30 segundos
+
 }
-
-// Llamada para simular desbloqueo del botón al ingresar como VIP
-// Esto es solo un ejemplo. Debes integrar el método real para verificar si el usuario es VIP.
-setTimeout(unlockButton, 2000); // Después de 2 segundos, desbloquear el botón
-
-// Event listener para iniciar cuantificación al presionar el botón
-startButton.addEventListener("click", startQuantification);
