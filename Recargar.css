@@ -32,7 +32,8 @@ body {
 /* Opciones de recarga */
 .recarga-options {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;  /* Cambiado para apilar las imágenes */
+  gap: 20px;  /* Espacio entre las opciones */
   align-items: center;
   margin-top: 20px;
 }
@@ -44,13 +45,12 @@ body {
   align-items: center;
   cursor: pointer;
   text-align: center;
-  width: 45%;
+  width: 80%;
 }
 
 .recarga-image {
-  width: 100%;
+  width: 200px;  /* Ajusta el tamaño de la imagen */
   height: auto;
-  max-width: 150px;
   border-radius: 10px;
 }
 
@@ -96,4 +96,4 @@ body {
 /* Espaciador */
 .spacer {
   height: 100px;
-  }
+}
