@@ -13,64 +13,6 @@ body {
   box-sizing: border-box;
   overflow-x: hidden;
 }
-/* Estilo del Modal */
-/* Estilo del Modal */
-.modal {
-  display: none; /* Ocultar por defecto */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semitransparente */
-  justify-content: center;
-  align-items: center;
-  z-index: 200; /* Sobre el resto de elementos */
-}
-
-.modal-content {
-  background: #1a1a1a; /* Fondo oscuro */
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  color: #ffffff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  width: 90%;
-  max-width: 400px;
-}
-
-.modal-content h2 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  color: #00ffcc; /* Verde neón */
-}
-
-.modal-content ul {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-.modal-content ul li {
-  font-size: 1.2rem;
-  margin: 10px 0;
-}
-
-.modal-content button {
-  padding: 10px 20px;
-  background: linear-gradient(145deg, #0077ff, #00b3ff); /* Azul degradado */
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.modal-content button:hover {
-  background: linear-gradient(145deg, #00b3ff, #0077ff);
-  transform: scale(1.1);
-}
 /* Icono superior izquierdo */
 .icono-superior-izquierdo {
   position: absolute;
