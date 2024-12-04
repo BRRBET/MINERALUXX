@@ -16,8 +16,9 @@
       align-items: center;
       justify-content: flex-start;
       padding: 0;
-      height: 100vh;
+      height: 100%;
       overflow-x: hidden;
+      overflow-y: auto; /* Permitir desplazamiento vertical */
     }
 
     /* Fondo con imagen */
@@ -31,7 +32,7 @@
       background-size: cover;
       background-position: center;
       z-index: -1;
-      opacity: 0.5;
+      opacity: 0.6;
     }
 
     /* Contenedor principal */
@@ -40,7 +41,7 @@
       max-width: 800px;
       text-align: center;
       padding: 20px;
-      z-index: 2;
+      z-index: 1; /* Asegurarse de que el contenido esté sobre el fondo */
     }
 
     /* Título */
@@ -61,13 +62,12 @@
       display: flex;
       justify-content: center;
       margin-bottom: 20px;
-      color: #fff;
-      font-size: 1rem;
     }
 
     .vip-info span, .mining-info span {
-      margin: 0 15px;
       font-size: 1.2rem;
+      color: #fff;
+      margin: 0 15px;
     }
 
     .vip-info {
@@ -133,7 +133,6 @@
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
       transition: background-color 0.3s ease;
-      margin-bottom: 20px;
     }
 
     .action-button:hover {
@@ -146,6 +145,11 @@
       color: #fff;
       margin-top: 20px;
       font-weight: bold;
+    }
+
+    /* Spacer para contenido */
+    .spacer {
+      height: 150px;
     }
 
     /* Barra inferior de navegación */
@@ -178,44 +182,6 @@
       transform: scale(1.2);
       background: rgba(255, 255, 255, 0.6);
     }
-
-    /* Spacer para contenido */
-    .spacer {
-      height: 150px;
-    }
-
-    /* Scoreboard */
-    .scoreboard {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      padding: 10px 15px;
-      background-color: rgba(0, 0, 0, 0.7);
-      border-radius: 10px;
-      color: #fff;
-      font-size: 1rem;
-      z-index: 10;
-    }
-
-    /* Información VIP y minería */
-    .vip-info {
-      font-size: 1.2rem;
-      color: #00ffcc;
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .mining-info {
-      color: #fff;
-      font-size: 1rem;
-      margin-top: 10px;
-    }
-
-    .vip-info span, .mining-info span {
-      display: block;
-      margin: 5px 0;
-    }
-
   </style>
 </head>
 <body>
@@ -223,16 +189,14 @@
   <!-- Fondo con imagen -->
   <div class="background"></div>
 
-  <!-- Barra de Scoreboard -->
-  <div class="scoreboard">
-    <p>VIP: 0-0</p>
-    <p>Cantidad Minada: $00.00</p>
-    <p>Veces Minadas: 00.00</p>
-  </div>
-
   <div class="container">
     <h1>Minería MINERALUX</h1>
     <p>¡Empieza a minar y obtén recompensas directamente en tu balance!</p>
+
+    <!-- Información VIP -->
+    <div class="vip-info">
+      <span>VIP: 0</span>
+    </div>
 
     <!-- Círculo de minería -->
     <div class="mining-circle">
@@ -246,13 +210,6 @@
 
     <!-- Botón de minería -->
     <button class="action-button" id="start-mining">Iniciar Minería</button>
-
-    <!-- Información VIP y minería -->
-    <div class="vip-info">
-      <span>VIP: 0</span>
-      <span>Cantidad Minada: $00.00</span>
-      <span>Veces Minadas: 00</span>
-    </div>
 
     <!-- Cuenta regresiva de 24 horas -->
     <div class="countdown" id="countdown-timer">24:00:00</div>
