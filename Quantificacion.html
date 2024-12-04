@@ -3,42 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minería Mejorada</title>
+  <title>Minería Avanzada</title>
   <style>
-    /* General */
+    /* Estilos generales */
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
       background-color: #141414;
       color: #f5f5f5;
-      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
+      justify-content: flex-start;
+      padding: 20px;
+      overflow: hidden; /* Evita el desplazamiento */
     }
 
-    /* Encabezado */
-    .header {
-      margin-bottom: 15px;
-    }
-
-    .header h1 {
-      font-size: 1.8rem;
-      color: #00ffcc;
-      margin: 0;
-    }
-
-    .header p {
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-
-    /* Contenido principal */
-    .main-content {
-      position: relative;
-      margin-top: 15px;
+    h1, p {
+      text-align: center;
     }
 
     /* Círculo de minería */
@@ -48,21 +30,23 @@
       border: 8px solid #333;
       border-top: 8px solid #00ffcc;
       border-radius: 50%;
-      margin: 0 auto 15px auto;
+      margin: 20px auto 15px auto;
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
+      background-image: url('https://example.com/gold-mining.jpg'); /* Cambia a una URL válida */
+      background-size: cover;
+      background-position: center;
       animation: none;
     }
 
-    /* Pico */
+    /* Pico animado */
     .mining-pick {
       font-size: 2.5rem;
-      color: #00b3ff;
+      color: #ffcc00;
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 20%;
       animation: none;
     }
 
@@ -73,6 +57,32 @@
       100% {
         transform: translate(10px, 5px) rotate(30deg);
       }
+    }
+
+    /* Animación de partículas de oro */
+    @keyframes gold-sparkle {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(0);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1) translateY(-10px);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.8) translateY(0);
+      }
+    }
+
+    /* Partículas de oro */
+    .gold-particles {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ffd700;
+      border-radius: 50%;
+      animation: none;
     }
 
     /* Barra de progreso */
@@ -88,7 +98,7 @@
     .progress-bar {
       width: 0%;
       height: 100%;
-      background: linear-gradient(90deg, #00ffcc, #0077ff);
+      background: linear-gradient(90deg, #ffd700, #ff8c00);
       border-radius: 20px;
       transition: width 30s linear;
     }
@@ -110,100 +120,116 @@
       background-color: #0077ff;
     }
 
-    /* Barra inferior de iconos */
+    /* Iconos de navegación */
     .bottom-bar {
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-around;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 0;
       position: fixed;
       bottom: 0;
+      left: 0;
       width: 100%;
-      background-color: #141414;
-      padding: 10px 0;
-      box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5);
     }
 
     .button-circle {
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      background-color: #333;
+      background: rgba(255, 255, 255, 0.3);
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #00ffcc;
-      font-size: 1.2rem;
       cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.3s ease;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease, background 0.3s ease;
     }
 
     .button-circle:hover {
-      transform: scale(1.1);
-      background-color: #00b3ff;
-    }
-
-    .spacer {
-      height: 50px;
+      transform: scale(1.2);
+      background: rgba(255, 255, 255, 0.6);
     }
   </style>
 </head>
 <body>
-  <!-- Título -->
-  <div class="header">
-    <h1>Minería MINERALUX</h1>
-    <p>¡Empieza a minar y obtén recompensas directamente en tu balance!</p>
-  </div>
-
   <!-- Contenido principal -->
+  <h1>Minería MINERALUX</h1>
+  <p>¡Empieza a minar y obtén recompensas directamente en tu balance!</p>
+
   <div class="main-content">
-    <div class="mining-circle" id="mining-circle">
-      <span class="mining-pick" id="mining-pick">⛏️</span>
+    <!-- Círculo de minería -->
+    <div class="mining-circle">
+      <div class="mining-pick">⛏️</div>
+      <!-- Partículas de oro -->
+      <div class="gold-particles" style="top: 60%; left: 40%;"></div>
+      <div class="gold-particles" style="top: 50%; left: 70%;"></div>
+      <div class="gold-particles" style="top: 40%; left: 30%;"></div>
     </div>
+
+    <!-- Barra de progreso -->
     <div class="progress-container">
-      <div class="progress-bar" id="progress-bar"></div>
+      <div class="progress-bar"></div>
     </div>
+
+    <!-- Mensaje de minería -->
+    <p id="mining-status">Presiona "Iniciar Minería" para comenzar.</p>
+
+    <!-- Botón de minería -->
     <button id="start-mining" class="action-button">Iniciar Minería</button>
-    <p id="mining-status" class="mining-status">Presiona "Iniciar Minería" para comenzar.</p>
   </div>
 
-  <!-- Barra inferior -->
+  <!-- Barra inferior de navegación -->
   <div class="bottom-bar">
-    <div class="button-circle" onclick="window.location.href='Home.html'">🏠</div>
-    <div class="button-circle" onclick="window.location.href='Retiros.html'">💰</div>
-    <div class="button-circle" onclick="window.location.href='CompraRobots.html'">🤖</div>
-    <div class="button-circle" onclick="window.location.href='Invitados.html'">🎁</div>
-    <div class="button-circle" onclick="window.location.href='Perfil.html'">🙍‍♂️</div>
+    <div class="button-circle" onclick="alert('Home')">🏠</div>
+    <div class="button-circle" onclick="alert('Retiros')">💰</div>
+    <div class="button-circle" onclick="alert('Robots')">🤖</div>
+    <div class="button-circle" onclick="alert('Invitados')">🎁</div>
+    <div class="button-circle" onclick="alert('Perfil')">🙍‍♂️</div>
   </div>
-  <div class="spacer"></div>
 
-  <!-- JavaScript -->
+  <!-- Script -->
   <script>
-    const miningCircle = document.getElementById('mining-circle');
-    const miningPick = document.getElementById('mining-pick');
-    const progressBar = document.getElementById('progress-bar');
-    const miningStatus = document.getElementById('mining-status');
-    const startButton = document.getElementById('start-mining');
+    const miningButton = document.getElementById("start-mining");
+    const progressBar = document.querySelector(".progress-bar");
+    const miningStatus = document.getElementById("mining-status");
+    const goldParticles = document.querySelectorAll(".gold-particles");
+    let miningCooldown = false;
 
-    startButton.addEventListener('click', () => {
-      miningCircle.style.animation = 'spin 30s linear infinite';
-      miningPick.style.animation = 'mining-pick-animation 0.5s infinite alternate';
-      progressBar.style.width = '100%';
-      miningStatus.textContent = '¡Estoy minando por ti, ujuuu!';
-      startButton.disabled = true;
+    miningButton.addEventListener("click", () => {
+      if (miningCooldown) {
+        alert("Debes esperar 24 horas para minar de nuevo.");
+        return;
+      }
+
+      // Inicia la minería
+      miningButton.disabled = true;
+      miningStatus.textContent = "¡Estoy minando por ti, ujuuu!";
+      progressBar.style.width = "100%";
+
+      goldParticles.forEach((particle) => {
+        particle.style.animation = "gold-sparkle 1s infinite";
+      });
 
       setTimeout(() => {
-        miningCircle.style.animation = 'none';
-        miningPick.style.animation = 'none';
-        progressBar.style.width = '0%';
-
-        const tieneVip = confirm('¿Tienes VIP activado?');
-        if (tieneVip) {
-          miningStatus.textContent = '¡Minería completada! Beneficio VIP aplicado.';
+        const hasVIP = confirm("¿Tienes VIP?");
+        if (hasVIP) {
+          miningStatus.textContent = "¡Has minado con éxito! Beneficios añadidos a tu balance.";
         } else {
-          miningStatus.textContent = 'Minería completada. Mejora a VIP para obtener beneficios.';
+          miningStatus.textContent = "¡Has minado! Mejora a VIP para obtener beneficios.";
         }
 
-        startButton.disabled = false;
-      }, 30000);
+        progressBar.style.width = "0%";
+        goldParticles.forEach((particle) => {
+          particle.style.animation = "none";
+        });
+
+        miningCooldown = true;
+        setTimeout(() => {
+          miningCooldown = false;
+          miningButton.disabled = false;
+          miningStatus.textContent = "¡Puedes volver a minar!";
+        }, 86400000); // 24 horas en ms
+      }, 30000); // Minería dura 30 segundos
     });
   </script>
 </body>
