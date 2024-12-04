@@ -1,72 +1,52 @@
 body {
+  background: #0b132b;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(45deg, #141e30, #243b55);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
+  padding: 0;
 }
 
 .miner-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  margin-top: 20vh;
 }
 
-.miner {
-  width: 200px;
-  height: 200px;
-  position: relative;
-}
-
-.miner img {
-  width: 100%;
+#minerImage {
+  width: 150px;
   height: auto;
-  animation: idle 1s infinite alternate;
+  animation: none;
+  margin: 20px auto;
 }
 
-@keyframes idle {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-10px); }
-}
-
-@keyframes mining {
-  0%, 100% { transform: rotate(-15deg); }
-  50% { transform: rotate(15deg); }
-}
-
-.mine-button {
+button {
   padding: 10px 20px;
-  font-size: 1.2rem;
-  color: #fff;
-  background: #0077ff;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
   border: none;
-  border-radius: 8px;
-  cursor: not-allowed;
-  transition: background 0.3s ease;
-}
-
-.mine-button:enabled {
+  border-radius: 5px;
   cursor: pointer;
-  background: #00cc66;
 }
 
-.mine-button:hover:enabled {
-  background: #00994d;
+button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
 }
 
-.attention-message {
-  text-align: center;
-  color: #ffcc00;
-  font-size: 0.9rem;
+#statusMessage {
+  margin-top: 10px;
+  color: yellow;
+  font-size: 14px;
 }
 
+/* Animación del enano */
+@keyframes mining {
+  0% { transform: rotate(0); }
+  50% { transform: rotate(-10deg); }
+  100% { transform: rotate(0); }
+}
+
+/* Estilo para la barra inferior */
 .bottom-bar {
   display: flex;
   justify-content: space-evenly;
