@@ -45,7 +45,8 @@
   top: -70px; /* Encima del botón */
   left: 50%;
   transform: translateX(-50%);
-  width: 70px;
+  width: 30px;
+  height: 30px;
   animation: pickaxeSwing 2s infinite;
 }
 
