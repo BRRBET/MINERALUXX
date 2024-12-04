@@ -53,9 +53,7 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      background-image: url('https://example.com/golden-mines.png'); /* Fondo dorado */
-      background-size: cover;
-      background-position: center;
+      animation: none;
     }
 
     /* Pico */
@@ -75,28 +73,6 @@
       100% {
         transform: translate(10px, 5px) rotate(30deg);
       }
-    }
-
-    /* Animación de minas de oro */
-    @keyframes gold-mining-animation {
-      0% {
-        opacity: 0;
-        transform: translate(0, 0);
-      }
-      100% {
-        opacity: 1;
-        transform: translate(5px, 5px);
-      }
-    }
-
-    .gold-mining {
-      font-size: 2rem;
-      color: gold;
-      position: absolute;
-      top: 10%;
-      left: 10%;
-      animation: gold-mining-animation 1s forwards;
-      display: none;
     }
 
     /* Barra de progreso */
@@ -168,13 +144,6 @@
     .spacer {
       height: 50px;
     }
-
-    /* Cronómetro */
-    .timer {
-      margin-top: 10px;
-      font-size: 1.1rem;
-      color: #ccc;
-    }
   </style>
 </head>
 <body>
@@ -188,14 +157,12 @@
   <div class="main-content">
     <div class="mining-circle" id="mining-circle">
       <span class="mining-pick" id="mining-pick">⛏️</span>
-      <span class="gold-mining" id="gold-mining">💰</span>
     </div>
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar"></div>
     </div>
     <button id="start-mining" class="action-button">Iniciar Minería</button>
     <p id="mining-status" class="mining-status">Presiona "Iniciar Minería" para comenzar.</p>
-    <div id="timer" class="timer"></div>
   </div>
 
   <!-- Barra inferior -->
@@ -206,7 +173,6 @@
     <div class="button-circle" onclick="window.location.href='Invitados.html'">🎁</div>
     <div class="button-circle" onclick="window.location.href='Perfil.html'">🙍‍♂️</div>
   </div>
-
   <div class="spacer"></div>
 
   <!-- JavaScript -->
@@ -216,77 +182,29 @@
     const progressBar = document.getElementById('progress-bar');
     const miningStatus = document.getElementById('mining-status');
     const startButton = document.getElementById('start-mining');
-    const goldMining = document.getElementById('gold-mining');
-    const timerDisplay = document.getElementById('timer');
-    let miningCooldown = false;
-    let cooldownTime = 0;  // Tiempo de cooldown en segundos
-
-    const updateTimerDisplay = () => {
-      const hours = Math.floor(cooldownTime / 3600);
-      const minutes = Math.floor((cooldownTime % 3600) / 60);
-      const seconds = cooldownTime % 60;
-      timerDisplay.textContent = `Tiempo restante: ${hours}:${minutes}:${seconds}`;
-    };
-
-    // Función para actualizar el cronómetro
-    const startCooldownTimer = () => {
-      const interval = setInterval(() => {
-        if (cooldownTime > 0) {
-          cooldownTime--;
-          updateTimerDisplay();
-        } else {
-          clearInterval(interval);
-          miningCooldown = false;
-          updateTimerDisplay();
-          startButton.disabled = false;
-        }
-      }, 1000);
-    };
 
     startButton.addEventListener('click', () => {
-      if (miningCooldown) {
-        miningStatus.textContent = 'Debes esperar 24 horas antes de minar nuevamente.';
-        return;
-      }
-
       miningCircle.style.animation = 'spin 30s linear infinite';
       miningPick.style.animation = 'mining-pick-animation 0.5s infinite alternate';
       progressBar.style.width = '100%';
       miningStatus.textContent = '¡Estoy minando por ti, ujuuu!';
-      goldMining.style.display = 'block';
       startButton.disabled = true;
 
       setTimeout(() => {
         miningCircle.style.animation = 'none';
         miningPick.style.animation = 'none';
         progressBar.style.width = '0%';
-        goldMining.style.display = 'none';
 
-        // Verificación VIP
-        const tieneVip = confirm('¿No Tienes un  VIP activado?');
+        const tieneVip = confirm('¿Tienes VIP activado?');
         if (tieneVip) {
-          miningStatus.textContent = '¡Felicidades! Has minado exitosamente y obtuviste tus beneficios VIP.';
+          miningStatus.textContent = '¡Minería completada! Beneficio VIP aplicado.';
         } else {
-          miningStatus.textContent = '¡Felicidades! Has minado, pero para obtener beneficios, necesitas VIP.';
+          miningStatus.textContent = 'Minería completada. Mejora a VIP para obtener beneficios.';
         }
 
-        // Iniciar el cronómetro de cooldown de 24 horas
-        miningCooldown = true;
-        cooldownTime = 86400;  // 24 horas en segundos
-        startCooldownTimer();
-        updateTimerDisplay();
-      }, 30000); // Minería toma 30 segundos para completarse
+        startButton.disabled = false;
+      }, 30000);
     });
-
-    // Para efectos adicionales: rotación de círculo
-    @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
   </script>
 </body>
 </html>
