@@ -1,30 +1,42 @@
+
 // Variables globales
 let isQuantifying = false; // Para controlar si el proceso de cuantificación está activo
 let quantificationEndTime = 0; // Para almacenar el tiempo de fin de la cuantificación
-let withdrawals = [
-  { amount: "19 USDT", description: "Retiro de T*FJ****sjs**V" },
-  { amount: "50 USDT", description: "Retiro de T*JS****UnS**NU" },
-  { amount: "30 USDT", description: "Retiro de T*NV****UNS**TU" }
-];
+let hasUpdatedVip = false; // Variable para controlar si el usuario ha actualizado a VIP
+let balance = 5; // Suponiendo que el balance inicial es 5 USDT (puedes cambiarlo a tu lógica real)
 
 // Iniciar el proceso de cuantificación
 function startQuantification() {
   if (isQuantifying) return; // Si ya está en proceso, no permitir que inicie otra cuantificación
 
-  // Desactivar el botón y mostrar la animación
-  document.getElementById("start-btn").disabled = true;
-  document.getElementById("loading").style.display = 'block';
-  document.getElementById("status").innerText = "Iniciando cuantificación... Espere.";
+  // Si el usuario no ha actualizado a VIP, mostrar alerta y terminar
+  if (!hasUpdatedVip) {
+    alert("¡Debes actualizar a VIP para realizar la cuantificación!");
+    return;
+  }
 
-  // Simular un proceso de cuantificación de 30 segundos
+  // Verificar el balance para cuantificar
+  if (balance < 10) {
+    alert("El saldo es insuficiente. El mínimo de recarga es 10 USDT.");
+    return;
+  }
+
+  // Activar la animación del círculo de minería
+  document.getElementById("mining-circle").style.display = 'block';
+  document.getElementById("status").innerText = "Minería en proceso...";
+
+  // Simular la minería durante 30 segundos
   setTimeout(() => {
     isQuantifying = true;
-    document.getElementById("status").innerText = "Cuantificación completada!";
-    startCooldown(); // Iniciar el cooldown de 24 horas
+    document.getElementById("status").innerText = "Minería exitosa!";
+    startCooldown(); // Iniciar el cronómetro de 24 horas
+    document.getElementById("mining-circle").style.display = 'none'; // Ocultar el círculo
 
-    // Mostrar los resultados del retiro después de la cuantificación
-    showWithdrawals();
-  }, 30000); // 30 segundos de simulación
+    // Actualizar el balance y mostrar los resultados
+    balance += 20; // Ejemplo: la cuantificación aumenta el balance
+    showWithdrawals(); // Mostrar el historial de retiros
+    alert("¡Minería completada con éxito! El saldo ha sido actualizado.");
+  }, 30000); // 30 segundos de minería
 }
 
 // Iniciar el cronómetro de 24 horas
@@ -44,9 +56,8 @@ function updateCountdown() {
   let remainingTime = quantificationEndTime - Date.now();
   if (remainingTime <= 0) {
     document.getElementById("start-btn").disabled = false; // Rehabilitar el botón después de 24 horas
-    document.getElementById("loading").style.display = 'none'; // Ocultar la animación de carga
-    document.getElementById("countdown").style.display = 'none'; // Ocultar el cronómetro
     document.getElementById("status").innerText = "Puedes volver a cuantificar!";
+    document.getElementById("countdown").style.display = 'none'; // Ocultar el cronómetro
   } else {
     let hours = Math.floor(remainingTime / (1000 * 60 * 60));
     let minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
@@ -65,6 +76,12 @@ function showWithdrawals() {
   const container = document.getElementById("withdrawals-container");
   container.innerHTML = ''; // Limpiar el contenedor
 
+  const withdrawals = [
+    { amount: "19 USDT", description: "Retiro de Tjfjsjskskfk" },
+    { amount: "50 USDT", description: "Retiro de Qwertyuiop" },
+    { amount: "30 USDT", description: "Retiro de Asdfghjkl" }
+  ];
+
   withdrawals.forEach(withdrawal => {
     const withdrawalItem = document.createElement("div");
     withdrawalItem.classList.add("withdrawal-item");
@@ -75,19 +92,8 @@ function showWithdrawals() {
   });
 }
 
-// Llamar a la función de retiro infinita para mostrarla en pantalla
-function showInfiniteWithdrawals() {
-  let i = 0;
-  setInterval(() => {
-    let withdrawal = withdrawals[i % withdrawals.length];
-    let withdrawalItem = document.createElement("div");
-    withdrawalItem.classList.add("withdrawal-item");
-    withdrawalItem.innerHTML = `
-      ⭐️ ${withdrawal.amount} - ${withdrawal.description}
-    `;
-    document.getElementById("withdrawals-container").appendChild(withdrawalItem);
-    i++;
-  }, 3000); // Intervalo de 3 segundos entre cada retiro
+// Función para actualizar el estado de VIP
+function updateVipStatus() {
+  hasUpdatedVip = true;
+  alert("¡Ahora eres VIP! Puedes comenzar a cuantificar.");
 }
-
-showInfiniteWithdrawals(); // Iniciar la animación infinita de los retiros
