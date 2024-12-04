@@ -39,36 +39,48 @@
     /* Contenido principal */
     .main-content {
       position: relative;
+      margin-top: 20px;
     }
 
     /* Círculo de minería */
     .mining-circle {
-      width: 180px;
-      height: 180px;
-      border: 8px solid #333;
-      border-top: 8px solid #00ffcc;
+      width: 200px;
+      height: 200px;
+      border: 10px solid #333;
+      border-top: 10px solid #00ffcc;
       border-radius: 50%;
-      margin: 20px auto;
+      margin: 0 auto 20px auto;
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       animation: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     /* Pico animado */
     .mining-pick {
       font-size: 3rem;
       color: #00b3ff;
+      position: absolute;
+      top: 50%;
       animation: mining-pick-animation 0.5s infinite alternate;
     }
 
     @keyframes mining-pick-animation {
       0% {
-        transform: translateY(0);
+        transform: translateY(-10px) rotate(-30deg);
       }
       100% {
-        transform: translateY(10px);
+        transform: translateY(10px) rotate(30deg);
       }
     }
 
@@ -79,16 +91,6 @@
       width: 100%;
       font-size: 1rem;
       color: #ccc;
-      animation: fade-in 1s ease-in-out;
-    }
-
-    @keyframes fade-in {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
     }
 
     /* Barra de progreso */
@@ -124,6 +126,41 @@
     .action-button:hover {
       background-color: #0077ff;
     }
+
+    /* Barra inferior de iconos */
+    .bottom-bar {
+      display: flex;
+      justify-content: space-evenly;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #141414;
+      padding: 10px 0;
+      box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .button-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #00ffcc;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .button-circle:hover {
+      transform: scale(1.1);
+      background-color: #00b3ff;
+    }
+
+    .spacer {
+      height: 60px;
+    }
   </style>
 </head>
 <body>
@@ -137,13 +174,22 @@
   <div class="main-content">
     <div class="mining-circle" id="mining-circle">
       <span class="mining-pick">⛏️</span>
-      <p class="circle-message" id="circle-message">Estoy listo para minar por ti</p>
     </div>
+    <p id="circle-message" class="circle-message">Estoy listo para minar por ti</p>
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar"></div>
     </div>
     <button id="start-mining" class="action-button">Iniciar Minería</button>
     <p id="mining-status" class="mining-status">Presiona "Iniciar Minería" para comenzar.</p>
+  </div>
+
+  <!-- Barra inferior -->
+  <div class="bottom-bar">
+    <div class="button-circle" onclick="window.location.href='Home.html'">🏠</div>
+    <div class="button-circle" onclick="window.location.href='Retiros.html'">💰</div>
+    <div class="button-circle" onclick="window.location.href='CompraRobots.html'">🤖</div>
+    <div class="button-circle" onclick="window.location.href='Invitados.html'">🎁</div>
+    <div class="button-circle" onclick="window.location.href='Perfil.html'">🙍‍♂️</div>
   </div>
 
   <!-- JavaScript -->
@@ -155,7 +201,6 @@
     const startButton = document.getElementById('start-mining');
 
     startButton.addEventListener('click', () => {
-      // Activar animaciones
       miningCircle.style.animation = 'spin 30s linear infinite';
       progressBar.style.width = '100%';
       circleMessage.textContent = 'Estoy minando por ti, ¡ujuuu!';
@@ -166,7 +211,6 @@
         miningCircle.style.animation = 'none';
         progressBar.style.width = '0%';
 
-        // Mensaje dinámico al terminar
         const tieneVip = confirm('¿Tienes VIP activado?');
         if (tieneVip) {
           miningStatus.textContent = '¡Minería completada! Beneficio VIP aplicado.';
