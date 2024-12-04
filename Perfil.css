@@ -44,8 +44,16 @@ body {
 }
 
 .perfil-photo {
-  font-size: 3rem;  /* Icono más grande */
+  font-size: 5rem;  /* Icono más grande y centrado */
   margin-right: 15px;
+  width: 80px;      /* Tamaño del icono ajustado */
+  height: 80px;     /* Tamaño del icono ajustado */
+  border-radius: 50%;  /* Hacer el icono redondo */
+  background-color: #00b3ff;  /* Color de fondo para el icono */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; /* Color del icono */
 }
 
 .perfil-email p {
@@ -63,7 +71,7 @@ body {
 .balance-item {
   font-size: 1.2rem;
   color: #fff;
-  padding: 10px 20px;
+  padding: 15px 20px;
   background-color: #333;
   border-radius: 8px;
   width: 48%;
@@ -97,6 +105,8 @@ body {
   cursor: pointer;
   width: 100%;
   transition: background 0.3s ease;
+  background-color: transparent; /* Fondo transparente */
+  border: 2px solid #00b3ff;  /* Borde con el mismo color del fondo */
 }
 
 .action-button:hover {
@@ -136,7 +146,14 @@ body {
   background: rgba(255, 255, 255, 0.6);  /* Cambio de opacidad al pasar el ratón */
 }
 
-/* Espaciador */
+/* Política de privacidad */
+.privacy-policy {
+  font-size: 1rem;
+  color: #aaa;
+  text-align: center;
+  margin-top: 20px;
+}
+
 .spacer {
   height: 100px;
 }
