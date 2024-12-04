@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuantificación</title>
+  <link rel="stylesheet" href="stylesquantificacion.css">
+</head>
+<body>
+
+  <div class="quantification-container">
+    <h2 class="quantification-title">Dinámica de Cuantificación</h2>
+
+    <!-- Botón bloqueado -->
+    <button id="startButton" class="start-button" disabled>Iniciar Cuantificación</button>
+
+    <!-- Mensajes de inicio y finalización -->
+    <div id="statusMessage" class="status-message"></div>
+
+    <!-- Cronómetro de 24 horas -->
+    <div id="timer" class="timer"></div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="button-circle" onclick="window.location.href='Home.html'">🏠</div>
+    <div class="button-circle" onclick="window.location.href='Retiros.html'">💰</div>
+    <div class="button-circle" onclick="window.location.href='CompraRobots.html'">🤖</div>
+    <div class="button-circle" onclick="window.location.href='Invitados.html'">🎁</div>
+    <div class="button-circle" onclick="window.location.href='Perfil.html'">🙍‍♂️</div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <script src="quantification.js"></script>
+</body>
+</html>
