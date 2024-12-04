@@ -1,24 +1,48 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const mineButton = document.getElementById("mineButton");
-  const minerImage = document.getElementById("minerImage");
+const mineButton = document.getElementById('mineButton');
+const minerImage = document.getElementById('minerImage');
+const statusMessage = document.getElementById('statusMessage');
 
-  let isVip = false; // Cambiar a true para activar el botón
+let canMine = false; // Cambiar a true para activar el botón
 
-  if (isVip) {
-    mineButton.disabled = false;
+if (canMine) {
+  mineButton.disabled = false;
+}
+
+mineButton.addEventListener('click', () => {
+  if (!canMine) {
+    alert("Activa VIP para usar esta función.");
+    return;
   }
 
-  mineButton.addEventListener("click", () => {
-    mineButton.disabled = true;
-    mineButton.textContent = "Minería en progreso...";
+  // Cambiar mensaje y animar al enano
+  statusMessage.textContent = "Jeje estoy minando, ¡espera!";
+  minerImage.style.animation = "mining 0.5s infinite";
 
-    minerImage.style.animation = "mining 0.5s infinite";
-
-    setTimeout(() => {
-      mineButton.textContent = "Iniciar Minería";
-      mineButton.disabled = false;
-      minerImage.style.animation = "idle 1s infinite alternate";
-      alert("Minería exitosa. ¡Recibe tus ganancias ahora!");
-    }, 30000); // 30 segundos
-  });
+  // Inicia la minería por 30 segundos
+  setTimeout(() => {
+    minerImage.style.animation = "none";
+    alert("Minería completada exitosamente.");
+    
+    // Inicia un cronómetro de 24 horas
+    startCooldown();
+  }, 30000);
 });
+
+function startCooldown() {
+  mineButton.disabled = true;
+  let countdown = 24 * 60 * 60; // 24 horas en segundos
+
+  const interval = setInterval(() => {
+    countdown--;
+    const hours = Math.floor(countdown / 3600);
+    const minutes = Math.floor((countdown % 3600) / 60);
+    const seconds = countdown % 60;
+    mineButton.textContent = `Esperando ${hours}h ${minutes}m ${seconds}s`;
+
+    if (countdown <= 0) {
+      clearInterval(interval);
+      mineButton.disabled = false;
+      mineButton.textContent = "Iniciar Minería";
+    }
+  }, 1000);
+}
