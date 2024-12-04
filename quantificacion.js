@@ -12,12 +12,12 @@ function startMining() {
   document.getElementById("mining-status").textContent = "Jeje, estoy picando... ¡Espérame!";
 
   // Start the miner animation (picking action)
-  document.getElementById("miner").style.animationPlayState = "running";
+  document.getElementById("miner").style.animation = "minerAnimation 2s infinite alternate";
 
   // Simulate mining for 30 seconds
   miningTimeout = setTimeout(() => {
     // Stop the miner animation and change the status message
-    document.getElementById("miner").style.animationPlayState = "paused";
+    document.getElementById("miner").style.animation = "none"; // Stop animation
     document.getElementById("mining-status").textContent = "Minería completada. ¡Cargando cronómetro!";
 
     // Start the 24-hour countdown timer
@@ -58,5 +58,5 @@ function resetMining() {
   document.getElementById("start-mining").disabled = false; // Enable mining button
   document.getElementById("mining-status").textContent = "ATENCIÓN💬 Podrás minar gratis, pero no obtendrás ganancias. Para obtenerlas, deberás activar VIP.💬";
   document.getElementById("timer").textContent = "";
-  document.getElementById("miner").style.animationPlayState = "paused"; // Stop the mining animation
+  document.getElementById("miner").style.animation = "none"; // Stop the mining animation
 }
