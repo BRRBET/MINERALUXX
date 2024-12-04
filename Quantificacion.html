@@ -40,6 +40,7 @@
       max-width: 800px;
       text-align: center;
       padding: 20px;
+      z-index: 2;
     }
 
     /* Título */
@@ -60,12 +61,13 @@
       display: flex;
       justify-content: center;
       margin-bottom: 20px;
+      color: #fff;
+      font-size: 1rem;
     }
 
     .vip-info span, .mining-info span {
-      font-size: 1.2rem;
-      color: #fff;
       margin: 0 15px;
+      font-size: 1.2rem;
     }
 
     .vip-info {
@@ -102,10 +104,10 @@
       100% { transform: translate(10px, 10px) rotate(30deg); }
     }
 
-    /* Barra de progreso (Invisible) */
+    /* Barra de progreso */
     .progress-container {
       width: 80%;
-      background-color: transparent;
+      background-color: #333;
       border-radius: 20px;
       overflow: hidden;
       margin: 15px auto;
@@ -131,6 +133,7 @@
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
       transition: background-color 0.3s ease;
+      margin-bottom: 20px;
     }
 
     .action-button:hover {
@@ -193,6 +196,26 @@
       font-size: 1rem;
       z-index: 10;
     }
+
+    /* Información VIP y minería */
+    .vip-info {
+      font-size: 1.2rem;
+      color: #00ffcc;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .mining-info {
+      color: #fff;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    .vip-info span, .mining-info span {
+      display: block;
+      margin: 5px 0;
+    }
+
   </style>
 </head>
 <body>
@@ -211,11 +234,6 @@
     <h1>Minería MINERALUX</h1>
     <p>¡Empieza a minar y obtén recompensas directamente en tu balance!</p>
 
-    <!-- Información VIP -->
-    <div class="vip-info">
-      <span>VIP: 0</span>
-    </div>
-
     <!-- Círculo de minería -->
     <div class="mining-circle">
       <div class="mining-pick">⛏️</div>
@@ -228,6 +246,13 @@
 
     <!-- Botón de minería -->
     <button class="action-button" id="start-mining">Iniciar Minería</button>
+
+    <!-- Información VIP y minería -->
+    <div class="vip-info">
+      <span>VIP: 0</span>
+      <span>Cantidad Minada: $00.00</span>
+      <span>Veces Minadas: 00</span>
+    </div>
 
     <!-- Cuenta regresiva de 24 horas -->
     <div class="countdown" id="countdown-timer">24:00:00</div>
@@ -260,7 +285,8 @@
 
     let remainingTime = 24 * 60 * 60; // 24 horas en segundos
     let cooldownTime = 24 * 60 * 60; // 24 horas en segundos
-// Función para actualizar el temporizador
+
+    // Función para actualizar el temporizador
     function updateCountdown() {
       let hours = Math.floor(remainingTime / 3600);
       let minutes = Math.floor((remainingTime % 3600) / 60);
