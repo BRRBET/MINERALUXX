@@ -12,7 +12,7 @@ body {
   position: absolute;
   bottom: 10%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(40%);
   background-color: #ffbf00; /* Dorado brillante */
   border: none;
   border-radius: 10px;
@@ -47,13 +47,13 @@ body {
 /* Animación del Pico */
 @keyframes pickaxe-animation {
   0% {
-    transform: translate(-50%, 0) rotate(0deg);
+    transform: translate(50%, 0) rotate(0deg);
   }
   50% {
-    transform: translate(-50%, -10px) rotate(-20deg);
+    transform: translate(50%, 10px) rotate(-20deg);
   }
   100% {
-    transform: translate(-50%, 0) rotate(0deg);
+    transform: translate(50%, 0) rotate(0deg);
   }
 }
 
@@ -95,13 +95,13 @@ body {
 /* Contenedor de Mensajes */
 .message {
   position: absolute;
-  top: 80%;
-  left: 50%;
+  top: 4%;
+  left: 30%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.7);
   color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 10px 10px;
+  border-radius: 10px;
   font-size: 14px;
   text-align: center;
   z-index: 3;
