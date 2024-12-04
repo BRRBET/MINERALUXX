@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perfil</title>
-  <link rel="stylesheet" href="">
+  <link rel="stylesheet" href="Perfil.css">
 </head>
 <body>
 
@@ -12,7 +12,32 @@
   <div class="perfil-container">
     <h1 class="perfil-title">Tu Perfil</h1>
 
-    <!-- Botones en dos columnas -->
+    <!-- ID Aleatorio -->
+    <div class="perfil-id">
+      <span>ID: </span><span id="random-id"></span>
+    </div>
+
+    <!-- Foto y correo -->
+    <div class="perfil-info">
+      <div class="perfil-photo">
+        <span>🙍‍♂️</span>
+      </div>
+      <div class="perfil-email">
+        <p>****************@gmail.com</p>
+      </div>
+    </div>
+
+    <!-- Balance y Recargas -->
+    <div class="perfil-balance">
+      <div class="balance-item">
+        <strong>Balance:</strong> $00.00
+      </div>
+      <div class="balance-item">
+        <strong>Recargas:</strong> $00.00
+      </div>
+    </div>
+
+    <!-- Botones -->
     <div class="button-grid">
       <div class="button-card">
         <button class="action-button" onclick="window.location.href='Retiros.html'">💰 Retiros</button>
@@ -29,7 +54,7 @@
     </div>
   </div>
 
-  <!-- Barra inferior -->
+  <!-- Barra inferior de botones -->
   <div class="bottom-bar">
     <div class="button-circle" onclick="window.location.href='Home.html'">🏠</div>
     <div class="button-circle" onclick="window.location.href='Retiros.html'">💰</div>
@@ -39,6 +64,11 @@
   </div>
 
   <div class="spacer"></div>
+
+  <script>
+    // Generación de ID aleatorio
+    document.getElementById("random-id").innerText = Math.floor(Math.random() * 10000);
+  </script>
 
 </body>
 </html>
