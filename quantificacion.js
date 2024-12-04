@@ -2,18 +2,10 @@ const mineButton = document.getElementById('mineButton');
 const minerImage = document.getElementById('minerImage');
 const statusMessage = document.getElementById('statusMessage');
 
-let canMine = false; // Cambiar a true para activar el botón
-
-if (canMine) {
-  mineButton.disabled = false;
-}
+// Configura el botón como activado desde el inicio
+mineButton.disabled = false;
 
 mineButton.addEventListener('click', () => {
-  if (!canMine) {
-    alert("Activa VIP para usar esta función.");
-    return;
-  }
-
   // Cambiar mensaje y animar al enano
   statusMessage.textContent = "Jeje estoy minando, ¡espera!";
   minerImage.style.animation = "mining 0.5s infinite";
