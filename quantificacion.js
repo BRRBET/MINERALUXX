@@ -1,15 +1,24 @@
-const miner = document.getElementById("miner");
-const mineButton = document.getElementById("mineButton");
+document.addEventListener("DOMContentLoaded", () => {
+  const mineButton = document.getElementById("mineButton");
+  const minerImage = document.getElementById("minerImage");
 
-function startMining() {
-  // Activar la animación del minero
-  miner.style.animation = "mine 0.5s infinite";
+  let isVip = false; // Cambiar a true para activar el botón
 
-  // Simular minería por 30 segundos
-  mineButton.disabled = true; // Desactivar el botón mientras mina
-  setTimeout(() => {
-    alert("¡Minería completada con éxito!");
-    miner.style.animation = "none"; // Detener la animación
-    mineButton.disabled = false; // Reactivar el botón
-  }, 30000); // 30 segundos
-}
+  if (isVip) {
+    mineButton.disabled = false;
+  }
+
+  mineButton.addEventListener("click", () => {
+    mineButton.disabled = true;
+    mineButton.textContent = "Minería en progreso...";
+
+    minerImage.style.animation = "mining 0.5s infinite";
+
+    setTimeout(() => {
+      mineButton.textContent = "Iniciar Minería";
+      mineButton.disabled = false;
+      minerImage.style.animation = "idle 1s infinite alternate";
+      alert("Minería exitosa. ¡Recibe tus ganancias ahora!");
+    }, 30000); // 30 segundos
+  });
+});
