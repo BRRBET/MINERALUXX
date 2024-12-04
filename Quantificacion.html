@@ -4,7 +4,142 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minería</title>
-  <link rel="stylesheet" href="">
+  <style>
+    /* General */
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #141414;
+      color: #f5f5f5;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Encabezado */
+    .header {
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      color: #00ffcc;
+      margin: 0;
+    }
+
+    .header p {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    /* Contenido principal */
+    .main-content {
+      position: relative;
+    }
+
+    /* Círculo de minería */
+    .mining-circle {
+      width: 150px;
+      height: 150px;
+      border: 6px solid #333;
+      border-top: 6px solid #00ffcc;
+      border-radius: 50%;
+      margin: 20px auto;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: none;
+    }
+
+    .mining-pick {
+      font-size: 3rem;
+      color: #00b3ff;
+    }
+
+    /* Barra de progreso */
+    .progress-bar {
+      width: 0%;
+      height: 10px;
+      background-color: #00ffcc;
+      margin: 20px auto;
+      border-radius: 5px;
+      overflow: hidden;
+      transition: width 30s linear;
+    }
+
+    .progress-container {
+      width: 80%;
+      background-color: #333;
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    /* Botón de iniciar minería */
+    .action-button {
+      background-color: #00b3ff;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      transition: background 0.3s ease;
+    }
+
+    .action-button:hover {
+      background-color: #0077ff;
+    }
+
+    /* Barra inferior */
+    .bottom-bar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: transparent;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+    }
+
+    .button-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.4rem;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .button-circle:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Animaciones */
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Título -->
@@ -15,16 +150,14 @@
 
   <!-- Contenido principal -->
   <div class="main-content">
+    <div class="mining-circle" id="mining-circle">
+      <span class="mining-pick">⛏️</span>
+    </div>
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
     <button id="start-mining" class="action-button">Iniciar Minería</button>
     <p id="mining-status" class="mining-status">Presiona "Iniciar Minería" para comenzar.</p>
-  </div>
-
-  <!-- Explicación -->
-  <div class="explanation">
-    <h2>¿Cómo funciona?</h2>
-    <p>1. Presiona el botón para iniciar la minería.</p>
-    <p>2. La minería dura 30 segundos, tiempo durante el cual tus ganancias serán calculadas.</p>
-    <p>3. Después de cada ciclo, espera 24 horas para poder volver a minar.</p>
   </div>
 
   <!-- Barra inferior -->
@@ -36,9 +169,26 @@
     <div class="button-circle" onclick="window.location.href='Perfil.html'">🙍‍♂️</div>
   </div>
 
-  <div class="spacer"></div>
-
   <!-- JavaScript -->
-  <script src=""></script>
+  <script>
+    const miningCircle = document.getElementById('mining-circle');
+    const progressBar = document.getElementById('progress-bar');
+    const miningStatus = document.getElementById('mining-status');
+    const startButton = document.getElementById('start-mining');
+
+    startButton.addEventListener('click', () => {
+      miningCircle.style.animation = 'spin 30s linear infinite';
+      progressBar.style.width = '100%';
+      miningStatus.textContent = 'Minería en progreso...';
+      startButton.disabled = true;
+
+      setTimeout(() => {
+        miningCircle.style.animation = 'none';
+        progressBar.style.width = '0%';
+        miningStatus.textContent = 'Minería completada. ¡Tus recompensas han sido añadidas!';
+        startButton.disabled = false;
+      }, 30000);
+    });
+  </script>
 </body>
 </html>
