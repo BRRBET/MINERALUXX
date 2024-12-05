@@ -161,23 +161,6 @@ body {
     height: 40px;
     font-size: 1.2rem;
   }
-}/* General */
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: #0d0d0d;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100vh;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
-
-/* Icono */
 .icono-superior-izquierdo {
   position: absolute;
   top: 10px;
