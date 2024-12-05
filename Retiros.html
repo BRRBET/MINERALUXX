@@ -4,31 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario de Retiro</title>
-  <link rel="stylesheet" href="stylesretiros.css">
+  <link rel="stylesheet" href="stylesretiros.css"> <!-- Asegúrate de que esta ruta sea correcta -->
 </head>
 <body>
   <!-- Ícono para abrir el modal -->
-<div class="icono-superior-izquierdo">📦</div>
+  <div class="icono-superior-izquierdo">📦</div>
 
-<!-- Modal -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <h2 class="modal-title">Notificaciones del sistema</h2>
-    <div class="modal-options">
-      <!-- Apartado de Retiros -->
-      <div class="option">
-        <h3>Retiros</h3>
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h2 class="modal-title">Notificaciones del sistema</h2>
+      <div class="modal-options">
+        <!-- Apartado de Retiros -->
+        <div class="option">
+          <h3>Retiros</h3>
+        </div>
+        <!-- Apartado de Recargas -->
+        <div class="option">
+          <h3>Recargas</h3>
+        </div>
       </div>
-      <!-- Apartado de Recargas -->
-      <div class="option">
-        <h3>Recargas</h3>
-      </div>
+      <!-- Botón Aceptar -->
+      <button id="modal-aceptar">Aceptar</button>
     </div>
-    <!-- Botón Aceptar -->
-    <button id="modal-aceptar">Aceptar</button>
   </div>
-</div>
-  <div class="retiros-container"></div>
+
+  <!-- Contenedor de Retiros -->
+  <div class="retiros-container">
     <h1 class="retiros-title">Formulario de Retiro</h1>
 
     <div class="perfil">
@@ -52,6 +54,7 @@
     <p class="retiros-info">Los retiros están disponibles las 24 horas del día, los 7 días de la semana a la dirección USDT/TRC20.</p>
   </div>
 
+  <!-- Barra inferior fija -->
   <div class="bottom-bar">
     <div class="button-circle" onclick="window.location.href='Home.html'">🏠</div>
     <div class="button-circle" onclick="window.location.href='Retiros.html'">💰</div>
@@ -62,6 +65,7 @@
 
   <div class="spacer"></div>
 
+  <!-- Script JS -->
   <script src="ScriptRetiro.js"></script>
 </body>
 </html>
