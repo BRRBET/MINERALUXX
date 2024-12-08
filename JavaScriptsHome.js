@@ -2,7 +2,8 @@
 window.onload = function () {
   if (!localStorage.getItem('alertShown')) {
     alert(
-      'Bienvenido a nuestra plataforma. Puedes adquirir robots desde 15 USDT, generando ganancias diarias de 3 USDT.'
+      'Bienvenido a nuestra plataforma. Puedes adquirir robots desde 15 USDT, generando ganancias diarias de 3 USDT.
+      puedes generar ganancias de 0.1 usdt diaria sin inversion'
     );
     localStorage.setItem('alertShown', 'true');
   }
