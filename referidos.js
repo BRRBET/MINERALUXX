@@ -54,11 +54,10 @@ function handleNewUserRegistration() {
   const urlParams = new URLSearchParams(window.location.search);
   const referralCode = urlParams.get("ref"); // Obtener el código de referido de la URL
 
-  if (referralCode) {
-    // Obtener los referidos almacenados en localStorage
-    let referrals = JSON.parse(localStorage.getItem("referrals")) || {};
-
-    // Si el código de referido no existe, inicializarlo
+  // Verificar si el código de referido es válido
+  let referrals = JSON.parse(localStorage.getItem("referrals")) || {};
+  if (referralCode && referrals[referralCode] !== undefined) {
+    // Si el código es válido, incrementar el contador de referidos
     if (!referrals[referralCode]) {
       referrals[referralCode] = 0;
     }
@@ -71,6 +70,9 @@ function handleNewUserRegistration() {
 
     // Guardar el código de referido de este usuario en localStorage
     localStorage.setItem("referralCode", referralCode);
+  } else if (referralCode) {
+    // Si el código no es válido, mostrar un mensaje de error
+    alert("El código de invitación no es válido.");
   }
 }
 
