@@ -256,6 +256,7 @@
 
       // Inicia el proceso de minería
       miningMessage.textContent = "¡Estoy minando por ti, espera 24 horas!";
+      miningMessage.style.opacity = 1; // Aseguramos que el mensaje sea visible
       startMiningProgress();
 
       // Iniciar cuenta regresiva
@@ -278,6 +279,7 @@
         if (width >= 100) {
           clearInterval(interval);
           document.getElementById("reward-message").textContent = "¡He minado por ti, reclama tu recompensa de 0.1 USDT!";
+          document.getElementById("mining-message").style.display = 'none'; // El mensaje desaparece
         }
       }, 1000); // Se actualiza cada segundo
     }
@@ -315,6 +317,7 @@
       const progressBar = document.querySelector(".progress-bar");
 
       miningMessage.textContent = "¡Estoy minando por ti, espera 24 horas!";
+      miningMessage.style.opacity = 1; // Aseguramos que el mensaje sea visible
       progressBar.style.width = savedProgress + "%";
 
       // Reanudar la cuenta regresiva
