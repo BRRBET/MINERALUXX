@@ -15,7 +15,7 @@ function generateReferralCode() {
   return referralCode;
 }
 
-// Función para mostrar el enlace de referido y el ID
+// Función para mostrar el enlace de referido en la página
 function displayReferralLink() {
   const referralCode = generateReferralCode(); // Obtener el código de referido
   const referralLink = `https://brrbet.github.io/MINERALUXPLUX/Registro.html?ref=${referralCode}`;
@@ -24,11 +24,9 @@ function displayReferralLink() {
   const referralLinkElement = document.getElementById("ref-link");
   referralLinkElement.value = referralLink;  // Mostrar el enlace de referido en el campo de texto
 
-  // Mostrar el código de referido en el elemento con ID "random-id"
+  // Mostrar el mismo código en el ID
   const randomIdElement = document.getElementById("random-id");
-  if (randomIdElement) {
-    randomIdElement.textContent = referralCode; // Mostrar el código en el elemento ID
-  }
+  randomIdElement.textContent = referralCode; // Mostrar el código en el elemento ID
 
   // Función para copiar al portapapeles
   function copyReferralLink() {
@@ -41,13 +39,29 @@ function displayReferralLink() {
   document.getElementById("copy-btn").addEventListener("click", copyReferralLink);
 }
 
+// Función para actualizar el contador de referidos (Nivel 1)
+function updateReferralCount(referralCode) {
+  const storedReferralCode = localStorage.getItem("referralCode");
+
+  // Validar si el código de referido coincide con el código del usuario actual
+  if (referralCode === storedReferralCode) {
+    let nivel1Counter = parseInt(localStorage.getItem("nivel1Counter")) || 0;
+    nivel1Counter += 1; // Incrementar el contador
+    localStorage.setItem("nivel1Counter", nivel1Counter); // Guardar el nuevo valor
+
+    // Actualizar la visualización en la página
+    const nivel1CounterElement = document.querySelector(".referido-card:nth-child(1) .proncentage");
+    nivel1CounterElement.textContent = nivel1Counter;
+  }
+}
+
 // Función para manejar el registro de un nuevo usuario
 function handleNewUserRegistration() {
   const urlParams = new URLSearchParams(window.location.search);
   const referralCode = urlParams.get("ref"); // Obtener el código de referido de la URL
 
   if (referralCode) {
-    localStorage.setItem("referralCodeFromURL", referralCode); // Guardar el código de referido desde la URL
+    updateReferralCount(referralCode); // Actualizar el contador de referidos
   }
 }
 
@@ -56,6 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Llamar a la función para manejar el registro de nuevos usuarios
   handleNewUserRegistration();
 
-  // Llamar a la función para mostrar el enlace de referido y el código en el ID
+  // Llamar a la función para mostrar el enlace de referido y el ID
   displayReferralLink();
 });
