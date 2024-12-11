@@ -4,11 +4,17 @@ const balanceKey = 'balance'; // Clave para almacenar el balance
 
 // Inicialización del progreso de minería
 function initializeMining() {
-  if (localStorage.getItem(miningProgressKey)) {
-    const progressData = JSON.parse(localStorage.getItem(miningProgressKey));
-    startMiningWithProgress(progressData.progress, progressData.timeRemaining);
+  const miningProgress = localStorage.getItem(miningProgressKey);
+  const timerProgress = localStorage.getItem(timerKey);
+
+  if (miningProgress && timerProgress) {
+    const progressData = JSON.parse(miningProgress);
+    startMiningWithProgress(progressData.progress, parseInt(timerProgress));
   } else {
-    document.getElementById("start-mining").addEventListener("click", startMining);
+    const startButton = document.getElementById("start-mining");
+    startButton.addEventListener("click", startMining);
+    startButton.disabled = false; // Asegurar que el botón esté habilitado inicialmente
+    startButton.style.backgroundColor = "#00b3ff";
   }
 }
 
@@ -38,7 +44,7 @@ function startMiningProgress() {
     width += 100 / totalTime; // Incrementar lentamente la barra
     progressBar.style.width = `${width}%`;
 
-    localStorage.setItem(miningProgressKey, JSON.stringify({ progress: width, timeRemaining: totalTime }));
+    localStorage.setItem(miningProgressKey, JSON.stringify({ progress: width }));
 
     if (width >= 100) {
       clearInterval(interval);
@@ -54,10 +60,6 @@ function start24HourTimer() {
   let timeRemaining = 24 * 60 * 60; // 24 horas en segundos
   const countdownTimer = document.getElementById("countdown-timer");
   const startButton = document.getElementById("start-mining");
-
-  if (localStorage.getItem(timerKey)) {
-    timeRemaining = parseInt(localStorage.getItem(timerKey), 10);
-  }
 
   const timerInterval = setInterval(() => {
     const hours = Math.floor(timeRemaining / 3600);
