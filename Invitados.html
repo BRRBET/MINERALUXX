@@ -8,9 +8,20 @@
   <script src="referidos.js" defer></script>
 </head>
 <body>
-  <div class="id-container">
-  <span>ID: <span id="random-id"></span></span>
-  </div>
+  <!-- Campo de texto para mostrar el enlace de referido -->
+<input type="text" id="ref-link" readonly>
+
+<!-- Botón para copiar el enlace -->
+<button id="copy-btn">Copiar enlace</button>
+
+<!-- Contenedor para mostrar el código de referido -->
+<div>ID de Referido: <span id="random-id"></span></div>
+
+<!-- Elementos para el contador de referidos -->
+<div class="referido-card">
+  <span class="proncentage">0</span>
+</div>
+  
 <div class="share-container">
   <p>Enlace para compartir:</p>
   <div class="share-box">
