@@ -3,7 +3,7 @@ function generateReferralCode() {
   let referralCode = localStorage.getItem("referralCode");
 
   if (!referralCode) {
-    // Generar un código aleatorio de 6 caracteres alfanuméricos
+    // Genera un código aleatorio de 6 caracteres alfanuméricos
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     referralCode = '';
     for (let i = 0; i < 6; i++) {
@@ -15,27 +15,31 @@ function generateReferralCode() {
   return referralCode;
 }
 
-// Función para mostrar el enlace de referido y el código de ID
+// Función para mostrar el enlace de referido y el código en su lugar
 function displayReferralLink() {
   const referralCode = generateReferralCode(); // Obtener el código de referido
   const referralLink = `https://brrbet.github.io/MINERALUXPLUX/Registro.html?ref=${referralCode}`;
 
-  // Mostrar el enlace en el campo de texto
-  const referralLinkElement = document.getElementById("ref-link");
-  if (referralLinkElement) {
-    referralLinkElement.value = referralLink; // Mostrar el enlace en el campo de texto
+  // Actualizar el código de referido en el apartado superior
+  const referralCodeElement = document.getElementById("random-id");
+  if (referralCodeElement) {
+    referralCodeElement.textContent = referralCode; // Mostrar el código de referido
   }
 
-  // Mostrar el código de referido en el elemento con ID "random-id"
-  const randomIdElement = document.getElementById("random-id");
-  if (randomIdElement) {
-    randomIdElement.textContent = referralCode; // Mostrar el código en el elemento
+  // Actualizar el enlace de referido dentro del mismo apartado
+  const referralContainer = document.getElementById("referral-container");
+  if (referralContainer) {
+    referralContainer.innerHTML = `
+      <input type="text" id="ref-link" value="${referralLink}" readonly>
+      <button id="copy-btn">Copiar enlace</button>
+    `;
   }
 
-  // Función para copiar el enlace al portapapeles
+  // Función para copiar al portapapeles
   const copyButton = document.getElementById("copy-btn");
   if (copyButton) {
     copyButton.addEventListener("click", () => {
+      const referralLinkElement = document.getElementById("ref-link");
       if (referralLinkElement) {
         referralLinkElement.select(); // Seleccionar el contenido
         document.execCommand("copy"); // Copiar al portapapeles
@@ -49,7 +53,7 @@ function displayReferralLink() {
 function updateReferralCount(referralCode) {
   const storedReferralCode = localStorage.getItem("referralCode");
 
-  // Validar si el código de referido coincide con el del usuario actual
+  // Validar si el código de referido coincide con el código del usuario actual
   if (referralCode === storedReferralCode) {
     let nivel1Counter = parseInt(localStorage.getItem("nivel1Counter")) || 0;
     nivel1Counter += 1; // Incrementar el contador
@@ -57,9 +61,7 @@ function updateReferralCount(referralCode) {
 
     // Actualizar la visualización en la página
     const nivel1CounterElement = document.querySelector(".referido-card:nth-child(1) .proncentage");
-    if (nivel1CounterElement) {
-      nivel1CounterElement.textContent = nivel1Counter;
-    }
+    nivel1CounterElement.textContent = nivel1Counter;
   }
 }
 
@@ -73,11 +75,11 @@ function handleNewUserRegistration() {
   }
 }
 
-// Ejecutar las funciones cuando el DOM esté completamente cargado
+// Ejecutamos la función al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
-  // Mostrar el enlace de referido y el ID
-  displayReferralLink();
-
-  // Manejar el registro de nuevos usuarios
+  // Llamar a la función para manejar el registro de nuevos usuarios
   handleNewUserRegistration();
+
+  // Llamar a la función para mostrar el enlace de referido y el ID
+  displayReferralLink();
 });
