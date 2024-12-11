@@ -241,11 +241,12 @@
   const miningProgressKey = 'miningProgress'; // Clave para almacenamiento local
   const timerKey = 'timerProgress'; // Clave para la cuenta regresiva
 
-  // Recuperar datos de minería del almacenamiento local
+  // Inicialización del progreso de la minería si ya existe
   if (localStorage.getItem(miningProgressKey)) {
     const progressData = JSON.parse(localStorage.getItem(miningProgressKey));
     startMiningWithProgress(progressData.progress, progressData.timeRemaining);
   } else {
+    // Activar el evento de click para iniciar la minería
     document.getElementById("start-mining").addEventListener("click", startMining);
   }
 
@@ -260,9 +261,11 @@
 
     miningMessage.textContent = "¡Estoy minando por ti, espera 24 horas!";
     miningMessage.style.opacity = 1; // Asegurar que el mensaje sea visible
+
+    // Comenzar el progreso de minería
     startMiningProgress();
 
-    // Iniciar cuenta regresiva de 24 horas
+    // Iniciar el temporizador de 24 horas
     start24HourTimer();
   }
 
@@ -273,10 +276,10 @@
 
     // Guarda el progreso de la minería
     const interval = setInterval(() => {
-      width += (100 / totalTime); // Incrementar el progreso en función del tiempo
+      width += (100 / totalTime); // Incrementar la barra en función del tiempo
       progressBar.style.width = width + "%";
 
-      // Guardar el progreso en el localStorage
+      // Guardar el progreso en localStorage
       localStorage.setItem(miningProgressKey, JSON.stringify({ progress: width, timeRemaining: totalTime }));
 
       if (width >= 100) {
@@ -284,7 +287,7 @@
         document.getElementById("reward-message").textContent = "¡He minado por ti, reclama tu recompensa de 0.1 USDT!";
         document.getElementById("mining-message").style.display = 'none'; // Esconde el mensaje
       }
-    }, 1000); // Actualiza cada segundo
+    }, 1000); // Actualizar cada segundo
   }
 
   function start24HourTimer() {
@@ -292,11 +295,12 @@
     const countdownTimer = document.getElementById("countdown-timer");
     const startButton = document.getElementById("start-mining");
 
-    // Si ya hay un temporizador guardado, reinicia el valor
+    // Si hay un temporizador guardado en localStorage, reiniciar el valor
     if (localStorage.getItem(timerKey)) {
       timeRemaining = parseInt(localStorage.getItem(timerKey), 10);
     }
 
+    // Iniciar la cuenta regresiva
     const timerInterval = setInterval(() => {
       const hours = Math.floor(timeRemaining / 3600);
       const minutes = Math.floor((timeRemaining % 3600) / 60);
