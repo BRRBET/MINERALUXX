@@ -87,14 +87,41 @@ function displayReferralStats() {
   }
 }
 
-// Ejecutar funciones al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
+// Función para guardar y mostrar la información del usuario
+function displayUserInfo() {
+  const referralCode = localStorage.getItem("referralCode"); // Obtener el código del usuario actual
+  const referralCodeElement = document.getElementById("random-id");
+  
+  if (referralCodeElement) {
+    referralCodeElement.textContent = referralCode; // Mostrar el código único
+  }
+  
+  // Mostrar el número de referidos (si hay)
+  displayReferralStats();
+}
+
+// Función para gestionar el comportamiento de la página de registro
+function handleRegistrationPage() {
   // Llamar a la función para manejar el registro de nuevos usuarios
   handleNewUserRegistration();
 
-  // Llamar a la función para mostrar el enlace y el código
+  // Llamar a la función para mostrar el enlace y el código de referido
   displayReferralLink();
 
   // Llamar a la función para mostrar las estadísticas en el home
   displayReferralStats();
+}
+
+// Función para inicializar la página
+function initializePage() {
+  // Llamar a la función para gestionar el comportamiento de la página de registro
+  handleRegistrationPage();
+
+  // Llamar a la función para mostrar la información del usuario en la página
+  displayUserInfo();
+}
+
+// Ejecutar las funciones cuando el contenido esté listo
+document.addEventListener("DOMContentLoaded", () => {
+  initializePage();
 });
