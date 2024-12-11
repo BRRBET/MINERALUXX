@@ -21,7 +21,7 @@
       background-image: url('https://github.com/user-attachments/assets/e9efeed1-dec5-4850-abd7-a69cdc12b1e3'); /* Imagen de fondo */
       background-size: cover;
       background-position: center;
-      background-attachment: fixed; /* Asegura que la imagen de fondo no se mueva */
+      background-attachment: fixed;
     }
 
     /* Contenedor principal */
@@ -61,11 +61,9 @@
     /* Párrafos */
     p {
       font-size: 1.1rem;
-      font-size: 20px;
       font-weight: bold;
       color: #FFFFFF;
-      text-shadow: 2px 2px 4px #000000
-font-family: Arial, sans-serif;
+      text-shadow: 2px 2px 4px #000000;
       margin-bottom: 10px;
       line-height: 1.6;
     }
@@ -116,7 +114,7 @@ font-family: Arial, sans-serif;
       height: 100%;
       background: linear-gradient(90deg, #00ffcc, #0077ff);
       border-radius: 20px;
-      transition: width 30s linear;
+      transition: width 1s linear;
     }
 
     /* Botón de minería */
@@ -161,36 +159,36 @@ font-family: Arial, sans-serif;
 
     /* Barra inferior de navegación */
     .bottom-bar {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 15px 0;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  background: transparent; /* Fondo invisible */
-}
+      display: flex;
+      justify-content: space-evenly;
+      padding: 15px 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: transparent; /* Fondo invisible */
+    }
 
-.bottom-bar .button-circle {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2); /* Transparente con borde blanco */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  font-size: 1.4rem;
-  color: #ffffff;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
+    .bottom-bar .button-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2); /* Transparente con borde blanco */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: #ffffff;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
 
-.bottom-bar .button-circle:hover {
-  transform: scale(1.1);
-  background: #00b3ff;
-  color: #ffffff;
-}
+    .bottom-bar .button-circle:hover {
+      transform: scale(1.1);
+      background: #00b3ff;
+      color: #ffffff;
+    }
   </style>
 </head>
 <body>
@@ -211,7 +209,7 @@ font-family: Arial, sans-serif;
     </div>
 
     <!-- Mensaje de minería -->
-    <div class="mining-message" id="mining-message">¡Estoy minando por ti, Ujuu!</div>
+    <div class="mining-message" id="mining-message">¡Estoy minando por ti, espera 24 horas!</div>
 
     <!-- Barra de progreso -->
     <div class="progress-container">
@@ -224,11 +222,7 @@ font-family: Arial, sans-serif;
     <!-- Cuenta regresiva -->
     <div class="countdown" id="countdown-timer">24:00:00</div>
 
-    <!-- Explicación de la minería -->
-    <p><strong>¿Cómo funciona?</strong></p>
-    <p>1. Presiona "Iniciar Minería" para comenzar el proceso.</p>
-    <p>2. El proceso de minería dura 30 segundos.</p>
-    <p>3. Recibe tus ganancias directamente en tu balance.</p>
+    <div id="reward-message"></div>
 
     <div class="footer">
       <p>&copy; 2024 MINERALUX. Todos los derechos reservados.</p>
@@ -245,86 +239,87 @@ font-family: Arial, sans-serif;
   </div>
 
   <script>
-    // Función para iniciar la minería (30 segundos de duración)
-    document.getElementById("start-mining").addEventListener("click", () => {
-  const miningStatus = document.getElementById("mining-status");
+    const miningProgressKey = 'miningProgress'; // Clave para almacenamiento local
+    const timerKey = 'timerProgress'; // Clave para la cuenta regresiva
 
-  // Si la minería está activada, no hacer nada
-  if (localStorage.getItem("miningActive") === "true") {
-    miningStatus.textContent = "Ya estás minando, por favor espera.";
-    return;
-  }
-
-  miningStatus.textContent = "Estoy minando por ti, espera 30 segundos...";
-
-  setTimeout(() => {
-    miningStatus.textContent = "He terminado la minería. ¡Puedes ver tu balance!";
-
-    // Activar minería y configurar el cronómetro
-    localStorage.setItem("miningActive", "true");
-    localStorage.setItem("miningStartTime", Date.now()); // Guardar la hora de inicio
-    start24HourTimer();
-  }, 30000); // Simula que la minería dura 30 segundos
-});
-
-function start24HourTimer() {
-  const miningStatus = document.getElementById("mining-status");
-  let timeRemaining = 24 * 60 * 60; // 24 hours in seconds
-
-  // Recuperamos el tiempo restante desde el almacenamiento local si la minería está activa
-  const miningStartTime = parseInt(localStorage.getItem("miningStartTime"));
-  if (miningStartTime) {
-    const elapsedTime = Math.floor((Date.now() - miningStartTime) / 1000); // Tiempo pasado en segundos
-    timeRemaining -= elapsedTime; // Calculamos el tiempo restante
-  }
-
-  // Guardamos el tiempo restante en localStorage
-  localStorage.setItem("timeRemaining", timeRemaining);
-
-  const timerInterval = setInterval(() => {
-    const hours = Math.floor(timeRemaining / 3600);
-    const minutes = Math.floor((timeRemaining % 3600) / 60);
-    const seconds = timeRemaining % 60;
-
-    miningStatus.textContent = `Espera ${hours}h ${minutes}m ${seconds}s para volver a minar.`;
-    timeRemaining--;
-
-    // Guardamos el tiempo restante en localStorage
-    localStorage.setItem("timeRemaining", timeRemaining);
-
-    if (timeRemaining <= 0) {
-      clearInterval(timerInterval);
-      miningStatus.textContent = "¡Puedes volver a minar ahora!";
-      localStorage.setItem("miningActive", "false"); // Desactivar minería
-      localStorage.removeItem("miningStartTime"); // Eliminar el tiempo de inicio
-    }
-  }, 1000);
-}
-
-// Función para comprobar si la minería está activa al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-  const miningStatus = document.getElementById("mining-status");
-
-  // Comprobar si la minería está activa
-  if (localStorage.getItem("miningActive") === "true") {
-    let timeRemaining = parseInt(localStorage.getItem("timeRemaining"));
-
-    if (timeRemaining <= 0) {
-      miningStatus.textContent = "¡Puedes volver a minar ahora!";
-      localStorage.setItem("miningActive", "false");
-      localStorage.removeItem("miningStartTime");
-      localStorage.removeItem("timeRemaining");
+    // Inicializa la minería desde el almacenamiento local, si existe
+    if (localStorage.getItem(miningProgressKey)) {
+      const progressData = JSON.parse(localStorage.getItem(miningProgressKey));
+      startMiningWithProgress(progressData.progress, progressData.timeRemaining);
     } else {
-      const hours = Math.floor(timeRemaining / 3600);
-      const minutes = Math.floor((timeRemaining % 3600) / 60);
-      const seconds = timeRemaining % 60;
-
-      miningStatus.textContent = `Espera ${hours}h ${minutes}m ${seconds}s para volver a minar.`;
+      document.getElementById("start-mining").addEventListener("click", startMining);
     }
-  } else {
-    miningStatus.textContent = "Puedes empezar a minar cuando quieras.";
-  }
-});
+
+    function startMining() {
+      const miningMessage = document.getElementById("mining-message");
+      const progressBar = document.querySelector(".progress-bar");
+
+      // Inicia el proceso de minería
+      miningMessage.textContent = "¡Estoy minando por ti, espera 24 horas!";
+      startMiningProgress();
+
+      // Iniciar cuenta regresiva
+      start24HourTimer();
+    }
+
+    function startMiningProgress() {
+      const progressBar = document.querySelector(".progress-bar");
+      let width = 0;
+      let totalTime = 24 * 60 * 60; // 24 horas en segundos
+
+      // Guarda el progreso de la minería
+      const interval = setInterval(() => {
+        width += (100 / totalTime); // Se incrementa la barra en función del tiempo
+        progressBar.style.width = width + "%";
+
+        // Guardar el progreso
+        localStorage.setItem(miningProgressKey, JSON.stringify({ progress: width, timeRemaining: totalTime }));
+
+        if (width >= 100) {
+          clearInterval(interval);
+          document.getElementById("reward-message").textContent = "¡He minado por ti, reclama tu recompensa de 0.1 USDT!";
+        }
+      }, 1000); // Se actualiza cada segundo
+    }
+
+    function start24HourTimer() {
+      let timeRemaining = 24 * 60 * 60; // 24 horas en segundos
+      const countdownTimer = document.getElementById("countdown-timer");
+
+      // Si ya hay un temporizador guardado, reinicia el valor
+      if (localStorage.getItem(timerKey)) {
+        timeRemaining = parseInt(localStorage.getItem(timerKey), 10);
+      }
+
+      const timerInterval = setInterval(() => {
+        const hours = Math.floor(timeRemaining / 3600);
+        const minutes = Math.floor((timeRemaining % 3600) / 60);
+        const seconds = timeRemaining % 60;
+
+        countdownTimer.textContent = `${hours}:${minutes}:${seconds}`;
+        timeRemaining--;
+        
+        // Guardar el tiempo restante
+        localStorage.setItem(timerKey, timeRemaining);
+
+        if (timeRemaining <= 0) {
+          clearInterval(timerInterval);
+          countdownTimer.textContent = "¡Puedes volver a minar ahora!";
+        }
+      }, 1000);
+    }
+
+    // Función para iniciar minería con el progreso guardado
+    function startMiningWithProgress(savedProgress, savedTime) {
+      const miningMessage = document.getElementById("mining-message");
+      const progressBar = document.querySelector(".progress-bar");
+
+      miningMessage.textContent = "¡Estoy minando por ti, espera 24 horas!";
+      progressBar.style.width = savedProgress + "%";
+
+      // Reanudar la cuenta regresiva
+      start24HourTimer(savedTime);
+    }
   </script>
 
 </body>
