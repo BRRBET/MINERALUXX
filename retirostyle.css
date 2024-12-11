@@ -237,6 +237,8 @@ body {
   text-align: center;
   font-size: 0.7rem; /* Tamaño más pequeño para los textos */
   margin-top: 5px; /* Espacio entre el icono y el texto */
+  word-wrap: break-word; /* Asegura que el texto no se desborde */
+  white-space: normal; /* Permite el salto de línea si es necesario */
 }
 
 /* Media Queries para Pantallas Pequeñas */
@@ -257,5 +259,9 @@ body {
     width: 40px;
     height: 40px;
     font-size: 1.2rem;
+  }
+
+  .bottom-bar .button-circle span {
+    font-size: 0.6rem; /* Reduce el tamaño del texto aún más en pantallas pequeñas */
   }
 }
