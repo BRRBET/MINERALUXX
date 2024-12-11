@@ -55,15 +55,15 @@ function handleNewUserRegistration() {
   const referralCode = urlParams.get("ref"); // Obtener el código de referido de la URL
 
   if (referralCode) {
-    // Incrementar el contador de referidos para el código correspondiente
+    // Obtener los referidos almacenados en localStorage
     let referrals = JSON.parse(localStorage.getItem("referrals")) || {};
 
-    // Si es la primera vez que se ve este código, inicializarlo
+    // Si el código de referido no existe, inicializarlo
     if (!referrals[referralCode]) {
       referrals[referralCode] = 0;
     }
 
-    // Incrementar el contador de referidos
+    // Incrementar el contador de referidos para el código correspondiente
     referrals[referralCode] += 1;
 
     // Guardar el contador actualizado de referidos en localStorage
@@ -91,11 +91,11 @@ function displayReferralStats() {
 function displayUserInfo() {
   const referralCode = localStorage.getItem("referralCode"); // Obtener el código del usuario actual
   const referralCodeElement = document.getElementById("random-id");
-  
+
   if (referralCodeElement) {
     referralCodeElement.textContent = referralCode; // Mostrar el código único
   }
-  
+
   // Mostrar el número de referidos (si hay)
   displayReferralStats();
 }
