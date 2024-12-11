@@ -1,174 +1,184 @@
-  /* Estilo general */
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #141414;
-      color: #f5f5f5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 0;
-      height: 100vh;
-      overflow-y: auto;
-      background-image: url('https://github.com/user-attachments/assets/e9efeed1-dec5-4850-abd7-a69cdc12b1e3'); /* Imagen de fondo */
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
-
-    /* Contenedor principal */
-    .container {
-      width: 90%;
-      max-width: 800px;
-      padding: 20px;
-      margin-top: -20px;
-      text-align: center;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    /* Animación de entrada */
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    /* Título principal */
-    h1 {
-      color: #00ffcc;
-      font-size: 3rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 8px rgba(0, 255, 204, 0.8); /* Sombra para dar un efecto llamativo */
-    }
-
-    /* Subtítulo */
-    h2 {
-      color: #ffcc00;
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 15px;
-      text-shadow: 2px 2px 8px rgba(255, 204, 0, 0.8); /* Sombra */
-    }
-
-    /* Párrafos */
-    p {
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #FFFFFF;
-      text-shadow: 2px 2px 4px #000000;
-      margin-bottom: 10px;
-      line-height: 1.6;
-    }
-
-    /* Estilo del círculo de minería */
-    .mining-circle {
-      width: 200px;
-      height: 200px;
-      border: 8px solid #333;
-      border-top: 8px solid #00ffcc;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      background-image: url('https://github.com/user-attachments/assets/c7640356-6160-4e5d-a365-38a78a5925c3'); /* Fondo de minería */
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
-    }
-
-    /* Animación de minería */
-    .mining-pick {
-      font-size: 3rem;
-      color: #00b3ff;
-      position: absolute;
-      animation: mining-pick-animation 0.5s infinite alternate;
-    }
-
-    @keyframes mining-pick-animation {
-      0% { transform: translate(-10px, -10px) rotate(-30deg); }
-      100% { transform: translate(10px, 10px) rotate(30deg); }
-    }
-
-    /* Barra de progreso */
-    .progress-container {
-      width: 80%;
-      background-color: #333;
-      border-radius: 20px;
-      overflow: hidden;
-      margin: 15px auto;
-      height: 12px;
-    }
-
-    .progress-bar {
-      width: 0%;
-      height: 100%;
-      background: linear-gradient(90deg, #00ffcc, #0077ff);
-      border-radius: 20px;
-      transition: width 1s linear;
-    }
-
-    /* Botón de minería */
-    .action-button {
-      background-color: #00b3ff;
-      border: none;
-      color: white;
-      font-size: 1.2rem;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      transition: background-color 0.3s ease;
-      margin-top: 20px;
-    }
-
-    .action-button:hover {
-      background-color: #0077ff;
-    }
-
-    /* Mensajes de minería */
-    .mining-message {
-      font-size: 1.2rem;
-      color: #ffcc00;
-      margin-top: 20px;
-      animation: miningMessageAnimation 2s ease-out;
-      opacity: 0;
-    }
-
-    @keyframes miningMessageAnimation {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Cuenta regresiva */
-    .countdown {
-      font-size: 1.2rem;
-      color: #fff;
-      margin-top: 20px;
-      font-weight: bold;
-    }
-
-    /* Barra inferior de navegación */
-    .bottom-bar {
+/* Estilo general */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #141414;
+  color: #f5f5f5;
   display: flex;
-  justify-content: center; /* Centra los botones horizontalmente */
-  align-items: center; /* Centra los botones verticalmente */
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background-image: url('https://github.com/user-attachments/assets/e9efeed1-dec5-4850-abd7-a69cdc12b1e3'); /* Imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Contenedor principal */
+.container {
+  width: 90%;
+  max-width: 800px;
+  padding: 20px;
+  margin-top: -20px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Título principal */
+h1 {
+  color: #00ffcc;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0, 255, 204, 0.8);
+}
+
+/* Subtítulo */
+h2 {
+  color: #ffcc00;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 8px rgba(255, 204, 0, 0.8);
+}
+
+/* Párrafos */
+p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 4px #000000;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+/* Círculo de minería */
+.mining-circle {
+  width: 200px;
+  height: 200px;
+  border: 8px solid #333;
+  border-top: 8px solid #00ffcc;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-image: url('https://github.com/user-attachments/assets/c7640356-6160-4e5d-a365-38a78a5925c3'); /* Fondo de minería */
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  animation: rotate 24h linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animación del pico de minería */
+.mining-pick {
+  font-size: 3rem;
+  color: #00b3ff;
+  position: absolute;
+  animation: mining-pick-animation 0.5s infinite alternate;
+}
+
+@keyframes mining-pick-animation {
+  0% { transform: translate(-10px, -10px) rotate(-30deg); }
+  100% { transform: translate(10px, 10px) rotate(30deg); }
+}
+
+/* Barra de progreso */
+.progress-container {
+  width: 80%;
+  background-color: #333;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 15px auto;
+  height: 12px;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #00ffcc, #0077ff);
+  border-radius: 20px;
+  transition: width 1s linear;
+}
+
+/* Botón de acción */
+.action-button {
+  background-color: #00b3ff;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.action-button:hover {
+  background-color: #0077ff;
+}
+
+/* Mensajes de minería */
+.mining-message {
+  font-size: 1.2rem;
+  color: #ffcc00;
+  margin-top: 20px;
+  animation: miningMessageAnimation 2s ease-out;
+  opacity: 0;
+}
+
+@keyframes miningMessageAnimation {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Cuenta regresiva */
+.countdown {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* Barra inferior de navegación */
+.bottom-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 15px 0;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   z-index: 100;
-  background: transparent; /* Fondo invisible */
+  background: transparent;
 }
 
 .bottom-bar .button-circle {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2); /* Fondo transparente */
+  background: rgba(255, 255, 255, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -176,8 +186,8 @@
   font-size: 1.4rem;
   color: #ffffff;
   transition: transform 0.3s ease, background 0.3s ease;
-  margin: 0 15px; /* Espaciado entre los botones */
-  flex-direction: column; /* Alinea el icono y el texto verticalmente */
+  margin: 0 15px;
+  flex-direction: column;
 }
 
 .bottom-bar .button-circle:hover {
@@ -189,23 +199,6 @@
 .bottom-bar .button-circle span {
   display: block;
   text-align: center;
-  font-size: 0.7rem; /* Tamaño más pequeño para los textos */
-  margin-top: 5px; /* Espacio entre el icono y el texto */
-}
-.mining-circle {
-  width: 100px;
-  height: 100px;
-  border: 5px solid green;
-  border-radius: 50%;
-  border-top: 5px solid transparent;
-  animation: rotate 24h linear infinite;
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  font-size: 0.7rem;
+  margin-top: 5px;
 }
