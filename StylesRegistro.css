@@ -20,7 +20,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('https://github.com/user-attachments/assets/40e425df-5c5f-44f5-ade9-d8fc8bb25e27') no-repeat center center;
+  background: url('https://github.com/user-attachments/assets/2fe3a643-aba4-466c-b3d5-0a98f976714b') no-repeat center center;
   background-size: cover;
   z-index: -1;
   filter: brightness(0.6); /* Oscurece ligeramente la imagen */
