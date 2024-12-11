@@ -3,53 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Referidos</title>
+  <title>Programa de Referidos</title>
   <link rel="stylesheet" href="referidos.css">
   <script src="referidos.js" defer></script>
 </head>
 <body>
-<div class="id-container">
-  <span>ID: <span id="random-id"></span></span>
-</div>
-  <!-- Aquí se generará dinámicamente el enlace y el botón de copiar -->
-</div>
-<!-- Elementos para el contador de referidos -->
-<div class="referido-card">
-  <span class="proncentage">0</span>
-</div>
-  
-<div class="share-container">
-  <p>Enlace para compartir:</p>
-  <div class="share-box">
-    <input id="referral-link" type="text" readonly>
-    <button id="copy-btn">Copiar</button>
+  <!-- Contenedor del ID único -->
+  <div class="id-container">
+    <span>ID: <span id="random-id"></span></span>
   </div>
-</div>
+
+  <!-- Contenedor para el enlace de referido -->
+  <div class="share-container">
+    <p>Enlace para compartir:</p>
+    <div id="referral-container">
+      <!-- El enlace y el botón serán generados dinámicamente por el JS -->
+    </div>
+  </div>
 
   <h1 class="main-title">Programa de Referidos</h1>
-  
+
   <!-- Contenedor de Referidos -->
   <div class="referidos-container">
     <!-- Nivel 1 -->
     <div class="referido-card">
       <h2>Nivel 1</h2>
       <p>Ganancia: <span class="percentage">15%</span></p>
-      <p>Número de personas: <span class="proncentage">0</span></p>
-      <p>Ganancias Totales: <span class="porcentage">0</span></p>
+      <p>Número de personas: <span class="nivel1-counter">0</span></p>
+      <p>Ganancias Totales: <span class="nivel1-gains">0</span></p>
     </div>
     <!-- Nivel 2 -->
     <div class="referido-card">
       <h2>Nivel 2</h2>
       <p>Ganancia: <span class="percentage">10%</span></p>
-      <p>Número de personas: <span class="proncentage">0</span></p>
-      <p>Ganancias Totales: <span class="porcentage">0</span></p>
+      <p>Número de personas: <span class="nivel2-counter">0</span></p>
+      <p>Ganancias Totales: <span class="nivel2-gains">0</span></p>
     </div>
     <!-- Nivel 3 -->
     <div class="referido-card">
       <h2>Nivel 3</h2>
       <p>Ganancia: <span class="percentage">5%</span></p>
-      <p>Número de personas: <span class="proncentage">0</span></p>
-      <p>Ganancias Totales: <span class="porcentage">0</span></p>
+      <p>Número de personas: <span class="nivel3-counter">0</span></p>
+      <p>Ganancias Totales: <span class="nivel3-gains">0</span></p>
     </div>
   </div>
 
