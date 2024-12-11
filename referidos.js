@@ -12,14 +12,14 @@ function incrementCounter() {
 
   // Actualizar la visualización
   nivel1CounterElement.textContent = nivel1Counter;
-  nivel1TotalElement.textContent = (nivel1Counter * 15).toFixed(2); // Simulación de ganancia
+  nivel1TotalElement.textContent = "0.00"; // Ganancia permanece en cero
 }
 
 // Ejecutamos la función al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
   // Mostrar el valor actual del contador
   nivel1CounterElement.textContent = nivel1Counter;
-  nivel1TotalElement.textContent = (nivel1Counter * 15).toFixed(2); // Ganancia inicial
+  nivel1TotalElement.textContent = "0.00"; // Ganancia inicial en cero
 
   // Simular que un usuario nuevo accedió
   incrementCounter();
