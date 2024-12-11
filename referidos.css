@@ -91,59 +91,95 @@ body {
   color: #ffdd00;
 }
 
-/* Enlace para Compartir */
 .share-container {
   margin-top: 30px;
   text-align: center;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .share-container p {
   font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #f5f5f5;
+  margin-bottom: 5px;
+  color: #ffffff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
 }
 
+/* Caja para el enlace de compartir */
 .share-box {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background: #2a2a2a;
+  background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
   border-radius: 15px;
-  padding: 10px 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  padding: 15px 25px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5), inset 0 2px 3px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.share-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7), inset 0 2px 5px rgba(255, 255, 255, 0.2);
+}
+
+/* Input de texto */
 .share-box input {
-  width: 80%;
+  flex: 1;
   max-width: 400px;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
+  padding: 12px;
+  border: 2px solid #00ffcc;
+  background: #ffffff;
   color: #333;
+  border-radius: 10px;
+  font-size: 1rem;
   outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .share-box input:focus {
-  box-shadow: 0 0 5px #00ffcc;
+  border-color: #0077ff;
+  box-shadow: 0 0 10px rgba(0, 119, 255, 0.7);
 }
 
+/* Botón para copiar */
 .share-box button {
-  padding: 10px 20px;
-  background: #0077ff;
-  color: white;
+  padding: 12px 25px;
+  background: linear-gradient(145deg, #0077ff, #005fcc);
+  color: #ffffff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .share-box button:hover {
-  background: #005fcc;
-  transform: scale(1.05);
+  background: linear-gradient(145deg, #005fcc, #0047b3);
+  transform: scale(1.1);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
+}
+
+/* Adaptabilidad para pantallas pequeñas */
+@media (max-width: 480px) {
+  .share-box {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .share-box input {
+    width: 100%;
+    max-width: none;
+  }
+
+  .share-box button {
+    width: 100%;
+  }
 }
 
 /* Barra inferior fija (invisible) */
