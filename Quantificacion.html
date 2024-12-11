@@ -241,6 +241,7 @@
 <script>
   const miningProgressKey = 'miningProgress'; // Clave para almacenamiento local
   const timerKey = 'timerProgress'; // Clave para la cuenta regresiva
+  const balanceKey = 'balance'; // Clave para el balance de la cuenta
 
   // Inicialización del progreso de la minería si ya existe
   if (localStorage.getItem(miningProgressKey)) {
@@ -287,6 +288,9 @@
         clearInterval(interval);
         document.getElementById("reward-message").textContent = "¡He minado por ti, reclama tu recompensa de 0.1 USDT!";
         document.getElementById("mining-message").style.display = 'none'; // Esconde el mensaje
+
+        // Actualizar balance
+        updateBalance(0.1); // Añadir recompensa de 0.1 USDT
       }
     }, 1000); // Actualizar cada segundo
   }
@@ -322,6 +326,12 @@
         startButton.style.backgroundColor = "#00b3ff"; // Restaurar color original
       }
     }, 1000);
+  }
+
+  function updateBalance(amount) {
+    let currentBalance = parseFloat(localStorage.getItem(balanceKey)) || 0;
+    currentBalance += amount;
+    localStorage.setItem(balanceKey, currentBalance.toFixed(2));
   }
 
   // Función para continuar con el progreso guardado de minería
