@@ -3,7 +3,7 @@ function generateReferralCode() {
   let referralCode = localStorage.getItem("referralCode");
 
   if (!referralCode) {
-    // Genera un código aleatorio de 6 caracteres alfanuméricos
+    // Generar un código aleatorio de 6 caracteres alfanuméricos
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     referralCode = '';
     for (let i = 0; i < 6; i++) {
@@ -15,12 +15,18 @@ function generateReferralCode() {
   return referralCode;
 }
 
-// Función para mostrar el enlace de referido
+// Función para mostrar el enlace de referido y el código en su lugar correspondiente
 function displayReferralLink() {
   const referralCode = generateReferralCode(); // Obtener el código de referido
   const referralLink = `https://brrbet.github.io/MINERALUXPLUX/Registro.html?ref=${referralCode}`;
 
-  // Actualizar el enlace de referido dentro del apartado "Enlace para compartir"
+  // Mostrar el código de referido en el apartado ID
+  const referralCodeElement = document.getElementById("random-id");
+  if (referralCodeElement) {
+    referralCodeElement.textContent = referralCode; // Mostrar el código único
+  }
+
+  // Mostrar el enlace dentro del apartado "Enlace para compartir"
   const referralLinkContainer = document.getElementById("referral-container");
   if (referralLinkContainer) {
     referralLinkContainer.innerHTML = `
@@ -43,21 +49,40 @@ function displayReferralLink() {
   }
 }
 
-// Función para manejar el registro de un nuevo usuario
+// Función para manejar el registro de un nuevo usuario y actualizar el contador
 function handleNewUserRegistration() {
   const urlParams = new URLSearchParams(window.location.search);
   const referralCode = urlParams.get("ref"); // Obtener el código de referido de la URL
 
   if (referralCode) {
-    updateReferralCount(referralCode); // Actualizar el contador de referidos
+    // Incrementar el contador de referidos para el código correspondiente
+    let referrals = JSON.parse(localStorage.getItem("referrals")) || {};
+    referrals[referralCode] = (referrals[referralCode] || 0) + 1; // Incrementar el contador
+    localStorage.setItem("referrals", JSON.stringify(referrals));
   }
 }
 
-// Ejecutamos la función al cargar la página
+// Función para mostrar el contador de referidos en el home
+function displayReferralStats() {
+  const referralCode = localStorage.getItem("referralCode"); // Obtener el código del usuario actual
+  const referrals = JSON.parse(localStorage.getItem("referrals")) || {};
+  const nivel1Count = referrals[referralCode] || 0; // Número de referidos de Nivel 1
+
+  // Actualizar el contador en la página
+  const nivel1CounterElement = document.querySelector(".nivel1-counter");
+  if (nivel1CounterElement) {
+    nivel1CounterElement.textContent = nivel1Count; // Mostrar el contador de referidos
+  }
+}
+
+// Ejecutar funciones al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
   // Llamar a la función para manejar el registro de nuevos usuarios
   handleNewUserRegistration();
 
-  // Llamar a la función para mostrar el enlace de referido
+  // Llamar a la función para mostrar el enlace y el código
   displayReferralLink();
+
+  // Llamar a la función para mostrar las estadísticas en el home
+  displayReferralStats();
 });
