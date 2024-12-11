@@ -9,7 +9,8 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: #000; /* Fallback color */
+  background: url('https://github.com/user-attachments/assets/2fe3a643-aba4-466c-b3d5-0a98f976714b') no-repeat center center fixed;
+  background-size: cover;/* Fallback color */
 }
 
 /* Fondo con imagen */
