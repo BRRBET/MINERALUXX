@@ -12,21 +12,29 @@
     <h1>Registro</h1>
     <form id="registerForm">
       <div class="form-group">
-        <label for="email">Correo Electrónico:</label>
-        <input type="email" id="email" placeholder="Ingresa tu correo" required>
-      </div>
-      <div class="form-group">
-        <label for="password1">Contraseña:</label>
-        <input type="password" id="password1" placeholder="Crea tu contraseña" required>
-      </div>
-      <div class="form-group">
-        <label for="password2">Confirmar Contraseña:</label>
-        <input type="password" id="password2" placeholder="Confirma tu contraseña" required>
-      </div>
-      <div class="form-group">
-        <label for="invitationCode">Código de Invitación:</label>
-        <input type="text" id="invitationCode" placeholder="846472"  value="646272" readonly required>
-      </div>
+        <form id="registerForm">
+  <div>
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  
+  <div>
+    <label for="password1">Contraseña:</label>
+    <input type="password" id="password1" name="password1" required>
+  </div>
+  
+  <div>
+    <label for="password2">Confirmar contraseña:</label>
+    <input type="password" id="password2" name="password2" required>
+  </div>
+  
+  <div>
+    <label for="invitationCode">Código de referencia:</label>
+    <input type="text" id="invitationCode" name="invitationCode" readonly>
+  </div>
+  
+  <button type="submit">Registrar</button>
+        </form>
       <div class="form-buttons">
         <button type="submit" id="register">Registrarse</button>
         <button type="button" id="login">Iniciar Sesión</button>
