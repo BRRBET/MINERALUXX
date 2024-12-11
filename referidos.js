@@ -57,10 +57,19 @@ function handleNewUserRegistration() {
   if (referralCode) {
     // Incrementar el contador de referidos para el código correspondiente
     let referrals = JSON.parse(localStorage.getItem("referrals")) || {};
-    referrals[referralCode] = (referrals[referralCode] || 0) + 1; // Incrementar el contador
+
+    // Si es la primera vez que se ve este código, inicializarlo
+    if (!referrals[referralCode]) {
+      referrals[referralCode] = 0;
+    }
+
+    // Incrementar el contador de referidos
+    referrals[referralCode] += 1;
+
+    // Guardar el contador actualizado de referidos en localStorage
     localStorage.setItem("referrals", JSON.stringify(referrals));
 
-    // Guardar el código de referido de este usuario
+    // Guardar el código de referido de este usuario en localStorage
     localStorage.setItem("referralCode", referralCode);
   }
 }
