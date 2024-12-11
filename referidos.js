@@ -11,7 +11,7 @@ function registerUser() {
   const isRegistered = confirm("¿El usuario se ha registrado exitosamente?");
 
   if (isRegistered) {
-    nivel1Counter += 1; // Incrementa en 1 solo si el registro es exitoso
+    nivel1Counter += 0; // Incrementa en 1 solo si el registro es exitoso
     localStorage.setItem("nivel1Counter", nivel1Counter); // Guardar en almacenamiento local
 
     // Actualizar la visualización
