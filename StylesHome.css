@@ -172,6 +172,8 @@ body {
   background: #00cc00;
   color: white;
 }
+
+/* Barra inferior de botones */
 .bottom-bar {
   display: flex;
   justify-content: center; /* Centra los botones horizontalmente */
@@ -191,6 +193,7 @@ body {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2); /* Fondo transparente */
   display: flex;
+  flex-direction: column; /* Alinea el icono y el texto verticalmente */
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -198,7 +201,6 @@ body {
   color: #ffffff;
   transition: transform 0.3s ease, background 0.3s ease;
   margin: 0 15px; /* Espaciado entre los botones */
-  flex-direction: column; /* Alinea el icono y el texto verticalmente */
 }
 
 .bottom-bar .button-circle:hover {
@@ -212,6 +214,7 @@ body {
   text-align: center;
   font-size: 0.7rem; /* Tamaño más pequeño para los textos */
   margin-top: 5px; /* Espacio entre el icono y el texto */
+  color: #ffffff; /* Color blanco para el texto */
 }
 
 /* Espaciador */
@@ -305,4 +308,4 @@ body {
 .top-button:hover {
   transform: scale(1.1);
   background: linear-gradient(90deg, #0077ff, #00ffcc);
-  }
+}
