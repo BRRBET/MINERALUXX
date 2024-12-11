@@ -159,36 +159,46 @@
 
     /* Barra inferior de navegación */
     .bottom-bar {
-      display: flex;
-      justify-content: space-evenly;
-      padding: 15px 0;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-      background: transparent; /* Fondo invisible */
-    }
+  display: flex;
+  justify-content: center; /* Centra los botones horizontalmente */
+  align-items: center; /* Centra los botones verticalmente */
+  padding: 15px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: transparent; /* Fondo invisible */
+}
 
-    .bottom-bar .button-circle {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2); /* Transparente con borde blanco */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      font-size: 1.4rem;
-      color: #ffffff;
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
+.bottom-bar .button-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2); /* Fondo transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: #ffffff;
+  transition: transform 0.3s ease, background 0.3s ease;
+  margin: 0 15px; /* Espaciado entre los botones */
+  flex-direction: column; /* Alinea el icono y el texto verticalmente */
+}
 
-    .bottom-bar .button-circle:hover {
-      transform: scale(1.1);
-      background: #00b3ff;
-      color: #ffffff;
-    }
+.bottom-bar .button-circle:hover {
+  transform: scale(1.1);
+  background: #00b3ff;
+  color: #ffffff;
+}
+
+.bottom-bar .button-circle span {
+  display: block;
+  text-align: center;
+  font-size: 0.7rem; /* Tamaño más pequeño para los textos */
+  margin-top: 5px; /* Espacio entre el icono y el texto */
+}
   </style>
 </head>
 <body>
@@ -229,14 +239,29 @@
     </div>
   </div>
 
-  <!-- Barra inferior de navegación -->
-  <div class="bottom-bar">
-    <div class="button-circle" onclick="window.location.href='Home.html'">🏠</div>
-    <div class="button-circle" onclick="window.location.href='Retiros.html'">💰</div>
-    <div class="button-circle" onclick="window.location.href='CompraRobots.html'">🤖</div>
-    <div class="button-circle" onclick="window.location.href='Invitados.html'">🎁</div>
-    <div class="button-circle" onclick="window.location.href='Perfil.html'">🙍‍♂️</div>
-  </div>
+<!-- Barra Inferior -->
+<div class="bottom-bar">
+    <div class="button-circle" onclick="window.location.href='Home.html'">
+        <span>🏠</span>
+        <span>Home</span>
+    </div>
+    <div class="button-circle" onclick="window.location.href='Retiros.html'">
+        <span>💰</span>
+        <span>Retiro</span>
+    </div>
+    <div class="button-circle" onclick="window.location.href='CompraRobots.html'">
+        <span>🛒</span>
+        <span>Tienda</span>
+    </div>
+    <div class="button-circle" onclick="window.location.href='Invitados.html'">
+        <span>🎁</span>
+        <span>Referido</span>
+    </div>
+    <div class="button-circle" onclick="window.location.href='Perfil.html'">
+        <span>🙍‍♂️</span>
+        <span>Perfil</span>
+    </div>
+</div>
 
 <script>
   const miningProgressKey = 'miningProgress'; // Clave para almacenamiento local
