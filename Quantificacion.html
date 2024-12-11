@@ -369,8 +369,37 @@
     miningMessage.style.opacity = 1; // Asegura que el mensaje sea visible
     progressBar.style.width = savedProgress + "%";
 
-    // Continuar la cuenta regresiva
-    start24HourTimer(savedTime);
+    // Continuar la cuenta regresiva desde el tiempo guardado
+    start24HourTimerWithSavedTime(savedTime);
+  }
+
+  // Función para continuar con el temporizador guardado
+  function start24HourTimerWithSavedTime(savedTime) {
+    let timeRemaining = savedTime; // Utilizar el tiempo restante guardado
+    const countdownTimer = document.getElementById("countdown-timer");
+    const startButton = document.getElementById("start-mining");
+
+    // Iniciar la cuenta regresiva
+    const timerInterval = setInterval(() => {
+      const hours = Math.floor(timeRemaining / 3600);
+      const minutes = Math.floor((timeRemaining % 3600) / 60);
+      const seconds = timeRemaining % 60;
+
+      countdownTimer.textContent = `${hours}:${minutes}:${seconds}`;
+      timeRemaining--;
+
+      // Guardar el tiempo restante en localStorage
+      localStorage.setItem(timerKey, timeRemaining);
+
+      if (timeRemaining <= 0) {
+        clearInterval(timerInterval);
+        countdownTimer.textContent = "¡Puedes volver a minar ahora!";
+
+        // Reactivar el botón y restaurar su color
+        startButton.disabled = false;
+        startButton.style.backgroundColor = "#00b3ff"; // Restaurar color original
+      }
+    }, 1000);
   }
 </script>
 </body>
