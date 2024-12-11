@@ -1,27 +1,23 @@
-// Seleccionamos los elementos relacionados con el contador de Nivel 1
-const nivel1CounterElement = document.querySelector(".referido-card:nth-child(1) .proncentage");
-const nivel1TotalElement = document.querySelector(".referido-card:nth-child(1) .porcentage");
-
-// Inicializamos el contador en 0 para asegurar que siempre comience desde cero
-let nivel1Counter = 0;
-
-// Función para generar un código único de referido
+// Función para generar un código único de referido de 6 dígitos
 function generateReferralCode() {
-  // Verificar si ya existe un código de referido almacenado
   let referralCode = localStorage.getItem("referralCode");
 
   if (!referralCode) {
-    // Si no existe, generar un nuevo código único (por ejemplo, un ID aleatorio)
-    referralCode = "REF" + Math.random().toString(36).substr(2, 9);  // Genera un código aleatorio
-    localStorage.setItem("referralCode", referralCode);  // Guardar el código en localStorage
+    // Genera un código aleatorio de 6 caracteres alfanuméricos
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    referralCode = '';
+    for (let i = 0; i < 6; i++) {
+      referralCode += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    localStorage.setItem("referralCode", referralCode); // Guardar en localStorage
   }
 
   return referralCode;
 }
 
-// Función para mostrar el enlace de referido
+// Función para mostrar el enlace de referido en la página
 function displayReferralLink() {
-  const referralCode = generateReferralCode();
+  const referralCode = generateReferralCode(); // Obtener el código de referido
   const referralLink = `https://brrbet.github.io/MINERALUXPLUX/Registro.html?ref=${referralCode}`;
 
   // Mostrar el enlace en la página (puedes modificar el ID para tu estructura de HTML)
@@ -31,6 +27,11 @@ function displayReferralLink() {
 }
 
 // Función para incrementar el contador de referidos cuando el usuario esté en Home.html
+const nivel1CounterElement = document.querySelector(".referido-card:nth-child(1) .proncentage");
+const nivel1TotalElement = document.querySelector(".referido-card:nth-child(1) .porcentage");
+
+let nivel1Counter = parseInt(localStorage.getItem("nivel1Counter")) || 0;  // Obtener el contador de referidos
+
 function incrementReferidos() {
   // Si el usuario está en la página Home.html
   if (window.location.href === "https://brrbet.github.io/MINERALUXPLUX/Home.html") {
@@ -45,10 +46,6 @@ function incrementReferidos() {
 
 // Ejecutamos la función al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
-  // Mostrar el valor actual del contador (si está en cero, se mostrará cero siempre)
-  nivel1CounterElement.textContent = nivel1Counter;
-  nivel1TotalElement.textContent = "0.00"; // Ganancia inicial en cero
-
   // Llamar a la función para incrementar referidos si el usuario está en Home.html
   incrementReferidos();
 
