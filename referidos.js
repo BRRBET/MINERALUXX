@@ -15,40 +15,28 @@ function generateReferralCode() {
   return referralCode;
 }
 
-// Función para mostrar el enlace de referido y el código en su lugar
+// Función para mostrar el enlace de referido en la página
 function displayReferralLink() {
   const referralCode = generateReferralCode(); // Obtener el código de referido
   const referralLink = `https://brrbet.github.io/MINERALUXPLUX/Registro.html?ref=${referralCode}`;
 
-  // Actualizar el código de referido en el botón superior
-  const referralCodeButton = document.getElementById("random-id");
-  if (referralCodeButton) {
-    referralCodeButton.textContent = referralCode; // Mostrar solo el código en el botón
+  // Mostrar el enlace en el campo de texto
+  const referralLinkElement = document.getElementById("ref-link");
+  referralLinkElement.value = referralLink;  // Mostrar el enlace de referido en el campo de texto
+
+  // Mostrar el mismo código en el ID
+  const randomIdElement = document.getElementById("random-id");
+  randomIdElement.textContent = referralCode; // Mostrar el código en el elemento ID
+
+  // Función para copiar al portapapeles
+  function copyReferralLink() {
+    referralLinkElement.select();  // Seleccionar el contenido del campo de texto
+    document.execCommand("copy");  // Copiar al portapapeles
+    alert("Enlace copiado al portapapeles!");
   }
 
-  // Actualizar el enlace de referido dentro del apartado "Enlace para compartir"
-  const referralLinkContainer = document.getElementById("referral-container");
-  if (referralLinkContainer) {
-    referralLinkContainer.innerHTML = `
-      <input type="text" id="ref-link" value="${referralLink}" readonly>
-      <button id="copy-btn">Copiar enlace</button>
-    `;
-  }
-
-  // Agregar funcionalidad al botón para copiar enlace y código al portapapeles
-  const copyButton = document.getElementById("copy-btn");
-  if (copyButton) {
-    copyButton.addEventListener("click", () => {
-      const referralLinkElement = document.getElementById("ref-link");
-      if (referralLinkElement) {
-        // Crear un texto combinando el enlace y el código
-        const combinedText = `Enlace: ${referralLink}\nCódigo: ${referralCode}`;
-        navigator.clipboard.writeText(combinedText).then(() => {
-          alert("Enlace y código copiados al portapapeles!");
-        });
-      }
-    });
-  }
+  // Agregar el evento de clic al botón de copiar
+  document.getElementById("copy-btn").addEventListener("click", copyReferralLink);
 }
 
 // Función para actualizar el contador de referidos (Nivel 1)
