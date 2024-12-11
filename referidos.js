@@ -15,7 +15,7 @@ function generateReferralCode() {
   return referralCode;
 }
 
-// Función para mostrar el enlace de referido en la página
+// Función para mostrar el enlace de referido y el ID
 function displayReferralLink() {
   const referralCode = generateReferralCode(); // Obtener el código de referido
   const referralLink = `https://brrbet.github.io/MINERALUXPLUX/Registro.html?ref=${referralCode}`;
@@ -24,9 +24,11 @@ function displayReferralLink() {
   const referralLinkElement = document.getElementById("ref-link");
   referralLinkElement.value = referralLink;  // Mostrar el enlace de referido en el campo de texto
 
-  // Mostrar el mismo código en el ID
+  // Mostrar el código de referido en el elemento con ID "random-id"
   const randomIdElement = document.getElementById("random-id");
-  randomIdElement.textContent = referralCode; // Mostrar el código en el elemento ID
+  if (randomIdElement) {
+    randomIdElement.textContent = referralCode; // Mostrar el código en el elemento ID
+  }
 
   // Función para copiar al portapapeles
   function copyReferralLink() {
@@ -39,29 +41,21 @@ function displayReferralLink() {
   document.getElementById("copy-btn").addEventListener("click", copyReferralLink);
 }
 
-// Función para incrementar el contador de referidos cuando el usuario esté en Home.html
-const nivel1CounterElement = document.querySelector(".referido-card:nth-child(1) .proncentage");
-const nivel1TotalElement = document.querySelector(".referido-card:nth-child(1) .porcentage");
+// Función para manejar el registro de un nuevo usuario
+function handleNewUserRegistration() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const referralCode = urlParams.get("ref"); // Obtener el código de referido de la URL
 
-let nivel1Counter = parseInt(localStorage.getItem("nivel1Counter")) || 0;  // Obtener el contador de referidos
-
-function incrementReferidos() {
-  // Si el usuario está en la página Home.html
-  if (window.location.href === "https://brrbet.github.io/MINERALUXPLUX/Home.html") {
-    nivel1Counter += 1; // Incrementa en 1
-    localStorage.setItem("nivel1Counter", nivel1Counter); // Guardar en almacenamiento local
-
-    // Actualizar la visualización
-    nivel1CounterElement.textContent = nivel1Counter;
-    nivel1TotalElement.textContent = "0.00"; // Ganancia permanece en cero
+  if (referralCode) {
+    localStorage.setItem("referralCodeFromURL", referralCode); // Guardar el código de referido desde la URL
   }
 }
 
 // Ejecutamos la función al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
-  // Llamar a la función para incrementar referidos si el usuario está en Home.html
-  incrementReferidos();
+  // Llamar a la función para manejar el registro de nuevos usuarios
+  handleNewUserRegistration();
 
-  // Llamar a la función para mostrar el enlace de referido y el ID
+  // Llamar a la función para mostrar el enlace de referido y el código en el ID
   displayReferralLink();
 });
