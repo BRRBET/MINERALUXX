@@ -246,67 +246,85 @@ font-family: Arial, sans-serif;
 
   <script>
     // Función para iniciar la minería (30 segundos de duración)
-    const startMiningButton = document.getElementById("start-mining");
-    const progressBar = document.querySelector(".progress-bar");
-    const miningMessage = document.getElementById("mining-message");
-    const countdownTimer = document.getElementById("countdown-timer");
-    let miningInterval;
-    let countdownInterval;
+    document.getElementById("start-mining").addEventListener("click", () => {
+  const miningStatus = document.getElementById("mining-status");
 
-    // Función de cuenta regresiva
-    function startCountdown() {
-      let totalSeconds = 24 * 60 * 60; // 24 horas en segundos
-      countdownInterval = setInterval(function () {
-        const hours = Math.floor(totalSeconds / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = totalSeconds % 60;
-        countdownTimer.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-        totalSeconds--;
-      }, 1000);
+  // Si la minería está activada, no hacer nada
+  if (localStorage.getItem("miningActive") === "true") {
+    miningStatus.textContent = "Ya estás minando, por favor espera.";
+    return;
+  }
+
+  miningStatus.textContent = "Estoy minando por ti, espera 30 segundos...";
+
+  setTimeout(() => {
+    miningStatus.textContent = "He terminado la minería. ¡Puedes ver tu balance!";
+
+    // Activar minería y configurar el cronómetro
+    localStorage.setItem("miningActive", "true");
+    localStorage.setItem("miningStartTime", Date.now()); // Guardar la hora de inicio
+    start24HourTimer();
+  }, 30000); // Simula que la minería dura 30 segundos
+});
+
+function start24HourTimer() {
+  const miningStatus = document.getElementById("mining-status");
+  let timeRemaining = 24 * 60 * 60; // 24 hours in seconds
+
+  // Recuperamos el tiempo restante desde el almacenamiento local si la minería está activa
+  const miningStartTime = parseInt(localStorage.getItem("miningStartTime"));
+  if (miningStartTime) {
+    const elapsedTime = Math.floor((Date.now() - miningStartTime) / 1000); // Tiempo pasado en segundos
+    timeRemaining -= elapsedTime; // Calculamos el tiempo restante
+  }
+
+  // Guardamos el tiempo restante en localStorage
+  localStorage.setItem("timeRemaining", timeRemaining);
+
+  const timerInterval = setInterval(() => {
+    const hours = Math.floor(timeRemaining / 3600);
+    const minutes = Math.floor((timeRemaining % 3600) / 60);
+    const seconds = timeRemaining % 60;
+
+    miningStatus.textContent = `Espera ${hours}h ${minutes}m ${seconds}s para volver a minar.`;
+    timeRemaining--;
+
+    // Guardamos el tiempo restante en localStorage
+    localStorage.setItem("timeRemaining", timeRemaining);
+
+    if (timeRemaining <= 0) {
+      clearInterval(timerInterval);
+      miningStatus.textContent = "¡Puedes volver a minar ahora!";
+      localStorage.setItem("miningActive", "false"); // Desactivar minería
+      localStorage.removeItem("miningStartTime"); // Eliminar el tiempo de inicio
     }
+  }, 1000);
+}
 
-    // Función para iniciar minería
-    function startMining() {
-      // Cambiar el texto del botón y deshabilitarlo
-      startMiningButton.textContent = "Minando...";
-      startMiningButton.disabled = true;
+// Función para comprobar si la minería está activa al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+  const miningStatus = document.getElementById("mining-status");
 
-      // Iniciar la animación de progreso
-      progressBar.style.width = "100%";
-      miningMessage.style.opacity = 1;
+  // Comprobar si la minería está activa
+  if (localStorage.getItem("miningActive") === "true") {
+    let timeRemaining = parseInt(localStorage.getItem("timeRemaining"));
 
-      // Iniciar cuenta regresiva de minería (30 segundos)
-      setTimeout(() => {
-        // Finalizar minería y restablecer la interfaz
-        progressBar.style.width = "0%";
-        startMiningButton.textContent = "Iniciar Minería";
-        startMiningButton.disabled = false;
+    if (timeRemaining <= 0) {
+      miningStatus.textContent = "¡Puedes volver a minar ahora!";
+      localStorage.setItem("miningActive", "false");
+      localStorage.removeItem("miningStartTime");
+      localStorage.removeItem("timeRemaining");
+    } else {
+      const hours = Math.floor(timeRemaining / 3600);
+      const minutes = Math.floor((timeRemaining % 3600) / 60);
+      const seconds = timeRemaining % 60;
 
-        // Actualizar el balance si el usuario tiene VIP
-        let vipLevel = parseInt(localStorage.getItem('vip') || '0');
-        if (vipLevel > 0) {
-          let balance = parseFloat(localStorage.getItem('balance') || '0');
-          balance += 0.10; // Ganancia de 0.10 USDT
-          localStorage.setItem('balance', balance.toFixed(2)); // Guardar nuevo balance
-          alert("Minería terminada. Has ganado 0.10 USDT!");
-        } else {
-          alert("Minería terminada.  has obtenido ganancias de 0.1 USDT.");
-        }
-
-        // Mostrar mensaje de finalización de minería
-        miningMessage.textContent = "Minería completada. ¡Reinicia para más!";
-      }, 30000); // Duración de minería (30 segundos)
-
-      // Limpiar la cuenta regresiva cuando la minería termine
-      clearInterval(countdownInterval);
-      startCountdown(); // Reiniciar la cuenta regresiva para 24 horas
+      miningStatus.textContent = `Espera ${hours}h ${minutes}m ${seconds}s para volver a minar.`;
     }
-
-    // Iniciar la cuenta regresiva al cargar la página
-    window.onload = startCountdown;
-
-    // Agregar evento al botón de minería
-    startMiningButton.addEventListener("click", startMining);
+  } else {
+    miningStatus.textContent = "Puedes empezar a minar cuando quieras.";
+  }
+});
   </script>
 
 </body>
