@@ -27,10 +27,10 @@ function displayReferralLink() {
   }
 
   // Mostrar el enlace dentro del apartado "Enlace para compartir"
-  const referralLinkContainer = document.getElementById("referral-container");
+  const referralLinkContainer = document.querySelector(".share-box");
   if (referralLinkContainer) {
     referralLinkContainer.innerHTML = `
-      <input type="text" id="ref-link" value="${referralLink}" readonly>
+      <input type="text" id="referral-link" value="${referralLink}" readonly>
       <button id="copy-btn">Copiar</button>
     `;
   }
@@ -39,7 +39,7 @@ function displayReferralLink() {
   const copyButton = document.getElementById("copy-btn");
   if (copyButton) {
     copyButton.addEventListener("click", () => {
-      const referralLinkElement = document.getElementById("ref-link");
+      const referralLinkElement = document.getElementById("referral-link");
       if (referralLinkElement) {
         referralLinkElement.select(); // Seleccionar el contenido
         document.execCommand("copy"); // Copiar al portapapeles
