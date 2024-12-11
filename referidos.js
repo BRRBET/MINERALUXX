@@ -59,6 +59,9 @@ function handleNewUserRegistration() {
     let referrals = JSON.parse(localStorage.getItem("referrals")) || {};
     referrals[referralCode] = (referrals[referralCode] || 0) + 1; // Incrementar el contador
     localStorage.setItem("referrals", JSON.stringify(referrals));
+
+    // Guardar el código de referido de este usuario
+    localStorage.setItem("referralCode", referralCode);
   }
 }
 
