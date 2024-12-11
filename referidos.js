@@ -5,6 +5,31 @@ const nivel1TotalElement = document.querySelector(".referido-card:nth-child(1) .
 // Inicializamos el contador en 0 para asegurar que siempre comience desde cero
 let nivel1Counter = 0;
 
+// Función para generar un código único de referido
+function generateReferralCode() {
+  // Verificar si ya existe un código de referido almacenado
+  let referralCode = localStorage.getItem("referralCode");
+
+  if (!referralCode) {
+    // Si no existe, generar un nuevo código único (por ejemplo, un ID aleatorio)
+    referralCode = "REF" + Math.random().toString(36).substr(2, 9);  // Genera un código aleatorio
+    localStorage.setItem("referralCode", referralCode);  // Guardar el código en localStorage
+  }
+
+  return referralCode;
+}
+
+// Función para mostrar el enlace de referido
+function displayReferralLink() {
+  const referralCode = generateReferralCode();
+  const referralLink = `https://brrbet.github.io/MINERALUXPLUX/Registro.html?ref=${referralCode}`;
+
+  // Mostrar el enlace en la página (puedes modificar el ID para tu estructura de HTML)
+  const referralLinkElement = document.getElementById("referral-link");
+  referralLinkElement.textContent = referralLink;  // Mostrar el enlace de referido
+  referralLinkElement.href = referralLink;  // Establecer el href del enlace
+}
+
 // Función para incrementar el contador de referidos cuando el usuario esté en Home.html
 function incrementReferidos() {
   // Si el usuario está en la página Home.html
@@ -26,4 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Llamar a la función para incrementar referidos si el usuario está en Home.html
   incrementReferidos();
+
+  // Llamar a la función para mostrar el enlace de referido
+  displayReferralLink();
 });
