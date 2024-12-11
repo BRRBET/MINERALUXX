@@ -7,13 +7,15 @@ function initializeMining() {
   const miningProgress = localStorage.getItem(miningProgressKey);
   const timerProgress = localStorage.getItem(timerKey);
 
+  // Si hay progreso guardado y tiempo restante en el temporizador
   if (miningProgress && timerProgress) {
     const progressData = JSON.parse(miningProgress);
     startMiningWithProgress(progressData.progress, parseInt(timerProgress));
   } else {
+    // Si no hay datos guardados, prepara el botón de minería
     const startButton = document.getElementById("start-mining");
     startButton.addEventListener("click", startMining);
-    startButton.disabled = false; // Asegurar que el botón esté habilitado inicialmente
+    startButton.disabled = false; // Habilitar el botón inicialmente
     startButton.style.backgroundColor = "#00b3ff";
   }
 }
@@ -24,14 +26,22 @@ function startMining() {
   const progressBar = document.querySelector(".progress-bar");
   const startButton = document.getElementById("start-mining");
   const miningCircle = document.querySelector(".mining-circle");
+  const countdownTimer = document.getElementById("countdown-timer");
 
+  // Deshabilitar el botón de minería
   startButton.disabled = true;
   startButton.style.backgroundColor = "red";
-  miningMessage.textContent = "¡Estoy minando por ti, espera 24 horas!";
-  miningCircle.style.animation = "rotate 24h linear infinite"; // Animación para girar el círculo
 
-  startMiningProgress();
+  // Mostrar mensaje de minería
+  miningMessage.textContent = "¡Estoy minando por ti, espera 24 horas!";
+  miningCircle.style.animation = "rotate 24h linear infinite"; // Animación de minería
+
+  // Mostrar y comenzar el temporizador de 24 horas
+  countdownTimer.style.display = 'block'; // Mostrar el temporizador
   start24HourTimer();
+
+  // Iniciar el progreso de minería
+  startMiningProgress();
 }
 
 // Función para el progreso de minería
@@ -74,7 +84,7 @@ function start24HourTimer() {
     if (timeRemaining <= 0) {
       clearInterval(timerInterval);
       countdownTimer.textContent = "¡Puedes volver a minar ahora!";
-      startButton.disabled = false;
+      startButton.disabled = false; // Habilitar el botón de minería
       startButton.style.backgroundColor = "#00b3ff";
     }
   }, 1000);
@@ -91,6 +101,7 @@ function startMiningWithProgress(savedProgress, savedTime) {
   progressBar.style.width = `${savedProgress}%`;
   miningCircle.style.animation = "rotate 24h linear infinite";
 
+  // Continuar el temporizador con el tiempo guardado
   start24HourTimerWithSavedTime(savedTime);
 }
 
