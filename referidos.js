@@ -56,10 +56,11 @@ function handleNewUserRegistration() {
 
   // Verificar si el código de referido es válido
   let referrals = JSON.parse(localStorage.getItem("referrals")) || {};
-  if (referralCode && referrals[referralCode] !== undefined) {
-    // Si el código es válido, incrementar el contador de referidos
+
+  // Si el código de referido no existe en la lista de referidos, se agregará como válido
+  if (referralCode) {
     if (!referrals[referralCode]) {
-      referrals[referralCode] = 0;
+      referrals[referralCode] = 0; // Añadir el código de referido si no existe
     }
 
     // Incrementar el contador de referidos para el código correspondiente
@@ -70,10 +71,9 @@ function handleNewUserRegistration() {
 
     // Guardar el código de referido de este usuario en localStorage
     localStorage.setItem("referralCode", referralCode);
-  } else if (referralCode) {
-    // Si el código no es válido, mostrar un mensaje de error
-    alert("El código de invitación no es válido.");
-  }
+  } 
+
+  // No se muestra un mensaje de error si el código no es válido
 }
 
 // Función para mostrar el contador de referidos en el home
