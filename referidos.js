@@ -20,30 +20,32 @@ function displayReferralLink() {
   const referralCode = generateReferralCode(); // Obtener el código de referido
   const referralLink = `https://brrbet.github.io/MINERALUXPLUX/Registro.html?ref=${referralCode}`;
 
-  // Actualizar el código de referido en el apartado superior
-  const referralCodeElement = document.getElementById("random-id");
-  if (referralCodeElement) {
-    referralCodeElement.textContent = referralCode; // Mostrar el código de referido
+  // Actualizar el código de referido en el botón superior
+  const referralCodeButton = document.getElementById("random-id");
+  if (referralCodeButton) {
+    referralCodeButton.textContent = referralCode; // Mostrar solo el código en el botón
   }
 
-  // Actualizar el enlace de referido dentro del mismo apartado
-  const referralContainer = document.getElementById("referral-container");
-  if (referralContainer) {
-    referralContainer.innerHTML = `
+  // Actualizar el enlace de referido dentro del apartado "Enlace para compartir"
+  const referralLinkContainer = document.getElementById("referral-container");
+  if (referralLinkContainer) {
+    referralLinkContainer.innerHTML = `
       <input type="text" id="ref-link" value="${referralLink}" readonly>
       <button id="copy-btn">Copiar enlace</button>
     `;
   }
 
-  // Función para copiar al portapapeles
+  // Agregar funcionalidad al botón para copiar enlace y código al portapapeles
   const copyButton = document.getElementById("copy-btn");
   if (copyButton) {
     copyButton.addEventListener("click", () => {
       const referralLinkElement = document.getElementById("ref-link");
       if (referralLinkElement) {
-        referralLinkElement.select(); // Seleccionar el contenido
-        document.execCommand("copy"); // Copiar al portapapeles
-        alert("Enlace copiado al portapapeles!");
+        // Crear un texto combinando el enlace y el código
+        const combinedText = `Enlace: ${referralLink}\nCódigo: ${referralCode}`;
+        navigator.clipboard.writeText(combinedText).then(() => {
+          alert("Enlace y código copiados al portapapeles!");
+        });
       }
     });
   }
