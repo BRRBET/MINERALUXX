@@ -22,8 +22,17 @@ function displayReferralLink() {
 
   // Mostrar el enlace en la página (puedes modificar el ID para tu estructura de HTML)
   const referralLinkElement = document.getElementById("referral-link");
-  referralLinkElement.textContent = referralLink;  // Mostrar el enlace de referido
-  referralLinkElement.href = referralLink;  // Establecer el href del enlace
+  referralLinkElement.value = referralLink;  // Mostrar el enlace de referido en el campo de texto
+
+  // Función para copiar al portapapeles
+  function copyReferralLink() {
+    referralLinkElement.select();  // Seleccionar el contenido del campo de texto
+    document.execCommand("copy");  // Copiar al portapapeles
+    alert("Enlace copiado al portapapeles!");
+  }
+
+  // Agregar el evento de clic al botón de copiar
+  document.getElementById("copy-btn").addEventListener("click", copyReferralLink);
 }
 
 // Función para incrementar el contador de referidos cuando el usuario esté en Home.html
