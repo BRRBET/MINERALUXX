@@ -197,6 +197,7 @@ body {
 }
 
 /* Barra inferior fija */
+
 .bottom-bar {
   display: flex;
   justify-content: center; /* Centra los botones horizontalmente */
@@ -238,6 +239,7 @@ body {
   font-size: 0.7rem; /* Tamaño más pequeño para los textos */
   margin-top: 5px; /* Espacio entre el icono y el texto */
 }
+
 
 /* Media Queries para Pantallas Pequeñas */
 @media (max-width: 600px) {
