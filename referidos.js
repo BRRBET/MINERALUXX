@@ -20,9 +20,13 @@ function displayReferralLink() {
   const referralCode = generateReferralCode(); // Obtener el código de referido
   const referralLink = `https://brrbet.github.io/MINERALUXPLUX/Registro.html?ref=${referralCode}`;
 
-  // Mostrar el enlace en la página (puedes modificar el ID para tu estructura de HTML)
-  const referralLinkElement = document.getElementById("referral-link");
+  // Mostrar el enlace en el campo de texto
+  const referralLinkElement = document.getElementById("ref-link");
   referralLinkElement.value = referralLink;  // Mostrar el enlace de referido en el campo de texto
+
+  // Mostrar el mismo código en el ID
+  const randomIdElement = document.getElementById("random-id");
+  randomIdElement.textContent = referralCode; // Mostrar el código en el elemento ID
 
   // Función para copiar al portapapeles
   function copyReferralLink() {
@@ -58,6 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Llamar a la función para incrementar referidos si el usuario está en Home.html
   incrementReferidos();
 
-  // Llamar a la función para mostrar el enlace de referido
+  // Llamar a la función para mostrar el enlace de referido y el ID
   displayReferralLink();
 });
