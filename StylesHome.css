@@ -185,12 +185,14 @@ body {
   width: 100%;
 }
 
-.button-container {
+/* Contenedor de los íconos y su nombre */
+.button-circle-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Estilo para los círculos de los íconos */
 .button-circle {
   width: 40px;
   height: 40px;
@@ -200,7 +202,7 @@ body {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
@@ -209,11 +211,11 @@ body {
   background: rgba(255, 255, 255, 0.6);
 }
 
-.button-label {
-  margin-top: 5px;
-  font-size: 0.9rem;
+/* Estilo para los textos debajo de los íconos */
+.bottom-bar div {
+  font-size: 0.8rem;
   color: white;
-  text-align: center;
+  margin-top: 5px;
 }
 
 /* Espaciador */
