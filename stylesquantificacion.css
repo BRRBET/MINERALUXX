@@ -1,3 +1,18 @@
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mining-circle {
+  border: 4px solid green;
+  border-radius: 50%;
+  animation: rotate 24h linear infinite;
+}
+
 /* Estilo general */
 body {
   margin: 0;
@@ -11,7 +26,7 @@ body {
   padding: 0;
   height: 100vh;
   overflow-y: auto;
-  background-image: url('https://github.com/user-attachments/assets/e9efeed1-dec5-4850-abd7-a69cdc12b1e3'); /* Imagen de fondo */
+  background-image: url('https://github.com/user-attachments/assets/e9efeed1-dec5-4850-abd7-a69cdc12b1e3');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -27,13 +42,12 @@ body {
   animation: fadeIn 1s ease-in-out;
 }
 
-/* Animación de entrada */
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
 
-/* Título principal */
+/* Títulos y párrafos */
 h1 {
   color: #00ffcc;
   font-size: 3rem;
@@ -42,7 +56,6 @@ h1 {
   text-shadow: 2px 2px 8px rgba(0, 255, 204, 0.8);
 }
 
-/* Subtítulo */
 h2 {
   color: #ffcc00;
   font-size: 1.5rem;
@@ -51,7 +64,6 @@ h2 {
   text-shadow: 2px 2px 8px rgba(255, 204, 0, 0.8);
 }
 
-/* Párrafos */
 p {
   font-size: 1.1rem;
   font-weight: bold;
@@ -73,23 +85,13 @@ p {
   justify-content: center;
   align-items: center;
   position: relative;
-  background-image: url('https://github.com/user-attachments/assets/c7640356-6160-4e5d-a365-38a78a5925c3'); /* Fondo de minería */
+  background-image: url('https://github.com/user-attachments/assets/c7640356-6160-4e5d-a365-38a78a5925c3');
   background-size: cover;
   background-position: center;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
   animation: rotate 24h linear infinite;
 }
 
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Animación del pico de minería */
 .mining-pick {
   font-size: 3rem;
   color: #00b3ff;
@@ -120,7 +122,7 @@ p {
   transition: width 1s linear;
 }
 
-/* Botón de acción */
+/* Botón */
 .action-button {
   background-color: #00b3ff;
   border: none;
@@ -138,7 +140,7 @@ p {
   background-color: #0077ff;
 }
 
-/* Mensajes de minería */
+/* Mensajes */
 .mining-message {
   font-size: 1.2rem;
   color: #ffcc00;
@@ -160,7 +162,7 @@ p {
   font-weight: bold;
 }
 
-/* Barra inferior de navegación */
+/* Barra inferior */
 .bottom-bar {
   display: flex;
   justify-content: center;
@@ -201,4 +203,4 @@ p {
   text-align: center;
   font-size: 0.7rem;
   margin-top: 5px;
-}
+  }
