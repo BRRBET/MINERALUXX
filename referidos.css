@@ -1,3 +1,79 @@
+#random-id {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #0077ff, #00ffcc);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), inset 0 3px 10px rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  animation: gradientMove 5s infinite alternate ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animación para el gradiente de fondo */
+@keyframes gradientMove {
+  0% {
+    background: linear-gradient(135deg, #0077ff, #00ffcc);
+  }
+  50% {
+    background: linear-gradient(135deg, #ffdd00, #ff7a00);
+  }
+  100% {
+    background: linear-gradient(135deg, #0077ff, #00ffcc);
+  }
+}
+
+/* Hover efecto */
+#random-id:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Efectos decorativos circulares */
+#random-id::before, #random-id::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: pulse 3s infinite;
+  pointer-events: none;
+}
+
+#random-id::before {
+  top: -50px;
+  left: -50px;
+}
+
+#random-id::after {
+  bottom: -50px;
+  right: -50px;
+}
+
+/* Pulso animado */
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+}
 /* General */
 body {
   margin: 0;
