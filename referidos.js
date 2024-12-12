@@ -1,4 +1,6 @@
-// Función para generar un código único de referido de 6 caracteres alfanuméricos
+<!-- En tu archivo HTML, agrega el SDK de Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>// Función para generar un código único de referido de 6 caracteres alfanuméricos
 function generateReferralCode() {
   let referralCode = localStorage.getItem("referralCode");
 
