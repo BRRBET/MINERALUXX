@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 120px; /* Tamaño adecuado para la visibilidad */
-  height: 120px; /* Consistencia con el tamaño */
+  width: 90px; /* Tamaño adecuado para la visibilidad */
+  height: 90px; /* Consistencia con el tamaño */
   background: linear-gradient(135deg, #0077ff, #00ffcc); /* Gradiente atractivo */
   border-radius: 10%; /* Hacemos el div circular */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 3px 10px rgba(255, 255, 255, 0.2); /* Sombra suave */
@@ -34,14 +34,14 @@
 /* Hover efecto */
 #random-id:hover {
   transform: scale(1.08); /* Le damos un ligero aumento al hover */
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 5px 15px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 40px 15px rgba(0, 0, 0, 0.4), inset 0 5px 15px rgba(255, 255, 255, 0.3);
 }
 
 /* Efectos decorativos circulares */
 #random-id::before, #random-id::after {
   content: '';
   position: absolute;
-  width: 120px; /* Tamaño moderado para los círculos */
+  width: 100px; /* Tamaño moderado para los círculos */
   height: 120px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10%;
