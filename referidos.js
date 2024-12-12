@@ -6,7 +6,6 @@ function generateReferralCode() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let isUnique = false;
 
-    // Verificar unicidad del código generado
     while (!isUnique) {
       referralCode = '';
       for (let i = 0; i < 6; i++) {
@@ -15,14 +14,14 @@ function generateReferralCode() {
 
       // Validar contra la lista de referidos existentes
       const referrals = JSON.parse(localStorage.getItem("referrals")) || {};
-      if (!referrals[referralCode]) {
+      if (!referrals.hasOwnProperty(referralCode)) {
         isUnique = true;
       }
     }
 
     // Guardar el código único en localStorage
     localStorage.setItem("referralCode", referralCode);
-    let referrals = JSON.parse(localStorage.getItem("referrals")) || {};
+    const referrals = JSON.parse(localStorage.getItem("referrals")) || {};
     referrals[referralCode] = 0; // Inicializar el contador de referidos
     localStorage.setItem("referrals", JSON.stringify(referrals));
   }
@@ -56,9 +55,9 @@ function displayReferralLink() {
     copyButton.addEventListener("click", () => {
       const referralLinkElement = document.getElementById("referral-link");
       if (referralLinkElement) {
-        referralLinkElement.select();
-        document.execCommand("copy");
-        alert("¡Enlace copiado al portapapeles!");
+        navigator.clipboard.writeText(referralLinkElement.value)
+          .then(() => alert("¡Enlace copiado al portapapeles!"))
+          .catch(() => alert("Error al copiar el enlace."));
       }
     });
   }
@@ -70,7 +69,7 @@ function handleNewUserRegistration() {
   const referralCode = urlParams.get("ref"); // Obtener el código de referido desde la URL
 
   if (referralCode) {
-    let referrals = JSON.parse(localStorage.getItem("referrals")) || {};
+    const referrals = JSON.parse(localStorage.getItem("referrals")) || {};
 
     // Validar si el código existe
     if (referrals.hasOwnProperty(referralCode)) {
