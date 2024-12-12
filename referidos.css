@@ -1,10 +1,86 @@
+#random-id {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px; /* Tamaño adecuado para la visibilidad */
+  height: 50px; /* Consistencia con el tamaño */
+  background: linear-gradient(135deg, #0077ff, #00ffcc); /* Gradiente atractivo */
+  border-radius: 50%; /* Hacemos el div circular */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 3px 10px rgba(255, 255, 255, 0.2); /* Sombra suave */
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  font-size: 1.5rem; /* Tamaño del texto proporcional al círculo */
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  animation: gradientMove 6s infinite alternate ease-in-out; /* Suavizamos la animación */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animación para el gradiente de fondo */
+@keyframes gradientMove {
+  0% {
+    background: linear-gradient(135deg, #0077ff, #00ffcc);
+  }
+  50% {
+    background: linear-gradient(135deg, #ffdd00, #ff7a00);
+  }
+  100% {
+    background: linear-gradient(135deg, #0077ff, #00ffcc);
+  }
+}
+
+/* Hover efecto */
+#random-id:hover {
+  transform: scale(1.08); /* Le damos un ligero aumento al hover */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Efectos decorativos circulares */
+#random-id::before, #random-id::after {
+  content: '';
+  position: absolute;
+  width: 18px; /* Tamaño moderado para los círculos */
+  height: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: pulse 4s infinite ease-in-out; /* Ajuste del pulso */
+  pointer-events: none;
+}
+
+#random-id::before {
+  top: -35px;
+  left: -35px;
+}
+
+#random-id::after {
+  bottom: -35px;
+  right: -35px;
+}
+
+/* Pulso animado */
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+}
+
 /* General */
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   background: url('https://github.com/user-attachments/assets/c591c92a-9753-4c56-af8d-d061d93a58e6') no-repeat center center;
   background-size: cover;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -223,4 +299,3 @@ body {
 .spacer {
   height: 70px; /* Ajustar según la altura de la barra inferior */
 }
-
