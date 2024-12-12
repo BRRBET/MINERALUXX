@@ -196,7 +196,7 @@ body {
   background: transparent; /* Fondo invisible */
 }
 
-.bottom-bar .button-circle {
+/.bottom-bar .button-circle {
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -210,12 +210,6 @@ body {
   transition: transform 0.3s ease, background 0.3s ease;
   margin: 0 15px; /* Espaciado entre los botones */
   flex-direction: column; /* Alinea el icono y el texto verticalmente */
-}
-
-.bottom-bar .button-circle:hover {
-  transform: scale(1.1);
-  background: #00b3ff;
-  color: #ffffff;
 }
 
 .bottom-bar .button-circle span {
