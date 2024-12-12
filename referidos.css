@@ -10,7 +10,7 @@
   position: relative;
   overflow: hidden;
   color: #fff;
-  font-size: 1.5rem; /* Tamaño del texto proporcional al círculo */
+  font-size: 1rem; /* Tamaño del texto proporcional al círculo */
   font-weight: bold;
   text-transform: uppercase;
   text-align: center;
