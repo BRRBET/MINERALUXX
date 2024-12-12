@@ -5,7 +5,7 @@
   width: 120px; /* Tamaño adecuado para la visibilidad */
   height: 120px; /* Consistencia con el tamaño */
   background: linear-gradient(135deg, #0077ff, #00ffcc); /* Gradiente atractivo */
-  border-radius: 50%; /* Hacemos el div circular */
+  border-radius: 10%; /* Hacemos el div circular */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 3px 10px rgba(255, 255, 255, 0.2); /* Sombra suave */
   position: relative;
   overflow: hidden;
