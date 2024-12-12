@@ -1,32 +1,44 @@
-// Función para generar un código único de referido de 6 dígitos
+// Función para generar un código único de referido de 6 caracteres alfanuméricos
 function generateReferralCode() {
   let referralCode = localStorage.getItem("referralCode");
 
   if (!referralCode) {
-    // Generar un código aleatorio de 6 caracteres alfanuméricos
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    referralCode = '';
-    for (let i = 0; i < 6; i++) {
-      referralCode += characters.charAt(Math.floor(Math.random() * characters.length));
+    let isUnique = false;
+
+    // Generar un código único
+    while (!isUnique) {
+      referralCode = '';
+      for (let i = 0; i < 6; i++) {
+        referralCode += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+
+      // Validar que el código no exista en los referidos
+      const referrals = JSON.parse(localStorage.getItem("referrals")) || {};
+      if (!referrals[referralCode]) {
+        isUnique = true;
+      }
     }
-    localStorage.setItem("referralCode", referralCode); // Guardar en localStorage
+
+    // Guardar el código único en localStorage
+    localStorage.setItem("referralCode", referralCode);
   }
 
   return referralCode;
 }
 
-// Función para mostrar el enlace de referido y el código en su lugar correspondiente
+// Función para mostrar el enlace de referido y el código
 function displayReferralLink() {
   const referralCode = generateReferralCode(); // Obtener el código de referido
   const referralLink = `https://brrbet.github.io/MINERALUXPLUX/Registro.html?ref=${referralCode}`;
 
-  // Mostrar el código de referido en el apartado ID
+  // Mostrar el código de referido
   const referralCodeElement = document.getElementById("random-id");
   if (referralCodeElement) {
-    referralCodeElement.textContent = referralCode; // Mostrar el código único
+    referralCodeElement.textContent = referralCode;
   }
 
-  // Mostrar el enlace dentro del apartado "Enlace para compartir"
+  // Mostrar el enlace de referido en un input para copiar
   const referralLinkContainer = document.querySelector(".share-box");
   if (referralLinkContainer) {
     referralLinkContainer.innerHTML = `
@@ -35,95 +47,66 @@ function displayReferralLink() {
     `;
   }
 
-  // Agregar funcionalidad al botón para copiar el enlace al portapapeles
+  // Funcionalidad para copiar el enlace al portapapeles
   const copyButton = document.getElementById("copy-btn");
   if (copyButton) {
     copyButton.addEventListener("click", () => {
       const referralLinkElement = document.getElementById("referral-link");
       if (referralLinkElement) {
-        referralLinkElement.select(); // Seleccionar el contenido
-        document.execCommand("copy"); // Copiar al portapapeles
-        alert("Enlace copiado al portapapeles!");
+        referralLinkElement.select();
+        document.execCommand("copy");
+        alert("¡Enlace copiado al portapapeles!");
       }
     });
   }
 }
 
-// Función para manejar el registro de un nuevo usuario y actualizar el contador
+// Función para manejar el registro de un nuevo usuario
 function handleNewUserRegistration() {
   const urlParams = new URLSearchParams(window.location.search);
-  const referralCode = urlParams.get("ref"); // Obtener el código de referido de la URL
+  const referralCode = urlParams.get("ref"); // Obtener el código de referido desde la URL
 
-  // Verificar si el código de referido es válido
-  let referrals = JSON.parse(localStorage.getItem("referrals")) || {};
-
-  // Si el código de referido no existe en la lista de referidos, se agregará como válido
   if (referralCode) {
-    if (!referrals[referralCode]) {
-      referrals[referralCode] = 0; // Añadir el código de referido si no existe
+    let referrals = JSON.parse(localStorage.getItem("referrals")) || {};
+
+    // Validar si el código existe
+    if (referrals[referralCode] !== undefined) {
+      referrals[referralCode] += 1; // Incrementar el contador de referidos
+    } else {
+      alert("Código de invitación inválido. Por favor, verifica el enlace.");
+      return;
     }
 
-    // Incrementar el contador de referidos para el código correspondiente
-    referrals[referralCode] += 1;
-
-    // Guardar el contador actualizado de referidos en localStorage
+    // Guardar los datos actualizados
     localStorage.setItem("referrals", JSON.stringify(referrals));
-
-    // Guardar el código de referido de este usuario en localStorage
     localStorage.setItem("referralCode", referralCode);
-  } 
-
-  // No se muestra un mensaje de error si el código no es válido
+  }
 }
 
-// Función para mostrar el contador de referidos en el home
+// Función para mostrar estadísticas de referidos
 function displayReferralStats() {
-  const referralCode = localStorage.getItem("referralCode"); // Obtener el código del usuario actual
+  const referralCode = localStorage.getItem("referralCode"); // Código del usuario actual
   const referrals = JSON.parse(localStorage.getItem("referrals")) || {};
-  const nivel1Count = referrals[referralCode] || 0; // Número de referidos de Nivel 1
+  const nivel1Count = referrals[referralCode] || 0; // Número de referidos directos
 
-  // Actualizar el contador en la página
+  // Mostrar el contador en la página
   const nivel1CounterElement = document.querySelector(".nivel1-counter");
   if (nivel1CounterElement) {
-    nivel1CounterElement.textContent = nivel1Count; // Mostrar el contador de referidos
+    nivel1CounterElement.textContent = nivel1Count;
   }
 }
 
-// Función para guardar y mostrar la información del usuario
-function displayUserInfo() {
-  const referralCode = localStorage.getItem("referralCode"); // Obtener el código del usuario actual
-  const referralCodeElement = document.getElementById("random-id");
-
-  if (referralCodeElement) {
-    referralCodeElement.textContent = referralCode; // Mostrar el código único
-  }
-
-  // Mostrar el número de referidos (si hay)
-  displayReferralStats();
-}
-
-// Función para gestionar el comportamiento de la página de registro
-function handleRegistrationPage() {
-  // Llamar a la función para manejar el registro de nuevos usuarios
-  handleNewUserRegistration();
-
-  // Llamar a la función para mostrar el enlace y el código de referido
+// Inicializar la página y gestionar el flujo
+document.addEventListener("DOMContentLoaded", () => {
+  // Mostrar el enlace de referido
   displayReferralLink();
 
-  // Llamar a la función para mostrar las estadísticas en el home
+  // Manejar el registro si es una página de registro
+  const isRegistrationPage = window.location.pathname.includes("Registro.html");
+  if (isRegistrationPage) {
+    handleNewUserRegistration();
+  }
+
+  // Mostrar estadísticas si corresponde
   displayReferralStats();
-}
-
-// Función para inicializar la página
-function initializePage() {
-  // Llamar a la función para gestionar el comportamiento de la página de registro
-  handleRegistrationPage();
-
-  // Llamar a la función para mostrar la información del usuario en la página
-  displayUserInfo();
-}
-
-// Ejecutar las funciones cuando el contenido esté listo
-document.addEventListener("DOMContentLoaded", () => {
-  initializePage();
 });
