@@ -41,8 +41,8 @@
 #random-id::before, #random-id::after {
   content: '';
   position: absolute;
-  width: 18px; /* Tamaño moderado para los círculos */
-  height: 18px;
+  width: 120px; /* Tamaño moderado para los círculos */
+  height: 120px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   animation: pulse 4s infinite ease-in-out; /* Ajuste del pulso */
