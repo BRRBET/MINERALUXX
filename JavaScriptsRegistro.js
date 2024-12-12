@@ -1,23 +1,9 @@
-// Función para generar un código único de referido de 6 dígitos
-function generateReferralCode() {
-  let referralCode = localStorage.getItem("referralCode");
-
-  if (!referralCode) {
-    // Genera un código aleatorio de 6 caracteres alfanuméricos
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    referralCode = '';
-    for (let i = 0; i < 6; i++) {
-      referralCode += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    localStorage.setItem("referralCode", referralCode); // Guardar en localStorage
-  }
-
-  return referralCode;
-}
+// Código de referido permanente
+const permanentReferralCode = '7WDLSM';
 
 // Función para mostrar el código de referencia en el formulario de registro
 function displayReferralCodeInForm() {
-  const referralCode = generateReferralCode(); // Obtener el código de referido
+  const referralCode = permanentReferralCode; // Usar el código permanente
   const referralCodeField = document.getElementById('invitationCode'); // Obtener el campo "Código de referencia"
   referralCodeField.value = referralCode; // Mostrar el código en el campo de texto
 }
