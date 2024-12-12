@@ -1,13 +1,13 @@
-// Función para generar un código único de referido de 6 caracteres alfanuméricos
+// Función para generar un código único de referido de 4 dígitos numéricos
 function generateReferralCode() {
   let referralCode = localStorage.getItem("referralCode");
 
   if (!referralCode) {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const characters = '0123456789'; // Solo números
     let isUnique = false;
 
     while (!isUnique) {
-      referralCode = Array.from({ length: 6 }, () =>
+      referralCode = Array.from({ length: 4 }, () =>
         characters.charAt(Math.floor(Math.random() * characters.length))
       ).join('');
 
@@ -69,16 +69,14 @@ function handleNewUserRegistration() {
     // Obtener la lista de referidos desde localStorage
     const referrals = JSON.parse(localStorage.getItem("referrals")) || {};
 
-    // Validar si el código existe en la lista de referidos
+    // Incrementar el contador de referidos, sin importar si el código existe o no
     if (referrals[referralCode] !== undefined) {
-      referrals[referralCode] += 1; // Incrementar el contador de referidos
+      referrals[referralCode] += 1; // Incrementar el contador de referidos si el código existe
     } else {
       referrals[referralCode] = 1; // Si el código no existe, lo agregamos con un contador inicial
     }
     
     localStorage.setItem("referrals", JSON.stringify(referrals));
-
-    // Ya no se muestra alerta, solo se incrementa el contador de referidos
   } else {
     console.warn("No se encontró ningún código en la URL.");
   }
