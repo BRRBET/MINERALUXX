@@ -1,6 +1,6 @@
 // Lista de códigos predefinidos (más de 300 códigos de 6 dígitos)
 const validReferralCodes = [
-  'A1B2C3', 'D4E5F6', 'G7H8I9', 'J1K2L3', 'M4N5O6', 'P7Q8R9', 'S1T2U3', 'V4W5X6', 'Y7Z8A9', 'B1C2D3',
+  '73E8CL','A1B2C3', 'D4E5F6', 'G7H8I9', 'J1K2L3', 'M4N5O6', 'P7Q8R9', 'S1T2U3', 'V4W5X6', 'Y7Z8A9', 'B1C2D3',
   'C4D5E6', 'F7G8H9', 'I1J2K3', 'L4M5N6', 'O7P8Q9', 'R1S2T3', 'U4V5W6', 'X7Y8Z9', 'A1D2G3', 'B4H5I6',
   'C7J8K9', 'E1L2M3', 'F4O5P6', 'G7Q8R9', 'H1S2T3', 'I4U5V6', 'J7W8X9', 'K1Y2Z3', 'L4A5B6', 'M7C8D9',
   'N1E2F3', 'O4G5H6', 'P7I8J9', 'Q1K2L3', 'R4M5N6', 'S7O8P9', 'T1Q2R3', 'U4S5T6', 'V7W8X9', 'W1Y2Z3',
