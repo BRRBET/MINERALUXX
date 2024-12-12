@@ -66,15 +66,21 @@ function handleNewUserRegistration() {
   const referralCode = urlParams.get("ref");
 
   if (referralCode) {
+    // Obtener la lista de referidos desde localStorage
     const referrals = JSON.parse(localStorage.getItem("referrals")) || {};
+    console.log("Referidos actuales:", referrals); // Debug para verificar el contenido
 
+    // Validar si el código existe
     if (referrals[referralCode] !== undefined) {
-      referrals[referralCode] += 1;
+      referrals[referralCode] += 1; // Incrementar el contador de referidos
       localStorage.setItem("referrals", JSON.stringify(referrals));
       alert("¡Registro exitoso con el código de invitación!");
     } else {
+      console.error("Código no encontrado:", referralCode); // Debug para revisar
       alert("Código de invitación inválido. Por favor, verifica el enlace.");
     }
+  } else {
+    console.warn("No se encontró ningún código en la URL."); // Debug para revisar si falta el parámetro
   }
 }
 
@@ -94,9 +100,11 @@ function displayReferralStats() {
 document.addEventListener("DOMContentLoaded", () => {
   displayReferralLink();
 
+  // Si estamos en la página de registro, manejar el proceso de registro
   if (window.location.pathname.includes("Registro.html")) {
     handleNewUserRegistration();
   }
 
+  // Mostrar estadísticas de referidos
   displayReferralStats();
 });
