@@ -6,14 +6,14 @@ function generateReferralCode() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let isUnique = false;
 
-    // Generar un código único
+    // Verificar unicidad del código generado
     while (!isUnique) {
       referralCode = '';
       for (let i = 0; i < 6; i++) {
         referralCode += characters.charAt(Math.floor(Math.random() * characters.length));
       }
 
-      // Validar que el código no exista en los referidos
+      // Validar contra la lista de referidos existentes
       const referrals = JSON.parse(localStorage.getItem("referrals")) || {};
       if (!referrals[referralCode]) {
         isUnique = true;
@@ -22,6 +22,9 @@ function generateReferralCode() {
 
     // Guardar el código único en localStorage
     localStorage.setItem("referralCode", referralCode);
+    let referrals = JSON.parse(localStorage.getItem("referrals")) || {};
+    referrals[referralCode] = 0; // Inicializar el contador de referidos
+    localStorage.setItem("referrals", JSON.stringify(referrals));
   }
 
   return referralCode;
@@ -70,16 +73,14 @@ function handleNewUserRegistration() {
     let referrals = JSON.parse(localStorage.getItem("referrals")) || {};
 
     // Validar si el código existe
-    if (referrals[referralCode] !== undefined) {
+    if (referrals.hasOwnProperty(referralCode)) {
       referrals[referralCode] += 1; // Incrementar el contador de referidos
+      localStorage.setItem("referrals", JSON.stringify(referrals));
+      localStorage.setItem("referralCode", referralCode);
+      alert("¡Registro exitoso con el código de invitación!");
     } else {
       alert("Código de invitación inválido. Por favor, verifica el enlace.");
-      return;
     }
-
-    // Guardar los datos actualizados
-    localStorage.setItem("referrals", JSON.stringify(referrals));
-    localStorage.setItem("referralCode", referralCode);
   }
 }
 
