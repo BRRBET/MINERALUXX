@@ -7,22 +7,22 @@ function generateReferralCode() {
     let isUnique = false;
 
     while (!isUnique) {
-      referralCode = '';
-      for (let i = 0; i < 6; i++) {
-        referralCode += characters.charAt(Math.floor(Math.random() * characters.length));
-      }
+      referralCode = Array.from({ length: 6 }, () =>
+        characters.charAt(Math.floor(Math.random() * characters.length))
+      ).join('');
 
-      // Validar contra la lista de referidos existentes
+      // Obtener la lista de referidos existentes
       const referrals = JSON.parse(localStorage.getItem("referrals")) || {};
-      if (!referrals.hasOwnProperty(referralCode)) {
+      if (!referrals[referralCode]) {
         isUnique = true;
       }
     }
 
     // Guardar el código único en localStorage
     localStorage.setItem("referralCode", referralCode);
+
     const referrals = JSON.parse(localStorage.getItem("referrals")) || {};
-    referrals[referralCode] = 0; // Inicializar el contador de referidos
+    referrals[referralCode] = 0; // Inicializar contador de referidos
     localStorage.setItem("referrals", JSON.stringify(referrals));
   }
 
@@ -31,16 +31,14 @@ function generateReferralCode() {
 
 // Función para mostrar el enlace de referido y el código
 function displayReferralLink() {
-  const referralCode = generateReferralCode(); // Obtener el código de referido
+  const referralCode = generateReferralCode();
   const referralLink = `https://brrbet.github.io/MINERALUXPLUX/Registro.html?ref=${referralCode}`;
 
-  // Mostrar el código de referido
   const referralCodeElement = document.getElementById("random-id");
   if (referralCodeElement) {
     referralCodeElement.textContent = referralCode;
   }
 
-  // Mostrar el enlace de referido en un input para copiar
   const referralLinkContainer = document.querySelector(".share-box");
   if (referralLinkContainer) {
     referralLinkContainer.innerHTML = `
@@ -49,7 +47,6 @@ function displayReferralLink() {
     `;
   }
 
-  // Funcionalidad para copiar el enlace al portapapeles
   const copyButton = document.getElementById("copy-btn");
   if (copyButton) {
     copyButton.addEventListener("click", () => {
@@ -66,16 +63,14 @@ function displayReferralLink() {
 // Función para manejar el registro de un nuevo usuario
 function handleNewUserRegistration() {
   const urlParams = new URLSearchParams(window.location.search);
-  const referralCode = urlParams.get("ref"); // Obtener el código de referido desde la URL
+  const referralCode = urlParams.get("ref");
 
   if (referralCode) {
     const referrals = JSON.parse(localStorage.getItem("referrals")) || {};
 
-    // Validar si el código existe
-    if (referrals.hasOwnProperty(referralCode)) {
-      referrals[referralCode] += 1; // Incrementar el contador de referidos
+    if (referrals[referralCode] !== undefined) {
+      referrals[referralCode] += 1;
       localStorage.setItem("referrals", JSON.stringify(referrals));
-      localStorage.setItem("referralCode", referralCode);
       alert("¡Registro exitoso con el código de invitación!");
     } else {
       alert("Código de invitación inválido. Por favor, verifica el enlace.");
@@ -85,28 +80,23 @@ function handleNewUserRegistration() {
 
 // Función para mostrar estadísticas de referidos
 function displayReferralStats() {
-  const referralCode = localStorage.getItem("referralCode"); // Código del usuario actual
+  const referralCode = localStorage.getItem("referralCode");
   const referrals = JSON.parse(localStorage.getItem("referrals")) || {};
-  const nivel1Count = referrals[referralCode] || 0; // Número de referidos directos
+  const nivel1Count = referrals[referralCode] || 0;
 
-  // Mostrar el contador en la página
   const nivel1CounterElement = document.querySelector(".nivel1-counter");
   if (nivel1CounterElement) {
     nivel1CounterElement.textContent = nivel1Count;
   }
 }
 
-// Inicializar la página y gestionar el flujo
+// Inicializar la página
 document.addEventListener("DOMContentLoaded", () => {
-  // Mostrar el enlace de referido
   displayReferralLink();
 
-  // Manejar el registro si es una página de registro
-  const isRegistrationPage = window.location.pathname.includes("Registro.html");
-  if (isRegistrationPage) {
+  if (window.location.pathname.includes("Registro.html")) {
     handleNewUserRegistration();
   }
 
-  // Mostrar estadísticas si corresponde
   displayReferralStats();
 });
