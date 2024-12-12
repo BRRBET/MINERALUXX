@@ -1,4 +1,4 @@
-/* Genera */
+/* General */
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -223,3 +223,4 @@ body {
 .spacer {
   height: 70px; /* Ajustar según la altura de la barra inferior */
 }
+
