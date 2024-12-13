@@ -17,7 +17,7 @@ function generateReferralCode() {
 // Función para mostrar el enlace de referido y el código en su lugar correspondiente
 function displayReferralLink() {
   const referralCode = generateReferralCode();
-  const referralLink = `https://brrbet.github.io/MINERALUXPLUX/Registro.html?ref=${referralCode}`;
+  const referralLink = `https://brrbet.github.io/MINERALUXPLUX/Registro.html`;
 
   const referralCodeElement = document.getElementById("random-id");
   if (referralCodeElement) {
