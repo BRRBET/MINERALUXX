@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
-background: url('https://github.com/user-attachments/assets/67891050-0e75-4f2c-87e1-dce267d51042') no-repeat center center;
+  background: url('https://github.com/user-attachments/assets/67891050-0e75-4f2c-87e1-dce267d51042') no-repeat center center;
   background-size: cover;
   color: #f5f5f5;
   display: flex;
@@ -10,14 +10,17 @@ background: url('https://github.com/user-attachments/assets/67891050-0e75-4f2c-8
   align-items: center;
   justify-content: flex-start;
   padding: 20px;
+  min-height: 100vh; /* Asegura que la página ocupe toda la altura */
+  box-sizing: border-box;
 }
 
 /* Título de la página */
 .recarga-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #00ffcc;
   text-align: center;
   margin-bottom: 30px;
+  text-shadow: 0 4px 6px rgba(0, 255, 204, 0.6);
 }
 
 /* Contenedor de la recarga */
@@ -25,44 +28,57 @@ background: url('https://github.com/user-attachments/assets/67891050-0e75-4f2c-8
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  background-color: #222222;
+  background-color: rgba(34, 34, 34, 0.9);
   padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
   text-align: center;
+  backdrop-filter: blur(5px); /* Añade desenfoque de fondo */
 }
 
 /* Contenedor del código QR */
 .qr-container {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .qr-image {
   width: 200px;
   height: 200px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease; /* Transición para hacer el zoom del QR */
+}
+
+.qr-image:hover {
+  transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
 }
 
 /* Descripción debajo del QR */
 .recarga-description {
   font-size: 1.1rem;
   color: #ccc;
+  margin-bottom: 20px;
 }
 
 /* Información de la dirección de depósito */
 .deposit-info {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 #deposit-address {
-  width: 80%;
-  padding: 10px;
+  width: 90%;
+  padding: 12px;
   font-size: 1rem;
   background-color: #333;
   color: white;
   border: none;
   border-radius: 8px;
   text-align: center;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease; /* Transición para el cambio de color al enfocar */
+}
+
+#deposit-address:focus {
+  background-color: #444; /* Cambio de color al enfocar */
 }
 
 .copy-button {
@@ -70,15 +86,15 @@ background: url('https://github.com/user-attachments/assets/67891050-0e75-4f2c-8
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 1rem;
+  padding: 12px 25px;
+  font-size: 1.1rem;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .copy-button:hover {
   background-color: #0077ff;
+  transform: scale(1.05); /* Efecto de zoom en el botón */
 }
 
 /* Aviso sobre los depósitos */
@@ -96,36 +112,60 @@ background: url('https://github.com/user-attachments/assets/67891050-0e75-4f2c-8
 .bottom-bar {
   display: flex;
   justify-content: space-evenly;
-  background: rgba(0, 0, 0, 0);  /* Fondo completamente transparente */
-  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.7); /* Fondo oscuro para la barra */
+  padding: 15px 0;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  box-shadow: none;  /* Elimina cualquier sombra */
-  visibility: visible;  /* Asegura que los botones sean visibles */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Sombra para un toque más profesional */
 }
 
 /* Botones circulares */
 .button-circle {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);  /* Fondo ligeramente transparente */
+  background: rgba(255, 255, 255, 0.3); /* Fondo ligeramente transparente */
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .button-circle:hover {
   transform: scale(1.2);
-  background: rgba(255, 255, 255, 0.6);  /* Cambio de opacidad al pasar el ratón */
+  background: rgba(255, 255, 255, 0.6); /* Cambio de opacidad al pasar el ratón */
 }
 
 /* Espaciador */
 .spacer {
   height: 100px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .recarga-container {
+    padding: 20px;
+  }
+
+  .recarga-title {
+    font-size: 2rem;
+  }
+
+  .qr-image {
+    width: 180px;
+    height: 180px;
+  }
+
+  #deposit-address {
+    width: 85%;
+  }
+
+  .copy-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
 }
