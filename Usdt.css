@@ -52,18 +52,17 @@ body {
   transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
 }
 
-/* Descripción debajo del QR */
-.recarga-description {
-  font-size: 1.1rem;
-  color: #ccc;
-  margin-bottom: 20px;
-}
-
 /* Información de la dirección de depósito */
 .deposit-info {
   margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
+/* Enlace con dirección de depósito */
 #deposit-address {
   width: 90%;
   padding: 12px;
@@ -74,13 +73,16 @@ body {
   border-radius: 8px;
   text-align: center;
   margin-bottom: 15px;
-  transition: background-color 0.3s ease; /* Transición para el cambio de color al enfocar */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  word-wrap: break-word; /* Para evitar que el texto se desborde */
 }
 
 #deposit-address:focus {
   background-color: #444; /* Cambio de color al enfocar */
+  transform: scale(1.02); /* Efecto de expansión al enfocar */
 }
 
+/* Botón de copiar */
 .copy-button {
   background-color: #00b3ff;
   color: white;
@@ -90,22 +92,29 @@ body {
   font-size: 1.1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block; /* Asegura que el botón se muestre correctamente */
 }
 
 .copy-button:hover {
   background-color: #0077ff;
-  transform: scale(1.05); /* Efecto de zoom en el botón */
+  transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
 }
 
-/* Aviso sobre los depósitos */
-.recarga-warning {
-  margin-top: 20px;
-  font-size: 1rem;
-  color: #ff6666;
+.copy-button:focus {
+  outline: none; /* Elimina el borde azul del enfoque */
+  transform: scale(1.05); /* Efecto de expansión al enfocar */
 }
 
-.recarga-warning strong {
-  color: #ffcc00;
+/* Responsividad para pantallas más pequeñas */
+@media (max-width: 768px) {
+  #deposit-address {
+    width: 85%; /* Reducir el tamaño del input en dispositivos más pequeños */
+  }
+
+  .copy-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
 }
 
 /* Barra inferior de botones */
