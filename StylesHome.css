@@ -175,6 +175,7 @@ body {
 }
 
 /* Barra inferior de botones */
+/* Barra inferior de botones */
 .bottom-bar {
   display: flex;
   justify-content: center; /* Centra los botones horizontalmente */
@@ -189,15 +190,15 @@ body {
 }
 
 .bottom-bar .button-circle {
-  width: 90px;
-  height: 90px;
+  width: 70px;  /* Reducido el tamaño del botón */
+  height: 70px; /* Reducido el tamaño del botón */
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2); /* Fondo transparente */
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 1.4rem;
+  font-size: 1.2rem; /* Reducido el tamaño del icono */
   color: #ffffff;
   transition: transform 0.3s ease, background 0.3s ease;
   margin: 0 15px; /* Espaciado entre los botones */
@@ -213,7 +214,7 @@ body {
 .bottom-bar .button-circle span {
   display: block;
   text-align: center;
-  font-size: 1rem; /* Tamaño más pequeño para los textos */
+  font-size: 0.85rem; /* Reducido el tamaño del texto */
   margin-top: 5px; /* Espacio entre el icono y el texto */
 }
 
