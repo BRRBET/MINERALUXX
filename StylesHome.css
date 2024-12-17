@@ -213,7 +213,7 @@ body {
 .bottom-bar .button-circle span {
   display: block;
   text-align: center;
-  font-size: 1.5rem; /* Tamaño más pequeño para los textos */
+  font-size: 1.1rem; /* Tamaño más pequeño para los textos */
   margin-top: 5px; /* Espacio entre el icono y el texto */
 }
 
