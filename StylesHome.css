@@ -5,6 +5,7 @@ body {
   background: url('https://github.com/user-attachments/assets/67891050-0e75-4f2c-87e1-dce267d51042') no-repeat center center fixed;
   background-size: cover;
   color: white;
+  
 }
 
 /* Encabezado */
@@ -188,8 +189,8 @@ body {
 }
 
 .bottom-bar .button-circle {
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2); /* Fondo transparente */
   display: flex;
@@ -212,7 +213,7 @@ body {
 .bottom-bar .button-circle span {
   display: block;
   text-align: center;
-  font-size: 0.7rem; /* Tamaño más pequeño para los textos */
+  font-size: 1rem; /* Tamaño más pequeño para los textos */
   margin-top: 5px; /* Espacio entre el icono y el texto */
 }
 
