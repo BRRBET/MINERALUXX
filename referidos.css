@@ -273,8 +273,8 @@ body {
 }
 
 .bottom-bar .button-circle {
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
   display: flex;
@@ -297,7 +297,7 @@ body {
 .bottom-bar .button-circle span {
   display: block;
   text-align: center;
-  font-size: 0.7rem;
+  font-size: 1rem;
   margin-top: 5px;
 }
 
