@@ -52,7 +52,7 @@ body {
   transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
 }
 
-/* Información de la dirección de depósito */
+/* Contenedor de la dirección de depósito */
 .deposit-info {
   margin-bottom: 30px;
   display: flex;
@@ -60,61 +60,73 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 20px;
+  background-color: rgba(34, 34, 34, 0.9); /* Fondo oscuro con transparencia */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4); /* Sombra para efecto de tarjeta */
+  width: 90%;
+  max-width: 600px;
 }
 
 /* Enlace con dirección de depósito */
 #deposit-address {
-  width: 90%;
-  padding: 12px;
+  width: 100%;
+  padding: 15px;
   font-size: 1rem;
-  background-color: #333;
+  background: linear-gradient(135deg, #444, #222); /* Efecto degradado en el fondo */
   color: white;
-  border: none;
-  border-radius: 8px;
+  border: 1px solid #555;
+  border-radius: 10px;
   text-align: center;
-  margin-bottom: 15px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  word-wrap: break-word; /* Para evitar que el texto se desborde */
+  margin-bottom: 20px;
+  transition: all 0.3s ease; /* Transición suave para interacciones */
+  word-wrap: break-word; /* Evitar desbordamientos */
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5); /* Sombra interna */
 }
 
 #deposit-address:focus {
-  background-color: #444; /* Cambio de color al enfocar */
+  background-color: #555;
   transform: scale(1.02); /* Efecto de expansión al enfocar */
+  border-color: #00ffcc; /* Resaltado del borde */
 }
 
 /* Botón de copiar */
 .copy-button {
-  background-color: #00b3ff;
+  background: linear-gradient(135deg, #00b3ff, #0077ff); /* Degradado llamativo */
   color: white;
   border: none;
-  border-radius: 8px;
-  padding: 12px 25px;
-  font-size: 1.1rem;
+  border-radius: 12px;
+  padding: 15px 30px;
+  font-size: 1.2rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  display: inline-block; /* Asegura que el botón se muestre correctamente */
+  transition: all 0.3s ease; /* Transición suave */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Sombra para profundidad */
 }
 
 .copy-button:hover {
-  background-color: #0077ff;
-  transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+  transform: scale(1.05); /* Efecto de zoom */
+  background: linear-gradient(135deg, #0077ff, #00b3ff); /* Invertir degradado */
+}
+
+.copy-button:active {
+  transform: scale(0.95); /* Efecto de pulsación */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* Reducir la sombra */
 }
 
 .copy-button:focus {
-  outline: none; /* Elimina el borde azul del enfoque */
-  transform: scale(1.05); /* Efecto de expansión al enfocar */
+  outline: none;
+  border: 2px solid #00ffcc; /* Bordes más visibles al enfocar */
 }
 
-/* Responsividad para pantallas más pequeñas */
-@media (max-width: 768px) {
-  #deposit-address {
-    width: 85%; /* Reducir el tamaño del input en dispositivos más pequeños */
-  }
+/* Aviso sobre los depósitos */
+.recarga-warning {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #ff6666;
+}
 
-  .copy-button {
-    font-size: 1rem;
-    padding: 10px 20px;
-  }
+.recarga-warning strong {
+  color: #ffcc00;
 }
 
 /* Barra inferior de botones */
