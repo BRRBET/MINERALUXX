@@ -1,8 +1,3 @@
-<!-- Botón Submit -->
-<button id="button-btn">Submit</button>
-
-<!-- Mostrar el balance -->
-<p id="balance">Balance: $100</p>
 
 
   // Referencia al botón y al balance
