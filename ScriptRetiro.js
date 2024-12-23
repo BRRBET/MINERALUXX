@@ -1,29 +1,46 @@
+// Referencia al formulario y al botón
+const button = document.getElementById("button-btn");
+const montoInput = document.getElementById("monto");
+const balanceDisponible = document.querySelector(".perfil p strong:first-child");
+const balanceRetiro = document.querySelector(".perfil p strong:nth-child(2)");
 
+// Referencia al icono y al modal
+const icono = document.querySelector(".icono-superior-izquierdo");
+const modal = document.getElementById("modal");
+const modalAceptar = document.getElementById("modal-aceptar");
 
-  // Referencia al botón y al balance
-  const button = document.getElementById("button-btn");
-  const balance = document.getElementById("balance");
+// Mostrar el modal al hacer clic en el icono
+icono.addEventListener("click", function () {
+  modal.style.display = "flex"; // Mostrar el modal
+});
 
-  // Al hacer clic en el botón
-  button.addEventListener("click", function () {
-    // Mostrar mensaje de retiro en proceso
-    alert("Su retiro está en proceso");
+// Ocultar el modal al hacer clic en el botón "Aceptar"
+modalAceptar.addEventListener("click", function () {
+  modal.style.display = "none"; // Ocultar el modal
+});
 
-    // Cambiar el balance a 0
-    balance.textContent = "Balance: $0";
-  });
+// Funcionalidad del botón "Retirar"
+button.addEventListener("click", function (event) {
+  event.preventDefault(); // Prevenir que el formulario se envíe automáticamente
 
-  // Referencia al icono y al modal
-  const icono = document.querySelector(".icono-superior-izquierdo");
-  const modal = document.getElementById("modal");
-  const modalAceptar = document.getElementById("modal-aceptar");
+  const monto = parseFloat(montoInput.value); // Obtener el valor ingresado
+  const balanceActual = parseFloat(balanceDisponible.textContent.replace("$", "").replace(" USDT", ""));
 
-  // Mostrar el modal al hacer clic en el icono
-  icono.addEventListener("click", function () {
-    modal.style.display = "flex"; // Mostrar el modal
-  });
+  if (monto <= 0 || isNaN(monto)) {
+    alert("Por favor, ingrese un monto válido.");
+    return;
+  }
 
-  // Ocultar el modal al hacer clic en el botón "Aceptar"
-  modalAceptar.addEventListener("click", function () {
-    modal.style.display = "none"; // Ocultar el modal
-  });
+  if (monto > balanceActual) {
+    alert("El monto ingresado excede el balance disponible.");
+    return;
+  }
+
+  // Actualizar balance
+  const nuevoBalance = (balanceActual - monto).toFixed(2);
+  balanceDisponible.textContent = `$${nuevoBalance} USDT`;
+  balanceRetiro.textContent = `$${monto.toFixed(2)} USDT`;
+
+  // Mostrar mensaje de éxito
+  alert("Su retiro está en proceso.");
+});
