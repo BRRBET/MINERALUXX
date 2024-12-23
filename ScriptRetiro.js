@@ -1,8 +1,8 @@
-// Referencia al formulario y al botón
+// Referencia al botón y al formulario
 const button = document.getElementById("button-btn");
 const montoInput = document.getElementById("monto");
-const balanceDisponible = document.querySelector(".perfil p strong:first-child");
-const balanceRetiro = document.querySelector(".perfil p strong:nth-child(2)");
+const balanceDisponible = document.querySelector(".perfil p:nth-of-type(1) strong");
+const balanceRetiro = document.querySelector(".perfil p:nth-of-type(2) strong");
 
 // Referencia al icono y al modal
 const icono = document.querySelector(".icono-superior-izquierdo");
@@ -21,13 +21,20 @@ modalAceptar.addEventListener("click", function () {
 
 // Funcionalidad del botón "Retirar"
 button.addEventListener("click", function (event) {
-  event.preventDefault(); // Prevenir que el formulario se envíe automáticamente
+  event.preventDefault(); // Prevenir el envío automático del formulario
 
-  const monto = parseFloat(montoInput.value); // Obtener el valor ingresado
+  // Obtener el monto ingresado
+  const monto = parseFloat(montoInput.value);
   const balanceActual = parseFloat(balanceDisponible.textContent.replace("$", "").replace(" USDT", ""));
 
-  if (monto <= 0 || isNaN(monto)) {
+  // Validaciones
+  if (isNaN(monto) || monto <= 0) {
     alert("Por favor, ingrese un monto válido.");
+    return;
+  }
+
+  if (monto < 8) {
+    alert("El monto mínimo de retiro es de 8 USDT.");
     return;
   }
 
@@ -36,7 +43,7 @@ button.addEventListener("click", function (event) {
     return;
   }
 
-  // Actualizar balance
+  // Actualizar balances
   const nuevoBalance = (balanceActual - monto).toFixed(2);
   balanceDisponible.textContent = `$${nuevoBalance} USDT`;
   balanceRetiro.textContent = `$${monto.toFixed(2)} USDT`;
