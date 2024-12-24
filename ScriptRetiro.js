@@ -49,5 +49,5 @@ button.addEventListener("click", function (event) {
   balanceRetiro.textContent = `$${monto.toFixed(2)} USDT`;
 
   // Mostrar mensaje de éxito
-  alert("Su retiro está en proceso.");
+  alert("Su canal de retiro esta cerrado, depositar 6.00 USDT retirar todo.");
 });
